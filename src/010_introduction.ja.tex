@@ -4,27 +4,36 @@
 
 \section{背景}
 \label{section:background}
+Webブラウジングにおいて、様々な方法でWebページ内から目当てのコンテンツを指し示すことが可能である
 \begin{itemize}
-      \item  背景
+    \item アンカーリンク
+    \item youtube等で再生位置をクエリパラメータとして指定して共有可能
+    \item Googleがテキストフラグメントを指定して共有できるChrome拡張機能をリリースした
+    \item PDFでも、フラグメントでページ数を指定することで特定のページを共有することが可能
 \end{itemize}
 
 \section{本研究が着目する課題}
+既存のブックマークシステムは、ページ単位でしか保存・復元することができない
+その結果、以下のような問題が発生する
 \begin{itemize}
-      \item  
+        \item 一度ページから離れると、閲覧していたWebサイトや動画・PDFなどをどこまで読んだか・視聴したかがわからなくなってしまう
+        \item Webサイトや動画・PDFの特定の文言・シーンを共有したり、見つけ直すのに手間がかかる
+        \item 複数の異なるブラウザ間でWebサイトや動画の閲覧の進捗を同期させることができない
 \end{itemize}
 
 \section{本研究の目的とアプローチ}
 \begin{itemize}
-      \item  アブストラクトを書く
+      \item  Webページとともにスクロール位置・動画再生位置・PDFのページ数などの閲覧状態を保存・復元することができるブックマークシステムを開発する
 \end{itemize}
 
 \section{本論文の構成}
 
 本論文における以降の構成は次の通りである。
 \ref{chap:related_works}章では、
-\ref{chap:web_snapshot_system}章では、c
 
-\ref{chap:design}章では、
+\ref{chap:web_snapshot_system}章では、
+
+\ref{chap:design}章では、本研究で提案するシステムの設計について述べる。
 
 \ref{chap:implementation}章では、
 
