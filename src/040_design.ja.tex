@@ -1,22 +1,45 @@
 \chapter{設計}
 \label{chap:design}
+本章では、まずWeb-Snapshotシステム全体の構成について述べる。
+ついで、クライアントであるiOSアプリケーション・Chrome拡張機能の設計について説明する。
+そして、サーバ側のデータベース設計およびAPI設計を示す。
 
-\section{本システムの設計概要}
-\subsection{全体の構成}
+\section{全体の構成}
+本研究で提案するWeb-Snapshotシステムは、ユーザが触れるインターフェイスであるクライアントと、サーバから構成される。
+
+クライアントでは、iOSアプリケーションとChrome拡張機能に分かれている。
+それぞれのクライアントアプリケーションは、ブックマーク保存モジュール・ブックマーク一覧モジュール・ブックマークの閲覧状態を復元するモジュールから成る。
+
+サーバ側は、ユーザのブックマークデータを保存するためのデータベースサーバと、それらのデータを提供するアプリケーションサーバから成る。
+アプリケーションサーバはクライアントが利用するためのWebAPIを提供する。
+APIは以下の3種類のAPIを持つ。
+\begin{enumerate}
+   \item 認証関連API
+   \item ブックマーク関連API
+   \item フォルダ関連API
+\end{enumerate}
+
+図\ref{fig:design-system-overall}に本システムの全体像を示す。(TODO: 実装から抽象化した図に変える)
+\begin{figure}[htbp]
+  \caption{Web-Snapshotシステムの全体構成}
+  \label{fig:design-system-overall}
+  \begin{center}
+    \includegraphics[bb=0 0 915 667,width=15cm]{img/design-system-overall.pdf}
+  \end{center}
+\end{figure}
 
 \section{クライアント側設計}
-\subsection{iOSアプリケーション設計}
-\subsubsection{ブックマーク保存モジュール}
-\subsubsection{ブックマーク一覧モジュール}
-\subsubsection{ブックマーク閲覧状態復元モジュール}
+本節では、クライアントを構成する3つのモジュールについて述べる。
 
-\subsection{Chrome拡張機能設計}
 \subsubsection{ブックマーク保存モジュール}
 \subsubsection{ブックマーク一覧モジュール}
 \subsubsection{ブックマーク閲覧状態復元モジュール}
 
 \section{サーバ側設計}
-\subsection{データ設計}
+本節では、サーバのデータベース設計およびAPI設計について説明する。
+
+\subsection{データベース設計}
+
 \subsubsection{ER図}
 
 \subsection{API設計}
@@ -25,6 +48,16 @@
 \subsubsection{フォルダ関連API}
 
 \subsection{PDFからページ数を抽出する機能}
+本項では、Webブラウザ上で閲覧中のPDFからページ数を抽出・保存する機能の設計について説明する。
+
+Chrome等のブラウザが提供するPDFビューワーには、ページ数を取得するためのAPIが存在しない。そのため
+
+そこで、本システムではユーザの画面のキャプチャを保存し、OCRを用いてそのキャプチャから閲覧中のPDFのページ数を取得する、という方法を提案する。
+
+Webブラウザが提供するPDFビューワには、図\ref{fig:}のようにナビゲーションバーにに現在ユーザが閲覧しているページ数を表示する機能がある。
+画面のキャプチャからこの数値を抽出することで、閲覧中のPDFのページ数を保存することができる。
+
+OCRを用いて取得した文字列からPDFのページ数を抽出するためのアルゴリズムを図\ref{fig:}に示す。
 
 \section{まとめ}
-
+本章では、Web-Snapshotシステムの設計について述べた。次章では、本システムの実装について述べる。
