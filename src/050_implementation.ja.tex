@@ -4,145 +4,198 @@
 はじめに実装環境について述べ、ついでクライアント側実装、サーバ側実装について説明する。
 
 \section{実装環境}
-実装環境について書く。表にする。
+本節では、本システムの実装環境について説明する。
 
-バックエンド(WebAPI): Ruby on Rails, Ruby, Heroku・postgreSQL
+クライアントの実装は、iOSアプリケーションはSwift、Chrome拡張機能はTypeScript/HTML/CSSを用いて実装した。
 
-バックエンド(OCR): AWS(Lambda/CloudFormation/S3/Textract), Go
+サーバ側は、WebAPIの実装にはRuby on Railsを使用し、Heroku\cite{}というPaaSにデプロイして運用している。データベースにはPostgreSQLを採用している。
+PDFからページ数を抽出する機能については、Go言語で記述されたAWS LambdaからTextract\cite{}のAPIを呼び出している。
 
-クライアント(iOSアプリ): Swift, XCode
+表\ref{tb:implementation-env}は実装環境の詳細である。
 
-クライアント(Chrome拡張機能): TypeScript, HTML, CSS
+\begin{table}[htbp]
+  \label{tb:implementation-env}
+  \caption{実装環境}
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+    名目 & 使用技術 & バージョン \\ \hline
+    実装言語 & Swift & n \\ \hline
+    IDE & Xcode & n \\ \hline
+    実装言語 & TypeScript & n \\ \hline
+    実装言語 & HTML & n \\ \hline
+    実装言語 & SCSS & n \\ \hline
+    実装言語 & Ruby & n \\ \hline
+    フレームワーク & Ruby on Rails & n \\ \hline
+    RDBMS & PostgreSQL & n \\ \hline
+    PaaS & Heroku & n \\ \hline
+    実装言語 & Golang & n \\ \hline
+    クラウドコンピューティングサービス & AWS Lambda & n \\ \hline
+    ストレージ & AWS S3 & n \\ \hline
+    OCR API & AWS Textract & n \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \section{クライアント側実装}
 クライアントはiOSアプリケーションおよびChrome拡張機能であり、それぞれ主にSwift、TypeScriptによって実装した。
 それぞれのアプリケーションについて、ブックマーク保存モジュール・ブックマーク一覧モジュール・ブックマークの閲覧状態を復元するモジュールの3つのモジュールについて説明する。
 
 \subsection{iOSアプリケーション実装}
-本節では、iOSアプリケーションの実装について述べる。
+本節では、iOSアプリケーションの実装について述べる。図\ref{}にiOSアプリケーションの実装の全体像を示す。
 
 \subsubsection{認証モジュール}
+本項では、認証モジュールについて説明する。あ。
+
+% ユーザの利用の流れと画面。会員登録
+ユーザが本アプリケーションを開くと、図\ref{}のような画面が表示される。この画面の”登録”ボタンを押すと図\ref{}が開き、会員登録できる。
+会員登録のためには、メールアドレスとパスワードを入力する方法と、外部サービスを通じて登録する方法の2種類から選ぶことができる。
+
+% メールアドレス　
+メールアドレス。
+
+% 外部サービス
+
+% リクエスト。
+%  レスポンス、認証情報の保存方法とその後のリクエストで使うこと
+% ログイン
+
+% ログイン
+% 登録せずとも使用できること
+
+
 \subsubsection{ブックマーク保存モジュール}
 本項ではブックマーク保存モジュールについて説明する。
-\begin{itemize}
-  \item ブックマーク保存モジュールの概要。
-  \item ShareExtensionについて説明する。図と、保存の流れ、サーバにリクエストを送ること。
-\end{itemize}
+ブックマーク保存モジュールはユーザがブックマークしたいWebページのデータと閲覧状態を取得し、サーバに保存するモジュールである。
+iOSアプリケーションでは、ブックマークの保存は標準のブラウザであるSafariから行う。
+ユーザがブックマークしたいWebページを開いた状態で図\ref{}のような共有ボタンを押すと、共有機能に対応したアプリケーションのアイコンが並んで表示される。
+この中から本アプリケーションのアイコンをクリックすると、図\ref{}のような確認用ポップアップが表示される。
+ここで”保存”ボタンを押すと、Webコンテンツのデータの取得およびサーバへの保存が実行される。
 
-\paragraph{スクロール位置保存機能}
-スクロール位置保存機能について説明する。
-\begin{itemize}
-  \item 保存時に、jsを実行して情報を取得することを説明する。取得する情報を表にする。
-\end{itemize}
+上記の機能の実装にはAppleが提供しているShareExtension\cite{}を利用している。
+ShareExtentionとは、Appleが提供するAppExtension\cite{app-extension}の1つで、任意のアプリケーション内のデータを開発者が提供するアプリケーションに共有できるAPIである。
+ユーザが"保存"ボタンを押したタイミングで、ブラウザ上でJavaScriptコードを実行し、Webページのデータと閲覧状態を表すデータを取得する。
+表\ref{tb:ios-data-js-api}に、JavaScriptで取得するデータと取得するために用いるAPIをまとめる。
+なお、動画の再生位置はWebページ内のDOMにおいて一番初めに位置する動画のデータを取得する。Webページ内に動画が存在しない場合、ゼロ値は0である。
 
-\paragraph{動画再生位置保存機能}
-動画等の再生位置を保存する機能について説明する。
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報を表にする。
-\end{itemize}
+\begin{table}[htbp]
+  \label{tb:ios-data-js-api}
+  \caption{ブックマーク保存モジュールで取得するデータ}
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+    \hline
+    取得するデータ & 型 & API \\ \hline
+    URL & String & document.URL \\ \hline
+    ページタイトル & String & ca \\ \hline
+    スクロール位置(縦) & Int & document.documentElement.scrollTop \\ \hline
+    スクロール位置(横) & Int & document.documentElement.scrollLeft \\ \hline
+    ページ長(縦) & Int & document.documentElement.scrollHeight \\ \hline
+    ページ長(横) & Int & document.documentElement.scrollWidth \\ \hline
+    動画再生位置 & Int & document.getElementsByTagName('video')[0].currentTime \\ \hline
+    サムネイル画像URL & String & ca \\ \hline
+    ズーム率 & Int & ca \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
-\subsubsection{ブックマーク一覧モジュール}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
 
-\paragraph{ブックマーク一覧機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+ShareExtensionを通じて取得したデータは、iOSアプリケーション内のShareViewControllerというコントローラーに渡される。
+ShareViewControllerは、取得したデータにいくつかのメタデータを付け加え、サーバに送信する。
+ShareViewControllerが付与するメタデータは表\ref{tb:ios-meta-data}の通りである。
 
-\paragraph{フォルダ・お気に入り機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+\begin{table}[htbp]
+  \label{tb:ios-meta-data}
+  \caption{ShareViewControllerが付与するメタデータ}
+  \begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    サーバに送る値 & 型 \\ \hline
+    ブラウザの種類 & String \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
-\subsubsection{ブックマーク閲覧状態復元モジュール}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+図\ref{}にiOSアプリケーションにおけるブックマーク保存モジュールの全体像を示す。
 
-\paragraph{スクロール位置復元機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+\subsubsection{一覧モジュール}
+本項ではブックマーク一覧モジュールについて説明する。
+一覧モジュールでは、前項のブックマーク保存モジュールで保存したブックマークを一覧できる。
+ユーザが本アプリケーションを開くと、サーバからユーザの保存したブックマークを取得する。サーバからのレスポンスとデータの概要を表\ref{tb:ios-bookmark-response}に示す。
+取得したデータからタイトル・URL・保存日時・サムネイル画像を抽出し、図\ref{}のようにカード型で一覧表示する。
 
-\paragraph{動画再生位置復元機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+\begin{table}[htbp]
+  \label{tb:ios-bookmark-response}
+  \caption{サーバから取得するブックマークのデータ}
+  \begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    取得する値 & 概要 \\ \hline
+    id & 識別子 \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル \\ \hline
+    タイトル & Webページのタイトル。 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+ユーザがブックマークをクリックすると、閲覧状態復元モジュールに遷移し、ブックマークしたWebページを開いた上で閲覧状態を復元する。
+ブックマークの削除やお気に入り登録、フォルダ分けなど、ブックマークアプリケーションで一般的に存在する機能も本モジュールで提供している。
+
+\subsubsection{閲覧状態復元モジュール}
+本項では閲覧状態復元モジュールについて説明する。
+前項のブックマーク一覧モジュールで、ユーザが再度閲覧したいブックマークをクリックすると、閲覧状態復元モジュールが開く。
+
+閲覧状態復元モジュールの機能の実装はWebViewControllerというコントローラーが担う。
+WebViewControllerは、WKWebViewというiOSアプリ内専用のブラウザでブックマークしたWebページを表示する。
+ブックマークが選択されると、WebViewControllerは保存時のスクロール位置/ページ長/ブラウザ/ズーム率および、WKWebView内のページ長/ズーム率などの情報から適切なスクロール位置を計算する。
+この計算結果に基づいてWebページをスクロールすると、ブックマーク時点で画面上限に位置していたコンテンツが、WKWebViewの画面の上限にちょうど位置するように調整している。
+このスクロール位置を計算するアルゴリズムは以下の通りである。
+
+\begin{equation}
+スクロール位置 = スクロール位置
+\end{equation}
+
+Webページの読み込みが完了すると、WebViewController内のwebView(\_:didFinish:)\cite{didFinish}というハンドラが呼び出される。
+webView(\_:didFinish:)ハンドラは、閲覧状態の復元を司る関数で、スクロール位置と動画再生位置を設定する。
+まず、webView(\_:didFinish:)ハンドラは、window.scrollToというAPIを利用して計算結果の分だけWebページをスクロールする。
+その上で、Webページ内に動画が存在する場合は、videoタグのcurrentTimeに保存時の動画再生位置を設定する。
+なお、保存時と同様、再生位置を復元するのはWebページ内のDOMの最上位の動画のみである。
 
 \subsection{Chrome拡張機能実装}
-本節では、Chrome拡張機能の実装について述べる。
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+本節では、Chrome拡張機能の実装について述べる。図\ref{}にChrome拡張機能の実装の全体像を示す。
 
 \subsubsection{認証モジュール}
 
 \subsubsection{ブックマーク保存モジュール}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
-
-\paragraph{スクロール位置保存機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
-
-\paragraph{動画再生位置保存機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
 
 \paragraph{PDFページ数保存機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
 
 \paragraph{テキストフラグメントへのリンク作成・保存機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
 
-\subsubsection{ブックマーク一覧モジュール}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+\subsubsection{一覧モジュール}
 
-\paragraph{ブックマーク一覧機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
 
-\paragraph{フォルダ・お気に入り機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
-
-\subsubsection{ブックマーク閲覧状態復元モジュール}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+\subsubsection{閲覧状態復元モジュール}
 
 \paragraph{スクロール位置復元機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+
 
 \paragraph{動画再生位置復元機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+
 
 \paragraph{PDFページ数復元機能}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
 
 \section{サーバ側実装}
-\begin{itemize}
-  \item 保存時に、jsを実行して動画再生位置を取得することを説明する。取得する情報をリストアップ(表)する。
-\end{itemize}
+
 
 \subsection{WebAPI}
 \begin{itemize}
@@ -151,15 +204,19 @@
 
 \subsubsection{認証API}
 \subsubsection{ブックマークAPI}
+
+% コンテンツの種類を判定
+% 保存日の付与
+% 共有用URLを生成
+
 \subsubsection{フォルダAPI}
 
 \subsection{PDFからページ数を抽出する機能}
 本項では、PDFからページ数を抽出し、ブックマークとともに保存する機能について説明する。
 
-\begin{itemize}
-  \item 保存時にキャプチャを撮る→ストレージに保存→LambdaからtextractのAPIを呼び出し、キャプチャ内の文字を抽出する→抽出した文字からページ数を撮る→ブックマークに保存する。
-  \item 図で流れを説明する。
-\end{itemize}
+
+% 保存時にキャプチャを撮る→ストレージに保存→LambdaからtextractのAPIを呼び出し、キャプチャ内の文字を抽出する→抽出した文字からページ数を撮る→ブックマークに保存する。
+% 図で流れを説明する。
 
 \section{まとめ}
 本章では、Web-Snapshotシステムの実装について述べた。
