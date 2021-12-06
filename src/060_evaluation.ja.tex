@@ -1,11 +1,52 @@
 \chapter{評価}
 \label{chap:evaluation}
-
+本章では、本研究で実装したブックマークシステムを用いて実際にWebページを保存し、閲覧状態の復元を評価する。
 
 \section{評価手法}
+% 001で定義した『復元』の定義に基づいて評価を行う。
+% 基本、動画/音声、PDFのそれぞれについて評価する
+% 復元の定義を満たせていることを目視で確認する。PDFについては成功率を出す。
+
+\subsection{基本的な復元}
+% 復元の定義: 保存時の画面上限に位置しているコンテンツが画面上限に表示されている。
+% 評価方法: 様々な種類のWebサイト、いろんな方法で実験して、マルバツ評価する。
+% 使用するWebサイト: 
+% 実験種類: 複数端末間、複数ブラウザ間、縦横表示、
+
+
+\subsection{動画/音声の復元}
+\subsubsection{動画の復元}
+% 復元の定義: 保存時の再生位置から動画がはじまる
+% 様々な種類の動画、音声を試す。youtube, 埋め込み動画、音楽、音声、podcast
+
+\subsubsection{音声の復元}
+
+
+\subsection{PDFの復元}
+% 復元の定義: 保存時のページが開く。
+% OCRとかを使っていて必ず成功するとはいえないので、100種類くらい試して成功率を出す
 
 \section{評価結果}
+\subsection{基本的な復元}
+\begin{table}[htbp]
+  \caption{libwasmを用いた{\tt fib}関数の実行時間と、必要なクロック数の比}
+  \label{tab:fib_time}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      & 同一環境での & デバイスサイズが       & 異なるブラウザ間の \\
+       Webサイト & 復元       & 異なる場合の復元　　　　 & 復元 \\ \hline \hline
+      test.com & 失敗         & 失敗 &  失敗 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsection{動画/音声の復元}
+
+\subsection{PDFの復元}
+
 \section{考察}
+
 \section{まとめ}
 本章では、Web-Snapshotシステムを利用した閲覧状態の復元を評価し、考察について述べた。
 次章では、本研究における今後の展望と本論文のまとめを述べる。
