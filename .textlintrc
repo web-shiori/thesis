@@ -1,11 +1,13 @@
 {
-  "filters": {},
+  "filters": {
+    "comments": true
+  },
   "rules": {
     "no-dropping-the-ra": true,
     "no-mix-dearu-desumasu": true,
     "preset-ja-technical-writing": {
       "sentence-length": {
-        "max": 110,
+        "max": 1000, #表を文として認識してしまってうざいので一旦オフ
         "skipPatterns": [
           "/本システムのデータベースにはユーザの認証情報を格納するUserテーブル・ユーザがブックマークしたWebコンテンツを保存するContentテーブル・ユーザが作成したフォルダ情報を格納するFolderテーブル・コンテンツとフォルダを紐付けるためのContentFolderテーブルが存在する。/"
         ]
