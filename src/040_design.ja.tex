@@ -52,7 +52,9 @@ PDFのページ数については、サーバ側でURLのフラグメントに�
 本節では、サーバのデータベース設計およびAPI設計について説明する。加えて、PDFからページ数を抽出する機能の設計について述べる。
 
 \subsection{データベース設計}
+% textlint-disable
 本システムのデータベースにはユーザの認証情報を格納するUserテーブル・ユーザがブックマークしたWebコンテンツを保存するContentテーブル・ユーザが作成したフォルダ情報を格納するFolderテーブル・コンテンツとフォルダを紐付けるためのContentFolderテーブルが存在する。
+% textlint-enable
 Userテーブルの項目・カラム名・データ型・値の例を表\ref{tb:}に、Contentテーブルを表\ref{tb:}に、Folderテーブルを表\ref{tb:}に、ContentFolderテーブルを表\ref{tb:}に示す。
 
 \subsubsection{ER図}
