@@ -47,9 +47,9 @@ lint:
 	npm install -D textlint-filter-rule-comments
 	npm run lint
 
-.PHONY: convert-png-pdf
-convert-png-pdf:
-	sh $(SHELL_DIR)/convert-png-pdf.sh
+.PHONY: convert-img-pdf
+convert-img-pdf:
+	sh $(SHELL_DIR)/convert-img-pdf.sh
 
 # .PHONY: sed-punctuation
 # sed-punctuation:
