@@ -1,7 +1,8 @@
 {
   "name": "textlint-prh-example",
   "scripts": {
-    "lint": "textlint 'src/*'"
+    "lint": "textlint 'src/*'",
+    "lint-fix": "textlint --fix 'src/*'"
   },
   "devDependencies": {
     "textlint": "^11.2.6",
