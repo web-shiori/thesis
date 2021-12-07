@@ -6,27 +6,148 @@
 % 001で定義した『復元』の定義に基づいて評価を行う。
 % 基本、動画/音声、PDFのそれぞれについて評価する
 % 復元の定義を満たせていることを目視で確認する。PDFについては成功率を出す。
+本研究では、Webページの閲覧状態の復元の定義を表\ref{tb:restore-definition}のように定義した。
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption{【再掲】本研究における閲覧状態の復元の定義}
+    \label{tb:restore-definition}
+    \begin{tabular}{|c|l|l|}
+      \hline
+      Webコンテンツの種類 & 復元の定義 \\\hline\hline
+      基本 & 保存時の画面上限に位置しているコンテンツが画面上限に表示されている。 \\\hline
+      動画・音声 & 保存時の再生位置から動画がはじまる。 \\\hline
+      PDF & 保存時のページが開く。 \\\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+今回の評価実験では、実際にWebページをブックマーク・閲覧し、本研究における復元の定義を満たしているか目視で確認する。
+基本的な復元機能については、様々な種類のWebページを用いて実験する。
+複数端末間・複数ブラウザ間での復元など、様々なシチュエーションでの復元についても評価する。
+
+動画/音声については、Webブラウザが対応している主なファイル形式について実験する。
+
+PDFについてはOCRを利用しており不確実であるため、種類のPDFを用いて実験した上で、正しくページ数を復元できる確率を示す。
 
 \subsection{基本的な復元}
-% 復元の定義: 保存時の画面上限に位置しているコンテンツが画面上限に表示されている。
-% 評価方法: 様々な種類のWebサイト、いろんな方法で実験して、マルバツ評価する。
-% 使用するWebサイト: 
-% 実験種類: 複数端末間、複数ブラウザ間、縦横表示、
+本項では、本研究で定義した『基本的な閲覧状態の復元』機能について実験する。
+具体的には、表\ref{tb:evl-basic-web-contents}に示すWebページを実際にブックマーク・閲覧する。
+それぞれのWebページについて、表\ref{tb:evl-basic-conditions}に示す条件下で実験する。
 
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-basic-web-contents}
+  \caption{実験に用いるWebページ}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    Webページ  \\ \hline
+    一般的なWebページ(インタビュー：村井純教授) \\ \hline
+    非常に長い記事 \\ \hline
+    Wikipedia \\ \hline
+    SPA \\ \hline
+    Google Map \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \label{tb:evl-basic-conditions}
+  \caption{実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    実験条件  \\ \hline
+    同一環境間での復元 \\ \hline
+    異なるブラウザ間での復元 \\ \hline
+    画面サイズの異なる端末間での復元 \\ \hline
+    Landscape(縦向き・横向き)を変えた場合の復元 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
 
 \subsection{動画/音声の復元}
+本項では、本研究で定義した『動画/音声の閲覧状態の復元』機能について実験する。
+具体的には、基本的な復元の定義を満たした上で、保存時の再生位置から動画/音声が再生されることを確認する。
+
 \subsubsection{動画の復元}
-% 復元の定義: 保存時の再生位置から動画がはじまる
-% 様々な種類の動画、音声を試す。youtube, 埋め込み動画、音楽、音声、podcast
+動画の閲覧状態を復元できることを確認するために、Webブラウザが対応している主な動画形式についてそれぞれ検証する。
+検証する動画形式と、それぞれの形式の動画を含むWebページを表\ref{tb:evl-video-check-list}に示す。
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption{検証するファイル形式と各形式を含むWebページ}
+    \label{tb:evl-video-check-list}
+    \begin{tabular}{|c|l|l|}
+      \hline
+      ファイル形式 & Webページ \\\hline\hline
+      MP4 & a \\\hline
+      WAV & a \\\hline
+      FLV & a \\\hline
+      OGV & a \\\hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \subsubsection{音声の復元}
+音声の閲覧状態を復元できることを確認するために、Webブラウザが対応している主な音声ファイルの形式についてそれぞれ検証する。
+検証するファイル形式と、それぞれの形式の音声を含むWebページを表\ref{tb:evl-audio-check-list}に示す。
 
+\begin{table}[htbp]
+  \begin{center}
+    \caption{検証するファイル形式と各形式を含むWebページ}
+    \label{tb:evl-audio-check-list}
+    \begin{tabular}{|c|l|l|}
+      \hline
+      ファイル形式 & Webページ \\\hline\hline
+      Ogg Vorbis & a \\\hline
+      WAV PCM & a \\\hline
+      MP3 & a \\\hline
+      AAC & a \\\hline
+      Webm Vorbis & a \\\hline
+      Ogg Opus & a \\\hline
+      FLAC & a \\\hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \subsection{PDFの復元}
-% 復元の定義: 保存時のページが開く。
-% OCRとかを使っていて必ず成功するとはいえないので、100種類くらい試して成功率を出す
+PDFについては、保存時のページが開くことを検証する。
+実験に用いるPDFの一覧を表\ref{}に示す。
+PDFのページ数の取得はChrome拡張機能でしか対応していないため、実験に用いる条件は表\ref{tb:evl-pdf-conditions}の2種類である。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-pdf-list}
+  \caption{実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    実験に用いるPDF  \\ \hline
+    test.pdf \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \label{tb:evl-pdf-conditions}
+  \caption{実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    実験条件  \\ \hline
+    Chrome拡張機能で保存→Chromeで復元 \\ \hline
+    Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
 
 \section{評価結果}
+本節では、本研究で実装したブックマークシステムが閲覧状態を復元できているかについて、評価実験で得られた評価結果を示す。
+
 \subsection{基本的な復元}
 
 % textlint-disable
@@ -49,6 +170,7 @@
 \subsection{PDFの復元}
 
 \section{考察}
+本節では，評価実験で得られた様々な結果から考察を述べる。
 
 \section{まとめ}
 本章では、Web-Snapshotシステムを利用した閲覧状態の復元を評価し、考察について述べた。
