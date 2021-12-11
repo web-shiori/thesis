@@ -53,7 +53,8 @@ convert-img-pdf:
 
 .PHONY: word_count
 word_count:
-	detex ./src/*.tex | wc -m
+	detex ./src/thesis.tex | wc -m
+	detex ./src/thesis.tex | wc -w
 
 # .PHONY: sed-punctuation
 # sed-punctuation:
