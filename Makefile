@@ -51,6 +51,10 @@ lint:
 convert-img-pdf:
 	sh $(SHELL_DIR)/convert-img-pdf.sh
 
+.PHONY: word_count
+word_count:
+	detex ./src/*.tex | wc -m
+
 # .PHONY: sed-punctuation
 # sed-punctuation:
 # 	sh $(SHELL_DIR)/sed-punctuation.sh
