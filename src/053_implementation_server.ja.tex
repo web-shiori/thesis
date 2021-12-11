@@ -49,7 +49,7 @@ TextractはOCRによって抽出した文字列をDetectDocumentTextOutput\cite{
 
 LambdaはTextractのレスポンスから、PDFのページ数を抽出する。
 DetectDocumentTextOutputは画像内に存在する英数字をリストで含んでいる。
-そのリストから、以下の正規表現\ref{regix-pdf-page-num}に初めにマッチする文字列を抽出する。
+そのリストから、以下の正規表現\ref{regix-pdf-page-num}と初めにマッチする文字列を抽出する。
 この文字列の初めの数字を、保存時のPDFのページ数とする。
 PDFビューワでは画面上部のナビゲーションバーに現在のページ数を表示している。
 そのため、正規表現にマッチした文字列のうち一番初めに現れたものが、PDFのページ数である可能性が最も高い。
