@@ -31,15 +31,16 @@ Web-Snapshotは、ブックマークしたPDFのページ数を保存・復元�
 本節では、Web-Snapshotシステムの使用方法を、iOSアプリケーション版、Chrome拡張機能版のそれぞれについて説明する。
 
 \subsection{iOSアプリケーション}
-本アプリケーションをインストールしたiOS端末において、Safariの「共有ボタン」(\ref{safari-share-button})を押すと、\ref{fig:}のように本アプリケーションのアイコンが表示される。
-ブックマークしたいWebページを開いた状態でこのアイコンをクリックすると、\ref{fig:}のように確認用ポップアップが表示される。ここで"保存する"ボタンを押すことで、Webページをブックマークできる。
+本アプリケーションをインストールしたiOS端末において、Safariの「共有ボタン」(図\ref{fig:usage-ios-share})を押すと、図\ref{fig:usage-ios-share-icon}のように本アプリケーションのアイコンが表示される。
+ブックマークしたいWebページを開いた状態でこのアイコンをクリックすると、図\ref{fig:usage-ios-popup}のように確認用ポップアップが表示される。
+ここで"保存する"ボタンを押すことで、Webページをブックマークできる。
 
-本アプリケーションを開くと、\ref{usage-ios-top}のようなトップ画面が表示される。ユーザはここで保存したブックマークを一覧できる。
+本アプリケーションを開くと、図\ref{fig:usage-ios-top}のようなトップ画面が表示される。
+ユーザはここで保存したブックマークを一覧できる。
 その他にも、ブックマークをお気に入りに登録したり、フォルダを作成して整理する機能も提供している。
 
 ブックマークを再度閲覧するには、閲覧したいブックマークをクリックする。すると、アプリケーション内のブラウザに遷移し、保存したWebページを閲覧できる。
 Webページがロードされると、スクロール位置・動画再生位置・PDFのページ数などの情報をもとにブックマーク時の閲覧状態を復元する。
-閲覧画面を\ref{fig:}に示す。
 
 \subsection{Chrome拡張機能}
 本アプリケーションをChromeにインストールすると、アドレスバーの右に本アプリケーションのアイコンが表示される。
@@ -47,24 +48,12 @@ Webページがロードされると、スクロール位置・動画再生位�
 アイコンをクリックすると、図\ref{fig:usage-chrome-popup}のようなポップアップが表示される。ポップアップには、"保存する"ボタンと"保存済みのコンテンツ一覧"という２つのボタンに加えて、保存済みのコンテンツが5つまで表示される。
 "保存する"ボタンを押すことで、Webページをブックマークできる。
 
-\begin{figure}[htbp]
-  \caption{【Chrome拡張機能】ポップアップ}
-  \label{fig:usage-chrome-popup}
-  \begin{center}
-    \includegraphics[bb=0 0 915 667,width=15cm]{img/usage-chrome-popup.pdf}
-  \end{center}
-\end{figure}
+
 
 "保存済みのコンテンツ一覧"ボタンを押すと、コンテンツ一覧画面に遷移する。
 この画面では、ブックマークの管理・お気に入り登録・フォルダ整理などを行うことができる。コンテンツ一覧画面を図\ref{fig:usage-chrome-list}に示す。
 
-\begin{figure}[htbp]
-  \caption{【Chrome拡張機能】コンテンツ一覧画面}
-  \label{fig:usage-chrome-list}
-  \begin{center}
-    \includegraphics[bb=0 0 915 667,width=15cm]{img/usage-chrome-list.pdf}
-  \end{center}
-\end{figure}
+
 
 ブックマークを再度閲覧するには、閲覧したいブックマークをクリックする。すると、ブラウザ上で新しいタブが開き、保存したWebページを閲覧することが可能になる。
 Webページがロードされると、スクロール位置・動画再生位置・PDFのページ数などの情報をもとにブックマーク時の閲覧状態を復元する。
@@ -72,3 +61,57 @@ Webページがロードされると、スクロール位置・動画再生位�
 \section{まとめ}
 本章では、コンテンツの閲覧状態を保存できるブックマークシステム、Web-Snapshotを提案した。
 また、Web-Snapshotシステムの特徴および使用方法を述べた。次章では、本システムの設計について述べる。
+
+\begin{figure}[htbp]
+  \begin{tabular}{cc}
+    \begin{minipage}[t]{0.45\hsize}
+      \caption{【iOS】共有ボタン}
+      \label{fig:usage-ios-share}
+      \begin{center}
+        \includegraphics[bb=0 0 585 1266,width=5cm]{img/030_web_snapshot_system/ios/usage-ios-share.pdf}
+      \end{center}
+    \end{minipage} &
+
+    \begin{minipage}[t]{0.45\hsize}
+      \caption{【iOS】アイコン}
+      \label{fig:usage-ios-share-icon}
+      \begin{center}
+        \includegraphics[bb=0 0 585 1266,width=5cm]{img/030_web_snapshot_system/ios/usage-ios-share-icon.pdf}
+      \end{center}
+    \end{minipage} \\
+  
+    \begin{minipage}[t]{0.45\hsize}
+      \caption{【iOS】確認用ポップアップ}
+      \label{fig:usage-ios-popup}
+      \begin{center}
+        \includegraphics[bb=0 0 585 1266,width=5cm]{img/030_web_snapshot_system/ios/usage-ios-popup.pdf}
+      \end{center}
+    \end{minipage} &
+
+    \begin{minipage}[t]{0.45\hsize}
+      \caption{【iOS】トップ画面}
+      \label{fig:usage-ios-top}
+      \begin{center}
+        \includegraphics[bb=0 0 585 1266,width=5cm]{img/030_web_snapshot_system/ios/usage-ios-top.pdf}
+      \end{center}
+    \end{minipage}
+  \end{tabular}
+\end{figure}
+
+\begin{figure}[htbp]
+  \begin{minipage}[t]{\hsize}
+    \caption{【Chrome拡張機能】ポップアップ画面}
+    \label{fig:usage-chrome-popup}
+    \begin{center}
+      \includegraphics[bb=0 0 1280 800,width=15cm]{img/030_web_snapshot_system/chrome/usage-chrome-popup.pdf}
+    \end{center}
+  \end{minipage} \\
+
+  \begin{minipage}[t]{\hsize}
+    \caption{【Chrome拡張機能】コンテンツ一覧画面}
+    \label{fig:usage-chrome-list}
+    \begin{center}
+      \includegraphics[bb=0 0 640 400,width=15cm]{img/030_web_snapshot_system/chrome/usage-chrome-list.pdf}
+    \end{center}
+  \end{minipage}
+\end{figure}

@@ -3,14 +3,24 @@
 
 本章では、既存のブックマークシステムを整理し、本研究との差分について説明する。
 
-\section{ブラウザの提供するブックマーク機能}
+\section{既存のブックマークシステム}
+
+\subsection{ブラウザの提供するブックマーク機能}
 SafariやChromeなどの標準的なブラウザは、2種類のブックマーク機能を提供している。
 
 1つ目は、ブックマーク機能である。
 ブックマーク機能は、任意のWebページへのショートカットをブラウザ内に保存する機能である。
 保存したブックマークはブラウザのトップ画面やナビゲーションバーなどに表示される。
 本機能は頻繁に使用するWebページへ高速にアクセスする目的で使用される。
-Safariにおいてブックマーク機能を利用している画面を図\ref{}に示す。
+Safariにおいてブックマーク機能を利用している画面を図\ref{fig:safari-bookmark}に示す。
+
+\begin{figure}[htbp]
+  \caption{Safariのブックマーク機能}
+  \label{fig:safari-bookmark}
+  \begin{center}
+    \includegraphics[bb=0 0 585 1266,width=5cm]{img/020_related_works/safari-bookmark.pdf}
+  \end{center}
+\end{figure}
 
 2つ目は、リーディングリスト機能である。
 リーディングリスト機能は、後で読みたいWebページを保存しておくために使用される。
@@ -21,34 +31,50 @@ Safariにおいてブックマーク機能を利用している画面を図\ref{
 そのため、保存時の閲覧状態は失われてしまう。
 また、データをブラウザ内に保存するため、異なるブラウザ間では使用できない。
 
-\section{ブックマーク機能を提供するWebサービス}
-% ブックマークを保存するWebサービス。デバイスやブラウザに依存しない。どこからでも使えるのが特徴
-% これは本システムと同様
-% 閲覧状態は失われる。
-
+\subsection{ブックマーク機能を提供するWebサービス}
 ブラウザの提供するブックマーク機能では、異なるブラウザ間でブックマークを共有できないという欠点があった。
 その課題を解決するために誕生したのが、Webサービスとしてのブックマーク機能である。
 これらのWebサービスでは、ユーザが保存したブックマークをオンライン上で保存する。
 それによって、ユーザはブラウザや端末をまたいでブックマークを利用できる。
 ブックマーク機能を提供するWebサービスのうち、著名なものを紹介する。
 
-\subsection{Pocket}
+\subsubsection{Pocket}
 PocketはMozilla\cite{}が提供しているWebサービスである。
 Pocketでは複数の端末やブラウザからブックマークを利用できる一方、保存時の閲覧状態は失われてしまう。
-Pocketでブックマーク機能を利用している画面を図\ref{}に示す。
+Pocketでブックマーク機能を利用している画面を図\ref{fig:pocket}に示す。
 
-\subsection{Instapaper}
+\begin{figure}[htbp]
+  \caption{Pocket}
+  \label{fig:pocket}
+  \begin{center}
+    \includegraphics[bb=0 0 545 378,width=15cm]{img/020_related_works/pocket.pdf}
+  \end{center}
+\end{figure}
+
+\subsubsection{Instapaper}
 InstapaperはMarcoArment社\cite{}が提供しているWebサービスである。
 このサービスの特徴は、ブックマークをオフラインで利用できる点である。
 Instapaperでも、Pocket同様に保存時の閲覧状態は失われてしまう。
-Instapaperでブックマーク機能を利用している画面を図\ref{}に示す。
+Instapaperでブックマーク機能を利用している画面を図\ref{fig:instapaper}に示す。
 
-\section{ソーシャルブックマーク}
+\begin{figure}[htbp]
+  \caption{Instapaper}
+  \label{fig:instapaper}
+  \begin{center}
+    \includegraphics[bb=0 0 640 400,width=15cm]{img/020_related_works/instapaper.pdf}
+  \end{center}
+\end{figure}
+
+\subsection{ソーシャルブックマーク}
 上記に挙げた例以外にも、ソーシャルブックマークというブックマークシステムも存在する。
 ソーシャルブックマークとは、インターネット上で自分のブックマークを公開し、他のユーザと共有するサービスである\cite{}。
 ソーシャルブックマークの例として、はてな社\cite{}が提供するはてなブックマーク\cite{}というサービスがある。
 インターネット上でブックマークを共有するというサービスの特性上、閲覧状態は記録できない。
 はてなブックマークのサービス画面を図\ref{}に示す。
+
+\section{本研究の優位性}
+既存のブックマークシステムはどれも保存時の閲覧状態が失われてしまうことがわかった。
+本研究が提案するシステムでは、WebページのURIとともにブックマーク時の閲覧状態を保存・復元できる。
 
 \section{まとめ}
 本章では、既存のブックマークシステムについて整理し、本研究との差分を説明した。
