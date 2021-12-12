@@ -6,7 +6,7 @@ PDF_FILE="build/thesis.pdf"
 TAG=$(date +'%Y.%m.%d-%H.%M.%S')
 DATE=$(date +'%Y/%m/%d %H:%M:%S')
 
-if [ $CIRCLE_BRANCH = 'masatora' ]; then
+if [ $CIRCLE_BRANCH = 'main' ]; then
   PRERELEASE=''
 else
   PRERELEASE='--prerelease'
