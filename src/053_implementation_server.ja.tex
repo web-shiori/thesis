@@ -69,7 +69,15 @@ PDFビューワでは画面上部のナビゲーションバーに現在のペ�
 このLambdaは、取得したPDFのページ数をWebAPIを通じてデータベースに保存する。そのために、このLambdaはブックマークのpdf\_page\_numカラムのみを変更する権限を持つ。
 保存が完了すると、Lambdaはアップロードされた画面キャプチャを削除する。
 
-上記の一連の実装内容を図\ref{}にまとめる。
+上記の一連の実装内容を図\ref{fig:impl-pdf-overall}にまとめる。
+
+\begin{figure}[htbp]
+  \caption{PDFページ数抽出機能の全体像}
+  \label{fig:impl-pdf-overall}
+  \begin{center}
+    \includegraphics[bb=0 0 480 532,width=15cm]{img/050_implementation/server/impl-pdf-overall.pdf}
+  \end{center}
+\end{figure}
 
 \section{まとめ}
 本章では、Web-Snapshotシステムの実装について述べた。
