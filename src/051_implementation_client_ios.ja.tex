@@ -56,7 +56,7 @@ iOSアプリケーションでは、ブックマークの保存は標準のブ�
 
 上記の機能の実装にはAppleが提供しているShareExtension\cite{share-extension}を利用している。
 ShareExtentionとは、Appleが提供するAppExtension\cite{app-extension}の1つで、任意のアプリケーション内のデータを開発者が提供するアプリケーションに共有できるAPIである。
-ユーザが"保存"ボタンを押したタイミングで、ブラウザ上でJavaScriptコードを実行し、Webページのデータと閲覧状態を表すデータを取得する。
+ユーザが"保存"ボタンを押したタイミングで、ブラウザ上でJavaScriptプログラムを実行し、Webページのデータと閲覧状態を表すデータを取得する。
 表\ref{tb:impl-ios-data-js-api}に、JavaScriptで取得するデータと取得するために用いるAPIをまとめる。
 なお、動画の再生位置はWebページ内のDOMにおいて一番初めに位置する動画のデータを取得する。Webページ内に動画が存在しない場合、ゼロ値は0である。
 
