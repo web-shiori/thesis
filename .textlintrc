@@ -7,7 +7,7 @@
     "no-mix-dearu-desumasu": true,
     "preset-ja-technical-writing": {
       "sentence-length": {
-        "max": 600 //TOOD: 100→60にする
+        "max": 100 //TOOD: 100→60にする?
       }
     },
     "prh": {
