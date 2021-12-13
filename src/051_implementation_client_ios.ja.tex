@@ -36,11 +36,11 @@ iOSアプリケーションでは、基本的な復元及び動画・音声の�
 メールアドレスで登録するには、図\ref{fig:impl-ios-auth-view}でメールアドレスとパスワードを入力する。
 ユーザが必要な情報を入力した上で”登録”ボタンを押すと、AuthenticationViewControllerがサーバにデータを送信する。
 会員登録が完了すると、サーバは認証に用いるトークンをヘッダに含めてレスポンスを返す。
-AuthenticationViewControllerでは、取得したアクセストークンをKeyChain\cite{}に保存する。
+AuthenticationViewControllerでは、取得したアクセストークンをKeyChain\cite{keychain}に保存する。
 ヘッダにこのアクセストークンを付与してリクエストを送信することで、サーバが提供するAPIを利用できるようになる。
 
 外部サービスを通じてログインする場合は、図\ref{fig:impl-ios-auth-view}の下部にあるボタンをクリックする。
-例として、”Twitterで続ける”ボタンを押すと、Twitter\cite{}の認証画面が開く。
+例として、”Twitterで続ける”ボタンを押すと、Twitter\cite{twitter}の認証画面が開く。
 本画面でTwitterアカウントにログインし、本アプリケーションとの連携を許可すると、OAuthの仕組みを利用して本アプリケーションに登録できる。
 
 一度会員登録すると、以後アプリケーションを利用する際は自動でログインされる。
@@ -54,7 +54,7 @@ iOSアプリケーションでは、ブックマークの保存は標準のブ�
 この中から本アプリケーションのアイコンをクリックすると、図\ref{fig:usage-ios-popup}のような確認用ポップアップが表示される。
 ここで”保存”ボタンを押すと、Webコンテンツのデータの取得およびサーバへの保存が実行される。
 
-上記の機能の実装にはAppleが提供しているShareExtension\cite{}を利用している。
+上記の機能の実装にはAppleが提供しているShareExtension\cite{share-extension}を利用している。
 ShareExtentionとは、Appleが提供するAppExtension\cite{app-extension}の1つで、任意のアプリケーション内のデータを開発者が提供するアプリケーションに共有できるAPIである。
 ユーザが"保存"ボタンを押したタイミングで、ブラウザ上でJavaScriptコードを実行し、Webページのデータと閲覧状態を表すデータを取得する。
 表\ref{tb:impl-ios-data-js-api}に、JavaScriptで取得するデータと取得するために用いるAPIをまとめる。
@@ -119,7 +119,7 @@ WebViewControllerは、WKWebViewというiOSアプリ内専用のブラウザで
 スクロール位置 = スクロール位置
 \end{equation}
 
-Webページの読み込みが完了すると、WebViewController内のwebView(\_:didFinish:)\cite{didFinish}というハンドラが呼び出される。
+Webページの読み込みが完了すると、WebViewController内のwebView(\_:didFinish:)\cite{did-finish}というハンドラが呼び出される。
 webView(\_:didFinish:)ハンドラは、閲覧状態の復元を司る関数で、スクロール位置と動画再生位置を設定する。
 まず、webView(\_:didFinish:)ハンドラは、window.scrollToというAPIを利用して計算結果の分だけWebページをスクロールする。
 その上で、Webページ内に動画が存在する場合は、videoタグのcurrentTimeに保存時の動画再生位置を設定する。

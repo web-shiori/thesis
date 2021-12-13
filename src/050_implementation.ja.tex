@@ -8,8 +8,8 @@
 
 クライアントの実装は、iOSアプリケーションはSwift、Chrome拡張機能はTypeScript/HTML/CSSを用いて実装した。
 
-サーバ側は、WebAPIの実装にはRuby on Railsを使用し、Heroku\cite{}というPaaSにデプロイして運用している。データベースにはPostgreSQLを採用している。
-PDFからページ数を抽出する機能については、Go言語で記述されたAWS LambdaからTextract\cite{}のAPIを呼び出している。
+サーバ側は、WebAPIの実装にはRuby on Railsを使用し、Heroku\cite{heroku}というPaaSにデプロイして運用している。データベースにはPostgreSQLを採用している。
+PDFからページ数を抽出する機能については、Go言語で記述されたAWS Lambda\cite{lambda}からTextract\cite{textract}のAPIを呼び出している。
 
 表\ref{tb:implementation-env}は実装環境の詳細である。
 
