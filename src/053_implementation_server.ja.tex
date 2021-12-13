@@ -8,7 +8,7 @@ WebAPIについては、認証関連API・ブックマーク関連API・フォ�
 
 \subsubsection{認証関連API}
 本項では、認証に関連するAPIについて説明する。
-メールアドレスおよびパスワードでの認証機能の実装には、Devise\cite{}、DeviseTokenAuth\cite{}というgemを使用している。
+メールアドレスおよびパスワードでの認証機能の実装には、Devise\cite{devise}、DeviseTokenAuth\cite{devise-token-auth}というgemを使用している。
 会員登録用のAPIでは、リクエストにメールアドレス・パスワード・確認用パスワードの3つを要求する。
 メールアドレスがすでに使用されている場合や、パスワードと確認用パスワードの値が異なる場合は、エラーレスポンスを返す。
 メールアドレスとパスワードに問題がない場合、パスワードのハッシュ値を計算し、データベースに保存する。
@@ -18,7 +18,7 @@ WebAPIについては、認証関連API・ブックマーク関連API・フォ�
 一方、ログイン用のAPIでは、リクエストとしてメールアドレスとパスワードを受け取り、パスワードのハッシュ値を計算する。
 その計算結果とデータベースに保存されたパスワードのハッシュ値を比較し、一致した場合は認証する。
 
-外部サービスを通じた認証機能の実装には、Omniauth\cite{}・Omniauth-twitter・omniauth-github・omniauth-google-oauth2というgemを使用している。
+外部サービスを通じた認証機能の実装には、Omniauth\cite{omniauth}・Omniauth Twitter\cite{omniauth-twitter}・Omniauth GitHub\cite{omniauth-github}・Omniauth Google Oauth2\cite{omniauth-google-oauth2}というgemを使用している。
 
 \subsubsection{ブックマーク関連API}
 本項では、ブックマークの操作に関連するAPIについて説明する。
@@ -40,12 +40,12 @@ WebAPIについては、認証関連API・ブックマーク関連API・フォ�
 \subsection{PDFからページ数を抽出する機能}
 本項では、PDFからページ数を抽出し、ブックマークとともに保存する機能について説明する。
 クライアント側のブックマーク保存モジュールからPDFの画面キャプチャが送信されると、サーバ側はあいうえおというgem\footnote{プログラミング言語Rubyにおけるライブラリのこと}を使用してストレージにキャプチャをアップロードする。
-ストレージにはAWSのS3\cite{}を使用している。
+ストレージにはAWSのS3\cite{s3}を使用している。
 
 S3に画面キャプチャファイルがアップロードされると、第一のAWS Lambdaがトリガーされる。
-このLambdaは、AWSのTextract\cite{}というサービスのAPIを呼び出し、保存された画像をOCRにかける。
+このLambdaは、AWSのTextract\cite{textract}というサービスのAPIを呼び出し、保存された画像をOCRにかける。
 
-TextractはOCRによって抽出した文字列をDetectDocumentTextOutput\cite{}という構造体に含めて返却する。
+TextractはOCRによって抽出した文字列をDetectDocumentTextOutput\cite{detect-document-text-output}という構造体に含めて返却する。
 
 LambdaはTextractのレスポンスから、PDFのページ数を抽出する。
 DetectDocumentTextOutputは画像内に存在する英数字をリストで含んでいる。
