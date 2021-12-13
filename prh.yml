@@ -1,0 +1,12 @@
+version: 1
+rules:
+  - expected: GitHub
+  - expected: JavaScript
+  - expected: Textract
+  - expected: Lambda
+  - expected: JavaScriptプログラム
+    pattern: /JavaScriptコード/g
+  - expected: 端末
+    pattern: /デバイス/
+  - expected: URL
+    pattern: /URI/

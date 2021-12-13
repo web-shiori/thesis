@@ -40,4 +40,6 @@ RUN n latest \
   && sudo apt purge nodejs npm \
   && export PATH=/usr/local/bin/node:$PATH
 
+# textlintはコンテナ内で直接作業した 更新忘れ
+
 CMD ["make"]
