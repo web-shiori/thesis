@@ -6,10 +6,10 @@
 \section{実装環境}
 本節では、本システムの実装環境について説明する。
 
-クライアントの実装は、iOSアプリケーションはSwift、Chrome拡張機能はTypeScript/HTML/CSSを用いて実装した。
+クライアントの実装は、iOSアプリケーションについてはSwift、Chrome拡張機能はTypeScript/HTML/SCSSを用いて実装した。
 
 サーバ側は、WebAPIの実装にはRuby on Railsを使用し、Heroku\cite{heroku}というPaaSにデプロイして運用している。データベースにはPostgreSQLを採用している。
-PDFからページ数を抽出する機能については、Go言語で記述されたAWS Lambda\cite{lambda}からTextract\cite{textract}のAPIを呼び出している。
+PDFからページ数を抽出するモジュールについては、AWS Lambda\cite{lambda}やGolangを利用して実現した。
 
 表\ref{tb:implementation-env}は実装環境の詳細である。
 
@@ -31,7 +31,7 @@ PDFからページ数を抽出する機能については、Go言語で記述さ
     実装言語 & Golang & 1.17.0 \\ \hline
     クラウドコンピューティングサービス & AWS Lambda & --- \\ \hline
     ストレージ & AWS S3 & --- \\ \hline
-    OCR & AWS Textract & --- \\ \hline
+    OCR & AWS Textract\cite{textract} & --- \\ \hline
     \end{tabular}
   \end{center}
 \end{table}

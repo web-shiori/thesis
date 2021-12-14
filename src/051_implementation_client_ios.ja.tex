@@ -54,11 +54,11 @@ iOSアプリケーションでは、ブックマークの保存は標準のブ�
 この中から本アプリケーションのアイコンをクリックすると、図\ref{fig:usage-ios-popup}のような確認用ポップアップが表示される。
 ここで”保存”ボタンを押すと、Webコンテンツのデータの取得およびサーバへの保存が実行される。
 
-上記の機能の実装にはAppleが提供しているShareExtension\cite{share-extension}を利用している。
-ShareExtentionとは、Appleが提供するAppExtension\cite{app-extension}の1つで、任意のアプリケーション内のデータを開発者が提供するアプリケーションに共有できるAPIである。
-ユーザが"保存"ボタンを押したタイミングで、ブラウザ上でJavaScriptプログラムを実行し、Webページのデータと閲覧状態を表すデータを取得する。
+上記の機能の実装にはShareExtension\cite{share-extension}を利用している。
+ShareExtentionとは、Appleが提供するAppExtension\cite{app-extension}の1つで、任意のアプリケーション内のデータを開発者が提供するアプリケーションに共有できる拡張機能である。
+ShareExtensionはブラウザ上でJavaScriptプログラムを実行し、Webページのデータを取得する。
 表\ref{tb:impl-ios-data-js-api}に、JavaScriptで取得するデータと取得するために用いるAPIをまとめる。
-なお、動画の再生位置はWebページ内のDOMにおいて一番初めに位置する動画のデータを取得する。Webページ内に動画が存在しない場合、ゼロ値は0である。
+なお、動画の再生位置はWebページのDOM内で最上位に位置する動画のデータのみを取得する。
 
 % textlint-disable
 \begin{table}[htbp]
@@ -96,20 +96,20 @@ ShareViewControllerは、取得したデータにブラウザの情報をメタ�
 
 \subsubsection{一覧モジュール}
 本項ではブックマーク一覧モジュールについて説明する。
-一覧モジュールでは、前項のブックマーク保存モジュールで保存したブックマークを一覧できる。
+一覧モジュールでは、前項のブックマーク保存モジュールで保存したWebページを一覧できる。
 ユーザが本アプリケーションを開くと、サーバからユーザの保存したブックマークを取得する。
 取得したデータからタイトル・URL・保存日時・サムネイル画像を抽出し、図\ref{fig:usage-ios-top}のようにカード型で一覧表示する。
 
-ユーザがブックマークをクリックすると、閲覧状態復元モジュールに遷移し、ブックマークしたWebページを開いた上で閲覧状態を復元する。
+ユーザがブックマークをクリックすると、閲覧状態復元モジュールに遷移する。
 ブックマークの削除やお気に入り登録、フォルダ分け、検索機能など、ブックマークアプリケーションで一般的に存在する機能も本モジュールで提供している。
 
 \subsubsection{閲覧状態復元モジュール}
 \label{sec:impl-client-ios-restore-module}
 
 本項では閲覧状態復元モジュールについて説明する。
-前項のブックマーク一覧モジュールで、ユーザが再度閲覧したいブックマークをクリックすると、閲覧状態復元モジュールが開く。
+前項の一覧モジュールで、ユーザが再度閲覧したいブックマークをクリックすると、閲覧状態復元モジュールが開く。
 
-閲覧状態復元モジュールの機能の実装はWebViewControllerというコントローラーが担う。
+本モジュールの機能はWebViewControllerというコントローラーが提供する。
 WebViewControllerは、WKWebViewというiOSアプリ内専用のブラウザでブックマークしたWebページを表示する。
 ブックマークが選択されると、WebViewControllerは保存時と現在のスクロール位置/ページ長/ブラウザ/ズーム率などの情報から適切なスクロール位置を計算する。
 この計算結果に基づいてWebページをスクロールすると、ブックマーク時点で画面上限に位置していたコンテンツが、WKWebViewの画面の上限にちょうど表示される。
@@ -119,9 +119,8 @@ WebViewControllerは、WKWebViewというiOSアプリ内専用のブラウザで
 スクロール位置 = スクロール位置
 \end{equation}
 
-Webページの読み込みが完了すると、WebViewController内のwebView(\_:didFinish:)\cite{did-finish}というハンドラが呼び出される。
-webView(\_:didFinish:)ハンドラは、閲覧状態の復元を司る関数で、スクロール位置と動画再生位置を設定する。
-まず、webView(\_:didFinish:)ハンドラは、window.scrollToというAPIを利用して計算結果の分だけWebページをスクロールする。
+Webページの読み込みが完了すると、WebViewController内のwebView(\_:didFinish:)\cite{did-finish}というハンドラ関数が呼び出される。
+この関数は、まずwindow.scrollToというAPIを利用して計算結果の分だけWebページをスクロールする。
 その上で、Webページ内に動画が存在する場合は、videoタグのcurrentTimeに保存時の動画再生位置を設定する。
 なお、保存時と同様、再生位置を復元するのはWebページ内のDOMの最上位の動画のみである。
 
