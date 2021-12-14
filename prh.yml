@@ -10,3 +10,11 @@ rules:
     pattern: /デバイス/
   - expected: URL
     pattern: /URI/
+  - expected: PDFからページ数を抽出するモジュール
+    pattern: /PDFからページ数を抽出する機能/
+  - expected: 復元
+    pattern: /復旧/
+  - expected: Golang
+    pattern: /Go言語/
+  - expected: コンテンツ関連API
+    pattern: /ブックマーク関連API/
