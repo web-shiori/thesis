@@ -1,66 +1,111 @@
 \section{評価手法}
-% 001で定義した『復元』の定義に基づいて評価を行う。
-% 基本、動画/音声、PDFのそれぞれについて評価する
-% 復元の定義を満たせていることを目視で確認する。PDFについては成功率を出す。
-本研究では、Webページの閲覧状態の復元の定義を表\ref{tb:restore-definition}のように定義した。
+本研究では、Webページの閲覧状態の復元の定義を表\ref{tb:re-intro-restore-definition}のように定義した。
 
 \begin{table}[htbp]
   \begin{center}
     \caption{【再掲】本研究における閲覧状態の復元の定義}
-    \label{tb:restore-definition}
-    \begin{tabular}{|c|l|l|}
+    \label{tb:re-intro-restore-definition}
+    \begin{tabular}{|c|l|l|l|}
       \hline
-      Webコンテンツの種類 & 復元の定義 \\\hline\hline
-      基本 & 保存時の画面上限に位置しているコンテンツが画面上限に表示されている。 \\\hline
-      動画・音声 & 保存時の再生位置から動画がはじまる。 \\\hline
-      PDF & 保存時のページが開く。 \\\hline
+      復元する項目 & 条件 &  復元の定義 \\\hline\hline
+      スクロール位置(縦) & 全て & 
+        \begin{tabular}{l}
+          保存時の画面上限に位置しているコンテンツが\\画面上限に表示されている。 
+        \end{tabular}\\\hline
+      スクロール位置(横) & 全て & 
+        \begin{tabular}{l}
+          保存時の画面左端に位置しているコンテンツが\\画面左端に表示されている。 
+        \end{tabular}\\\hline
+      動画再生位置 & 動画・音声 & 保存時の再生位置(秒単位)から動画がはじまる。 \\\hline
+      ページ数 & PDF & 保存時のページが開く。 \\\hline
     \end{tabular}
   \end{center}
 \end{table}
 
-今回の評価実験では、実際にWebページをブックマーク・閲覧し、本研究における復元の定義を満たしているか目視で確認する。
-基本的な復元機能については、様々な種類のWebページを用いて実験する。
-複数端末間・複数ブラウザ間での復元など、様々なシチュエーションでの復元についても評価する。
+今回の評価実験では、実際にWebページをブックマーク・再開し、本研究における復元の定義を満たしているか目視で確認する。
+まず、スクロール位置の復元について様々な種類のWebページを用いて実験する。
+複数端末間・Chrome/Safari間での復元など、様々なシチュエーションでの復元についても評価する。
 
 動画/音声については、Webブラウザが対応している主なファイル形式について実験する。
 
-PDFについてはOCRを利用しており不確実であるため、種類のPDFを用いて実験した上で、正しくページ数を復元できる確率を示す。
+PDFについてはOCRを利用しており不確実であるため、いくつかの種類のPDFを用いて実験した上で、正しくページ数を復元できる確率を示す。
 
-\subsection{基本的な復元}
-本項では、本研究で定義した『基本的な閲覧状態の復元』機能について実験する。
-具体的には、表\ref{tb:evl-basic-web-contents}に示すWebページを実際にブックマーク・閲覧する。
-それぞれのWebページについて、表\ref{tb:evl-basic-conditions}に示す条件下で実験する。
+\subsection{スクロール位置の復元}
+本項では、本研究で定義したスクロール位置の復元の評価方法について説明する。
+
+% 評価項目・手法
+まず、評価手法について説明する。
+スクロール位置の復元の評価では、縦横のスクロール位置がそれぞれ復元することを目視で確認する。
+なお、『スクロール位置の復元』の定義は、第3章\ref{chap:web-snapshot-system-restore-definition}で説明した通りである。
+
+% 実験条件
+本評価では、様々な条件下で正しくスクロール位置が復元することを実験する。
+具体的には、まず同じ端末上で保存時と再開時のウィンドウサイズ・画面の向き・ブラウザを揃えて実験する。
+Chrome拡張機能版とiOSアプリケーション版のそれぞれについて評価する。
+
+次に、ウィンドウサイズを変えて実験する。
+ウィンドウサイズの縦横比が保存時と再開時で異なる場合でも、スクロール位置が正しく復元するか検証する。
+
+さらに、画面の向きを変えてテストする。
+現在のモバイル端末では、画面の向きを変更できる。
+保存時と再開時の端末の向きが異なる場合でも、スクロール位置を正しく復元できるか評価する。
+
+異なるブラウザ間での復元について評価する。
+本システムはPC上のChromeおよびiOS端末上のSafariのみに対応している。
+そのため、使用するブラウザはChrome/Safariのみである。
+
+異なる端末間での復元について検証する。
+実験ではiPhone12\cite{iphone12}およびiPad(10.2インチ)\cite{ipad}
+なお、PCとモバイル端末間での比較は、Chrome/Safari間の実験で実施する。
+
+本実験で用いる条件と実験パターンを表\ref{tb:evl-scroll-position}にまとめる。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-scroll-position}
+  \caption{実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    テスト条件  \\ \hline
+    再開時のウィンドウサイズが保存時より縦に長い  \\ \hline
+    再開時のウィンドウサイズが保存時より縦に短い  \\ \hline
+    再開時のウィンドウサイズが保存時より横に長い  \\ \hline
+    再開時のウィンドウサイズが保存時より横に短い  \\ \hline
+    再開時のウィンドウサイズが保存時より縦横に長い  \\ \hline
+    再開時のウィンドウサイズが保存時より縦横に短い  \\ \hline
+    保存時は画面の向きが縦/再開時は画面の向きが横 \\ \hline
+    保存時は画面の向きが横/再開時は画面の向きが縦 \\ \hline
+    保存時はモバイル端末(iPhone12)/再開時はタブレット(iPad) \\ \hline
+    保存時はタブレット(iPad)/再開時はモバイル端末(iPhone12) \\ \hline
+    保存時はiOSのSafari/再開時はPCのChrome \\ \hline
+    保存時はPCのChrome/再開時はiOSのSafari \\ \hline
+    保存時と再開時の条件が同じ(Chrome拡張機能) \\ \hline
+    保存時と再開時の条件が同じ(iOSアプリケーション) \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+% 実験に用いるWebページ
+評価には複数の種類のWebサイトを用いる。
+具体的には、一般的なWebページに加えて、1ページが長い(一番下までスクロールするために5秒以上かかる)Webページで検証する。
+加えて、アニメーションが多用されているWebページ、SPA、その他の特殊なWebページをテストに使用する。
+実験に用いるWebサイトを表\ref{tb:evl-basic-web-contents}に示す。
 
 % textlint-disable
 \begin{table}[htbp]
   \label{tb:evl-basic-web-contents}
   \caption{実験に用いるWebページ}
   \begin{center}
-    \begin{tabular}{|l|}
+    \begin{tabular}{|l|l|}
     \hline
-    Webページ  \\ \hline
-    一般的なWebページ(インタビュー：村井純教授) \\ \hline
-    非常に長い記事 \\ \hline
-    Wikipedia \\ \hline
-    SPA \\ \hline
-    Google Map \\ \hline
-    \end{tabular}
-  \end{center}
-\end{table}
-
-% TODO: 評価項目に広告の有無とか入れる？
-
-\begin{table}[htbp]
-  \label{tb:evl-basic-conditions}
-  \caption{実験する条件}
-  \begin{center}
-    \begin{tabular}{|l|}
-    \hline
-    実験条件  \\ \hline
-    同一環境間での復元 \\ \hline
-    異なるブラウザ間での復元 \\ \hline
-    画面サイズの異なる端末間での復元 \\ \hline
-    画面の向きを変えた場合の復元 \\ \hline
+    種類 & WebページのURL  \\ \hline
+    一般的なWebページ & \url{www.kgri.keio.ac.jp/research-synergies/talk-8.html} \\ \hline
+    1ページが長いWebページ & \url{railstutorial.jp/chapters/beginning?version=5.1} \\ \hline
+    アニメーションを多用しているWebページ & \url{ja.wikipedia.org/wiki/村井純} \\ \hline
+    SPA & \url{plus-c.chuo-u.ac.jp/about/} \\ \hline
+    特殊なWebサイト & \url{www.google.co.jp/maps/?hl=ja} \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -112,23 +157,23 @@ PDFについてはOCRを利用しており不確実であるため、種類のPD
 \end{table}
 
 \subsection{PDFの復元}
-PDFについては、保存時のページが開くことを検証する。
-実験に用いるPDFの一覧を表\ref{}に示す。
-PDFのページ数の取得はChrome拡張機能でしか対応していないため、実験に用いる条件は表\ref{tb:evl-pdf-conditions}の2種類である。
+PDFについては、再開時に保存時のページが開くことを検証する。
+
+% 検証内容について(確率、ローカル、ch→ios, ch→ch)
+PDFの保存機能はChrome拡張機能でのみサポートしている。
+そのため、本実験ではChrome拡張機能で保存した後、Chrome拡張機能/iOSアプリケーションで再開し、それぞれ評価する。
+本機能はOCRを用いて実現している。
+PDFの中身やコンディションによってはOCRが失敗する可能性もある。
+そのため、評価では1つのPDFにつき10回づつ実験し、成功率を示す。
+また、本機能はWeb上にホスティングされているPDFとローカルPC上のPDFの両方に対応している。
+ローカルPC上のPDFについては、同一PC内でのみ復元可能であるため、同一PC内での復元のみ検証する。
+本評価でテストするパターンを表\ref{tb:evl-pdf-conditions}に示す。
+
+本評価では、実際のユースケースを想定して様々な種類のPDFを実験に用いる。
+具体的には、論文や書籍、漫画・説明書・契約書・IR資料・会社説明資料・スライドの復元を検証する。
+検証に用いるPDFの一覧を表\ref{tb:evl-pdf-list}に示す。
 
 % textlint-disable
-\begin{table}[htbp]
-  \label{tb:evl-pdf-list}
-  \caption{実験する条件}
-  \begin{center}
-    \begin{tabular}{|l|}
-    \hline
-    実験に用いるPDF  \\ \hline
-    test.pdf \\ \hline
-    \end{tabular}
-  \end{center}
-\end{table}
-
 \begin{table}[htbp]
   \label{tb:evl-pdf-conditions}
   \caption{実験する条件}
@@ -136,8 +181,28 @@ PDFのページ数の取得はChrome拡張機能でしか対応していない�
     \begin{tabular}{|l|}
     \hline
     実験条件  \\ \hline
+    Chrome拡張機能で保存→Chromeで復元(ローカルPDF) \\ \hline
     Chrome拡張機能で保存→Chromeで復元 \\ \hline
     Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \label{tb:evl-pdf-list}
+  \caption{実験に用いるPDF}
+  \begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    種別 & PDFのリンク  \\ \hline
+    論文 & test.pdf \\ \hline
+    書籍 & test.pdf \\ \hline
+    漫画 & test.pdf \\ \hline
+    説明書 & test.pdf \\ \hline
+    契約書 & test.pdf \\ \hline
+    IR資料 & test.pdf \\ \hline
+    会社説明資料 & test.pdf \\ \hline
+    スライド & test.pdf \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
