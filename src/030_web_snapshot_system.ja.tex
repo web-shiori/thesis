@@ -1,7 +1,8 @@
 \chapter{Web-Snapshot システム}
 \label{chap:web_snapshot_system}
 本章では、コンテンツの閲覧状態を保存できるブックマークシステム、Web-Snapshotを提案する。
-はじめにWeb-Snapshotシステムの概要を述べ、次にWeb-Snapshotの特徴を説明する。
+はじめにWeb-Snapshotシステムの概要を述べ、次に本研究における復元の定義を示す。
+ついでWeb-Snapshotの特徴を説明する。
 そして最後に、ユーザがWeb-Snapshotを利用する流れについて述べる。
 
 \section{システムの概要}
@@ -9,6 +10,63 @@ Web-Snapshotはコンテンツの閲覧状態を保存できるブックマー�
 Webコンテンツをブックマークすると、URLとともにスクロール位置・動画再生位置・PDFのページ数などの情報を保存する。
 保存されたブックマークはiOSアプリケーションおよびChrome拡張機能から閲覧・管理できる。
 ブックマークしたコンテンツを再度開くと、保存時の閲覧状態を復元する。
+
+\section{本研究における復元の定義}
+\label{web-snapshot-system-restore-definition}
+本研究における『復元』の定義は、”保存時と同じスクロール位置(縦横)でWebページを開くこと”とする。
+本研究において、『縦スクロール位置』は、Webページ内のどのコンテンツが画面上限に表示されているか、によって判定する。
+すなわち、ウィンドウサイズ・画面の向き・ブラウザが変わったとしても、画面上限に同じコンテンツが表示される。
+『横スクロール位置』については、Webページ内のどのコンテンツが画面左端に表示されているか、によって判定する。
+縦スクロール位置と同様に、ウィンドウサイズ・画面の向き・ブラウザの違いを吸収する。
+なお、保存時のピンチズームスケール\footnote{いわゆるズーム率。ピンチイン・アウトの動作によって画面を拡大・縮小する}やピクセル比\footnote{ディスプレイの物理ピクセルとデバイスに依存しないピクセルの比率}は考慮しない。
+これは上記の要素はブラウザ上でread-only\cite{}であるため、本システムから設定できないためである。
+復元の際は、上記の要素がデフォルトの設定であると仮定して復元する。
+具体的には、ピンチズームスケールは100\%、ピクセル比は200\%のWebページの状態を復元する。
+動画および音声については、上記に加えて保存時と同じ再生位置から再生が始まることを条件とする。
+ただし、復元する再生位置の単位は秒とする。
+例外として、PDFについては保存時と同じページ数が開くことを復元と定義する。
+
+本研究における復元の定義を以下の表\ref{tb:intro-restore-definition}にまとめる。
+
+% textlint-disable
+\begin{table}[htbp]
+  \begin{center}
+    \caption{本研究における閲覧状態の復元の定義}
+    \label{tb:intro-restore-definition}
+    \begin{tabular}{|c|l|l|l|}
+      \hline
+      復元する項目 & 条件 &  復元の定義 \\\hline\hline
+      スクロール位置(縦) & 全て & 
+        \begin{tabular}{l}
+          保存時の画面上限に位置しているコンテンツが\\画面上限に表示されている。 
+        \end{tabular}\\\hline
+      スクロール位置(横) & 全て & 
+        \begin{tabular}{l}
+          保存時の画面左端に位置しているコンテンツが\\画面左端に表示されている。 
+        \end{tabular}\\\hline
+      動画再生位置 & 動画・音声 & 保存時の再生位置(秒単位)から動画がはじまる。 \\\hline
+      ページ数 & PDF & 保存時のページが開く。 \\\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+本研究において、復元しない要素とその理由を表\ref{tb:intro-not-restore-definition}に示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \begin{center}
+    \caption{本研究において復元しない画面要素}
+    \label{tb:intro-not-restore-definition}
+    \begin{tabular}{|c|l|l|}
+      \hline
+      復元しない項目 & 理由 \\\hline\hline
+      ピンチズームスケール & read-onlyであるため\cite{} \\\hline
+      ピクセル比 & read-onlyであるため\cite{} \\\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
 
 \section{システムの特徴}
 本節では、Web-Snapshotの特徴的な機能を3つ挙げる。
