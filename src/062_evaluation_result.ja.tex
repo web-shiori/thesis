@@ -1,0 +1,77 @@
+\section{評価結果}
+本節では、本研究で実装したブックマークシステムが閲覧状態を復元できているかについて、評価実験で得られた評価結果を示す。
+
+\subsection{基本的な復元}
+本項では、基本的な復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-basic}に実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{libwasmを用いた{\tt fib}関数の実行時間と、必要なクロック数の比}
+  \label{tab:evl-result-basic}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      & 同一環境 & 異なるブラウザ & 画面サイズの異なる &  画面の向きを \\
+       Webページ & 間での復元 & 間での復元 & 端末間での復元 & 変えた場合の復元 \\ \hline \hline
+      test.com & 失敗 & 失敗 &  失敗 & 失敗 \\ \hline
+      long.com & 失敗 & 失敗 &  失敗 & 失敗 \\ \hline
+      Wikipedia.com & 失敗 & 失敗 &  失敗 & 失敗 \\ \hline
+      spa.com & 失敗 & 失敗 &  失敗 & 失敗 \\ \hline
+      google-map.com & 失敗 & 失敗 &  失敗 & 失敗 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+\subsection{動画/音声の復元}
+本項では、動画および音声の復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-video}に動画の復元の実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{動画}
+  \label{tab:evl-result-video}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      動画のファイル形式 & Webページ & 再生位置の復元 \\ \hline \hline
+      MP4 & spa.com & 失敗  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+表\ref{tb:evl-result-audie}に音声の復元の実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{音声}
+  \label{tab:evl-result-audio}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      動画のファイル形式 & Webページ & 再生位置の復元 \\ \hline \hline
+      MP4 & spa.com & 失敗  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+\subsection{PDFの復元}
+本項では、PDFの復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-pdf}に実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{PDF}
+  \label{tab:evl-result-video}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      PDF  & 復元の成功率(%) \\ \hline \hline
+      test.pdf  & 0  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
