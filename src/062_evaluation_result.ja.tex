@@ -1,0 +1,192 @@
+\section{評価結果}
+本節では、本研究で実装したブックマークシステムが閲覧状態を復元できているかについて、評価実験で得られた評価結果を示す。
+
+\subsection{スクロール位置の復元}
+本項では、スクロール位置の復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-scroll-position}に実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{スクロール位置の復元の実験結果}
+  \label{tb:evl-result-scroll-position}
+  \begin{center}
+    \begin{tabular}{rrr}
+      \hline
+      実験条件 & スクロール位置(縦)の復元 & スクロール位置(横)の復元 \\ \hline \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦に長い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦に短い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より横に長い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より横に短い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦横に長い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦横に短い & -- & -- \\ \hline
+      保存時は画面の向きが縦/\\
+      再開時は画面の向きが横 & -- & -- \\ \hline
+      保存時は画面の向きが横/\\
+      再開時は画面の向きが縦 & -- & -- \\ \hline
+      保存時はモバイル端末(iPhone12)/\\
+      再開時はタブレット(iPad) & -- & -- \\ \hline
+      保存時はタブレット(iPad)/\\
+      再開時はモバイル端末(iPhone12) & -- & -- \\ \hline
+      保存時はiOSのSafari/\\
+      再開時はPCのChrome & -- & -- \\ \hline
+      保存時はPCのChrome/\\
+      再開時はiOSのSafari & -- & -- \\ \hline
+      保存時と再開時の条件が\\
+      同じ(Chrome拡張機能) & -- & -- \\ \hline
+      保存時と再開時の条件が\\
+      同じ(iOSアプリケーション) & -- & -- \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+\subsection{動画/音声の復元}
+本項では、動画および音声の復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-video}に動画の復元の実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{動画}
+  \label{tb:evl-result-video}
+  \begin{center}
+    \begin{tabular}{rrr}
+      \hline
+      条件 & 動画のファイル形式 & 再生位置の復元 \\ \hline \hline
+      Chrome拡張機能で保存・復元 & MP4 & --  \\ \hline
+      Chrome拡張機能で保存・復元 & WAV & --  \\ \hline
+      Chrome拡張機能で保存・復元 & FLV & --  \\ \hline
+      Chrome拡張機能で保存・復元 & OGV & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & MP4 & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & WAV & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & FLV & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & OGV & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & MP4 & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & WAV & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & FLV & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & OGV & --  \\ \hline
+      iOSアプリケーションで保存・復元 & MP4 & --  \\ \hline
+      iOSアプリケーションで保存・復元 & WAV & --  \\ \hline
+      iOSアプリケーションで保存・復元 & FLV & --  \\ \hline
+      iOSアプリケーションで保存・復元 & OGV & --  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+表\ref{tb:evl-result-audio}に音声の復元の実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{音声}
+  \label{tb:evl-result-audio}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      条件 & 音声のファイル形式 & 再生位置の復元 \\ \hline \hline
+      Chrome拡張機能で保存・復元 & MP3 & --  \\ \hline
+      Chrome拡張機能で保存・復元 & Ogg Vorbis & --  \\ \hline
+      Chrome拡張機能で保存・復元 & WAV PCM & --  \\ \hline
+      Chrome拡張機能で保存・復元 & AAC & --  \\ \hline
+      Chrome拡張機能で保存・復元 & Webm Vorbis & --  \\ \hline
+      Chrome拡張機能で保存・復元 & Ogg Opus & --  \\ \hline
+      Chrome拡張機能で保存・復元 & FLAC & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & MP3 & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & Ogg Vorbis & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & WAV PCM & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & AAC & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & Webm Vorbis & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & Ogg Opus & --  \\ \hline
+      Chrome拡張機能で保存→iOSアプリケーションで復元 & FLAC & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & MP3 & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & Ogg Vorbis & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & WAV PCM & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & AAC & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & Webm Vorbis & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & Ogg Opus & --  \\ \hline
+      iOSアプリケーションで保存→Chrome拡張機能で復元 & FLAC & --  \\ \hline
+      iOSアプリケーションで保存・復元 & MP3 & --  \\ \hline
+      iOSアプリケーションで保存・復元 & Ogg Vorbis & --  \\ \hline
+      iOSアプリケーションで保存・復元 & WAV PCM & --  \\ \hline
+      iOSアプリケーションで保存・復元 & AAC & --  \\ \hline
+      iOSアプリケーションで保存・復元 & Webm Vorbis & --  \\ \hline
+      iOSアプリケーションで保存・復元 & Ogg Opus & --  \\ \hline
+      iOSアプリケーションで保存・復元 & FLAC & --  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+\subsection{PDFの復元}
+本項では、PDFの復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-pdf-chrome-to-chrome-local}にローカルPC上のPDFの復元の評価結果を示す。
+表\ref{tb:evl-result-pdf-chrome-to-chrome}にChrome拡張機能で保存したPDFをChrome上で復元した場合の実験結果を示す。
+表\ref{tb:evl-result-pdf-chrome-to-ios}にChrome拡張機能で保存したPDFをiOSアプリケーション上で復元した場合の実験結果を示す。
+
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{ローカルPC上のPDFの復元の評価結果}
+  \label{tb:evl-result-pdf-chrome-to-chrome-local}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      PDFの種類  & 復元の成功率(\%) \\ \hline \hline
+        種別 & n\%  \\ \hline
+        論文 & n\% \\ \hline
+        書籍 & n\% \\ \hline
+        漫画 & n\% \\ \hline
+        説明書 & n\% \\ \hline
+        契約書 & n\% \\ \hline
+        IR資料 & n\% \\ \hline
+        会社説明資料 & n\% \\ \hline
+        スライド & n\% \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \caption{Chrome拡張機能で保存→Chromeでの復元(Web上のPDF)の評価結果}
+  \label{tb:evl-result-pdf-chrome-to-chrome}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      PDFの種類  & 復元の成功率(\%) \\ \hline \hline
+        種別 & n\%  \\ \hline
+        論文 & n\% \\ \hline
+        書籍 & n\% \\ \hline
+        漫画 & n\% \\ \hline
+        説明書 & n\% \\ \hline
+        契約書 & n\% \\ \hline
+        IR資料 & n\% \\ \hline
+        会社説明資料 & n\% \\ \hline
+        スライド & n\% \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \caption{Chrome拡張機能で保存→iOSでの復元(Web上のPDF)の評価結果}
+  \label{tb:evl-result-pdf-chrome-to-ios}
+  \begin{center}
+    \begin{tabular}{rrrrr}
+      \hline
+      PDFの種類  & 復元の成功率(\%) \\ \hline \hline
+        種別 & n\%  \\ \hline
+        論文 & n\% \\ \hline
+        書籍 & n\% \\ \hline
+        漫画 & n\% \\ \hline
+        説明書 & n\% \\ \hline
+        契約書 & n\% \\ \hline
+        IR資料 & n\% \\ \hline
+        会社説明資料 & n\% \\ \hline
+        スライド & n\% \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
