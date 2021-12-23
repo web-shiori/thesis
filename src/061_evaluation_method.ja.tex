@@ -27,12 +27,12 @@
 複数端末間・Chrome/Safari間での復元など、様々なシチュエーションでの復元についても評価する。
 
 動画/音声については、それぞれ利用者数の多いWebサービスについて実験する。
-動画については、利用者数の多いYouTube\cite{youtube}/Amazon Prime Video\cite{amazon-prime-video}/TVer\cite{tver}/Netflix\cite{netflix}/GYAO!\cite{gyao}/Hulu\cite{hulu}/ABEMA\cite{abema}で再生位置が復元することを評価する。
+動画については、利用者数の多いYouTube\cite{youtube}/Amazon Prime Video\cite{amazon-prime-video}/Netflix\cite{netflix}/ABEMA\cite{abema}で再生位置が復元することを評価する。
 
 音声については、インターネットラジオのradiko\cite{radiko}。
 PodcastのホスティングサービスのApple Podcast\cite{apple-podcast}。
 音楽ストリーミングサービスのSpotify\cite{spotify}。
-オーディオブックのAudible\cite{audible}で音声の再生位置が復元するかどうか検証する。
+オーディオブックのAudible\cite{audible}で音声の再生位置が復元するか検証する。
 
 PDFについてはOCRを利用しており不確実であるため、いくつかの種類のPDFを用いて実験した上で、正しくページ数を復元できる確率を示す。
 
@@ -144,6 +144,7 @@ Chrome拡張機能版とiOSアプリケーション版のそれぞれについ�
 Webブラウザが対応している主な動画形式についてそれぞれ検証する。
 検証する動画サービスと、実験に用いる動画のURLを表\ref{tb:evl-video-check-list}に示す。
 
+% textlint-disable
 \begin{table}[htbp]
   \begin{center}
     \caption{検証する動画サービス}
@@ -151,18 +152,20 @@ Webブラウザが対応している主な動画形式についてそれぞれ�
     \begin{tabular}{|c|l|l|}
       \hline
       動画サービス & URL \\\hline\hline
-      YouTube & 検証に使うWebページのURLをはります \\\hline
-      Amazon Prime Video & 検証に使うWebページのURLをはります \\\hline
-      Netflix & 検証に使うWebページのURLをはります \\\hline
-      ABEMA & 検証に使うWebページのURLをはります \\\hline
+      YouTube & 検証に使うWebページのURLを記入予定 \\\hline
+      Amazon Prime Video & 検証に使うWebページのURLを記入予定 \\\hline
+      Netflix & 検証に使うWebページのURLを記入予定 \\\hline
+      ABEMA & 検証に使うWebページのURLを記入予定 \\\hline
     \end{tabular}
   \end{center}
 \end{table}
+% textlint-enable
 
 \subsubsection{音声の復元}
 音声の閲覧状態を復元できることを確認するために、利用者数の多い音声配信サービスで検証する。
 検証する音声配信サービスと、音声配信サービスの種別、実験に用いる音声のURLを表\ref{tb:evl-audio-check-list}に示す。
 
+% textlint-disable
 \begin{table}[htbp]
   \begin{center}
     \caption{検証する音声配信サービス}
@@ -170,13 +173,14 @@ Webブラウザが対応している主な動画形式についてそれぞれ�
     \begin{tabular}{|c|l|l|}
       \hline
       ファイル形式 & 種別 & Webページ \\\hline\hline
-      radiko & インターネットラジオ & 検証に使うWebページのURLをはります \\\hline
-      Apple Podcast & Podcast & 検証に使うWebページのURLをはります \\\hline
-      Spotify & 音楽ストリーミングサービス & 検証に使うWebページのURLをはります \\\hline
-      Audible & オーディオブック & 検証に使うWebページのURLをはります \\\hline
+      radiko & インターネットラジオ & 検証に使うWebページのURLを記入予定 \\\hline
+      Apple Podcast & Podcast & 検証に使うWebページのURLを記入予定 \\\hline
+      Spotify & 音楽ストリーミングサービス & 検証に使うWebページのURLを記入予定 \\\hline
+      Audible & オーディオブック & 検証に使うWebページのURLを記入予定 \\\hline
     \end{tabular}
   \end{center}
 \end{table}
+% textlint-enable
 
 \subsection{PDFの復元}
 PDFについては、再開時に保存時のページが開くことを検証する。
@@ -217,14 +221,14 @@ PDFの中身やコンディションによってはOCRが失敗する可能性�
     \begin{tabular}{|l|l|}
     \hline
     種別 & PDFのリンク  \\ \hline
-    論文 & 検証に使うPDFのURLをはります  \\ \hline
-    書籍 & 検証に使うPDFのURLをはります  \\ \hline
-    漫画 & 検証に使うPDFのURLをはります  \\ \hline
-    説明書 & 検証に使うPDFのURLをはります  \\ \hline
-    契約書 & 検証に使うPDFのURLをはります  \\ \hline
-    IR資料 & 検証に使うPDFのURLをはります  \\ \hline
-    会社説明資料 & 検証に使うPDFのURLをはります  \\ \hline
-    スライド & 検証に使うPDFのURLをはります  \\ \hline
+    論文 & 検証に使うPDFのURLを記入予定  \\ \hline
+    書籍 & 検証に使うPDFのURLを記入予定  \\ \hline
+    漫画 & 検証に使うPDFのURLを記入予定  \\ \hline
+    説明書 & 検証に使うPDFのURLを記入予定  \\ \hline
+    契約書 & 検証に使うPDFのURLを記入予定  \\ \hline
+    IR資料 & 検証に使うPDFのURLを記入予定  \\ \hline
+    会社説明資料 & 検証に使うPDFのURLを記入予定  \\ \hline
+    スライド & 検証に使うPDFのURLを記入予定  \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
