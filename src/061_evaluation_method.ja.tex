@@ -26,7 +26,13 @@
 まず、スクロール位置の復元について様々な種類のWebページを用いて実験する。
 複数端末間・Chrome/Safari間での復元など、様々なシチュエーションでの復元についても評価する。
 
-動画/音声については、Webブラウザが対応している主なファイル形式について実験する。
+動画/音声については、それぞれ利用者数の多いWebサービスについて実験する。
+動画については、利用者数の多いYouTube\cite{youtube}/Amazon Prime Video\cite{amazon-prime-video}/TVer\cite{tver}/Netflix\cite{netflix}/GYAO!\cite{gyao}/Hulu\cite{hulu}/ABEMA\cite{abema}で再生位置が復元することを評価する。
+
+音声については、インターネットラジオのradiko\cite{radiko}。
+PodcastのホスティングサービスのApple Podcast\cite{apple-podcast}。
+音楽ストリーミングサービスのSpotify\cite{spotify}。
+オーディオブックのAudible\cite{audible}で音声の再生位置が復元するかどうか検証する。
 
 PDFについてはOCRを利用しており不確実であるため、いくつかの種類のPDFを用いて実験した上で、正しくページ数を復元できる確率を示す。
 
@@ -134,42 +140,40 @@ Chrome拡張機能版とiOSアプリケーション版のそれぞれについ�
 % textlint-enable
 
 \subsubsection{動画の復元}
-動画の閲覧状態を復元できることを確認するために、Webブラウザが対応している主な動画形式についてそれぞれ検証する。
-検証する動画形式と、それぞれの形式の動画を含むWebページを表\ref{tb:evl-video-check-list}に示す。
+動画の閲覧状態を復元できることを確認するために、利用者数の多い動画配信サービスで検証する。
+Webブラウザが対応している主な動画形式についてそれぞれ検証する。
+検証する動画サービスと、実験に用いる動画のURLを表\ref{tb:evl-video-check-list}に示す。
 
 \begin{table}[htbp]
   \begin{center}
-    \caption{検証するファイル形式と各形式を含むWebページ}
+    \caption{検証する動画サービス}
     \label{tb:evl-video-check-list}
     \begin{tabular}{|c|l|l|}
       \hline
-      ファイル形式 & Webページ \\\hline\hline
-      MP4 & 検証に使うWebページのURLをはります \\\hline
-      WAV & 検証に使うWebページのURLをはります \\\hline
-      FLV & 検証に使うWebページのURLをはります \\\hline
-      OGV & 検証に使うWebページのURLをはります \\\hline
+      動画サービス & URL \\\hline\hline
+      YouTube & 検証に使うWebページのURLをはります \\\hline
+      Amazon Prime Video & 検証に使うWebページのURLをはります \\\hline
+      Netflix & 検証に使うWebページのURLをはります \\\hline
+      ABEMA & 検証に使うWebページのURLをはります \\\hline
     \end{tabular}
   \end{center}
 \end{table}
 
 \subsubsection{音声の復元}
-音声の閲覧状態を復元できることを確認するために、Webブラウザが対応している主な音声ファイルの形式についてそれぞれ検証する。
-検証するファイル形式と、それぞれの形式の音声を含むWebページを表\ref{tb:evl-audio-check-list}に示す。
+音声の閲覧状態を復元できることを確認するために、利用者数の多い音声配信サービスで検証する。
+検証する音声配信サービスと、音声配信サービスの種別、実験に用いる音声のURLを表\ref{tb:evl-audio-check-list}に示す。
 
 \begin{table}[htbp]
   \begin{center}
-    \caption{検証するファイル形式と各形式を含むWebページ}
+    \caption{検証する音声配信サービス}
     \label{tb:evl-audio-check-list}
     \begin{tabular}{|c|l|l|}
       \hline
-      ファイル形式 & Webページ \\\hline\hline
-      MP3 & 検証に使うWebページのURLをはります \\\hline
-      Ogg Vorbis & 検証に使うWebページのURLをはります \\\hline
-      WAV PCM & 検証に使うWebページのURLをはります \\\hline
-      AAC & 検証に使うWebページのURLをはります \\\hline
-      Webm Vorbis & 検証に使うWebページのURLをはります \\\hline
-      Ogg Opus & 検証に使うWebページのURLをはります \\\hline
-      FLAC & 検証に使うWebページのURLをはります \\\hline
+      ファイル形式 & 種別 & Webページ \\\hline\hline
+      radiko & インターネットラジオ & 検証に使うWebページのURLをはります \\\hline
+      Apple Podcast & Podcast & 検証に使うWebページのURLをはります \\\hline
+      Spotify & 音楽ストリーミングサービス & 検証に使うWebページのURLをはります \\\hline
+      Audible & オーディオブック & 検証に使うWebページのURLをはります \\\hline
     \end{tabular}
   \end{center}
 \end{table}
