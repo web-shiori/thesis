@@ -25,7 +25,17 @@
 \section{本研究が着目する課題}
 本研究では、Webコンテンツ内の特定のリソースを指し示す方法が多数存在するにも関わらず、ブックマークシステムでWebページ単位でしか保存・復元を行えない点に着目する。
 現在のブックマークシステムでは、ページを保存した際にユーザがどこまでコンテンツを閲覧していたかという情報が失われてしまう。
+現在のブックマークシステムでブックマークしたページを再度訪れた際に、スクロール位置の情報が消えてしまう様子を図\ref{fig:probrem-scroll-position}に示す。
+これはスクロール位置のみならず、動画再生位置、PDFにおいても同様の問題が発生する。
 そのため、ユーザはWebページを訪れる度に、コンテンツ内の目当ての文言・シーンを見つけ直さなければならない。
+
+\begin{figure}[htbp]
+  \caption{現在のブックマークシステムの問題点}
+  \label{fig:probrem-scroll-position}
+  \begin{center}
+    \includegraphics[bb=0 0 681 641,width=15cm]{img/010_introduction/probrem-scroll-position.pdf}
+  \end{center}
+\end{figure}
 
 また、現在では一人のユーザが複数の端末を所有して使い分けることが当たり前になっている。
 ユーザはWebコンテンツを複数の端末・ブラウザから閲覧するために、ブックマークシステムを利用することがある。
@@ -37,8 +47,18 @@ Webページ内の様々なリソースを指定してブックマークでき�
 
 \section{本研究の目的とアプローチ}
 本研究では、前述の課題を解決するために、WebページのURLとともにスクロール位置・動画再生位置・PDFのページ数などの閲覧状態を保存・復元できるブックマークシステムを開発する。
+本研究で開発するブックマークシステムでブックマークしたページを再度訪れた際の表示を図\ref{fig:ideal-scroll-position}に示す。
+動画再生位置やPDFについても、同様に保存時の閲覧状態を復元する。
 
 本研究における閲覧状態の復元の定義は、\ref{chap:web-snapshot-system-restore-definition}章で詳細に説明する。
+
+\begin{figure}[htbp]
+  \caption{今回提案するブックマークシステム}
+  \label{fig:ideal-scroll-position}
+  \begin{center}
+    \includegraphics[bb=0 0 681 641,width=15cm]{img/010_introduction/ideal-scroll-position.pdf}
+  \end{center}
+\end{figure}
 
 \section{本論文の構成}
 
