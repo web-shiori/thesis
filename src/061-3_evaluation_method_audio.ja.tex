@@ -1,19 +1,34 @@
-\subsubsection{音声の復元}
-音声の閲覧状態を復元できることを確認するために、利用者数の多い音声配信サービスで検証する。
-検証する音声配信サービスと、音声配信サービスの種別、実験に用いる音声のURLを表\ref{tb:evl-audio-check-list}に示す。
+\subsection{音声の再生位置の復元}
+本項では、本研究で定義した『音声の閲覧状態の復元』機能について実験する。
+
+\subsubsection{評価に使用するWebページ}
+まず、音声の再生位置の復元の評価に使用するWebページについて述べる。
+音声の再生位置の復元の評価には、『いちばんやさしい音声配信ビジネスの教本 人気講師が教える新しいメディアの基礎』\cite{}に掲載されている音声配信サービスのうち、Webブラウザ上で閲覧できる24個のサービスを使用した。
+なお、評価に使用した音声配信サービスおよび音声のURLは付録A\ref{chap:appendix-a}にすべて記載する。
+
+\subsubsection{評価方法}
+次に、評価方法について説明する。
+音声の再生位置の復元の評価では、実際にWebページ上の音声をブックマーク・再開し、音声の再生位置が復元することを確認する。
+『音声再生位置の復元』の定義は、第3章\ref{chap:web-snapshot-system-restore-definition}で説明した通りである。
+
+なお、本実験の前提条件として、広告ブロッカーなどの拡張機能は無効の状態を仮定する。
+
+\subsubsection{実験する条件}
+動画の再生位置の復元の評価において、実験する条件を説明する。
+本実験では、表\ref{tb:evl-audio-audio-conditions}のように、Chrome拡張機能/iOSアプリケーションでの保存・復元を4パターン検証する。
 
 % textlint-disable
 \begin{table}[htbp]
+  \label{tb:evl-audio-audio-conditions}
+  \caption{音声再生位置の復元の評価において実験する条件}
   \begin{center}
-    \caption{検証する音声配信サービス}
-    \label{tb:evl-audio-check-list}
-    \begin{tabular}{|c|l|l|}
-      \hline
-      ファイル形式 & 種別 & Webページ \\\hline\hline
-      radiko & インターネットラジオ & 検証に使うWebページのURLを記入予定 \\\hline
-      Apple Podcast & Podcast & 検証に使うWebページのURLを記入予定 \\\hline
-      Spotify & 音楽ストリーミングサービス & 検証に使うWebページのURLを記入予定 \\\hline
-      Audible & オーディオブック & 検証に使うWebページのURLを記入予定 \\\hline
+    \begin{tabular}{|l|}
+    \hline
+    実験条件  \\ \hline
+    Chrome拡張機能で保存→Chrome拡張機能で復元 \\ \hline
+    Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
+    iOSアプリケーションで保存→Chrome拡張機能で復元 \\ \hline
+    iOSアプリケーションで保存→iOSアプリケーションで復元 \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
