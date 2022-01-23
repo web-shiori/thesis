@@ -23,8 +23,6 @@ WebAPIについては、認証関連API・コンテンツ関連API・フォル�
 \subsubsection{コンテンツ関連API}
 本項では、ブックマークの操作に関連するAPIについて説明する。
 
-
-% ブックマークのCRUDを提供する。
 コンテンツ関連APIでは、ブックマークしたコンテンツに対するCRUD\footnote{データリソースの操作に必要とされる機能(Create/Read/Update/Delete)}を実行できるAPIを提供している。
 
 加えて、ブックマークの保存時にコンテンツの種類を自動的に判定し、メタデータとして保存する。
@@ -42,9 +40,13 @@ WebAPIについては、認証関連API・コンテンツ関連API・フォル�
 クライアント側のブックマーク保存モジュールからPDFの画面キャプチャが送信されると、サーバ側はCarrierWave\cite{carrier-wave}というgemを使用してストレージにキャプチャをアップロードする。
 ストレージにはAWSのS3\cite{s3}を使用している。
 
-S3に画面キャプチャがアップロードされると、第一のAWS Lambdaがトリガーされる。
-このLambdaは、AWSのTextract\cite{textract}というサービスのAPIを呼び出し、保存された画像をOCRにかける。
+S3に画面キャプチャがアップロードされると、1つ目のAWS Lambdaがトリガーされる。
+このLambdaは、前処理として保存された画面キャプチャの色を反転させ、結果として得られた画像を別のストレージに保存する。
+この処理を行う理由は、ChromeではPDFのページ数を表示するナビゲーションバーは図\ref{fig:pdf-viewer-nav-bar-page-num}のように背景が暗くなっている。
+背景が暗い画像は後に述べるTextract\cite{textract}というOCRのサービスにおいて認識率が低くなるため、このような処理を追加している。
 
+前処理を行った画像がストレージに保存されると、2つ目のAWS Lambdaがトリガーされる。
+このLambdaは、AWSのTextractというサービスのAPIを呼び出し、保存された画像をOCRにかける。
 TextractはOCRによって抽出した文字列をDetectDocumentTextOutput\cite{detect-document-text-output}という構造体に含めて返却する。
 
 LambdaはTextractのレスポンスから、PDFのページ数を抽出する。
@@ -58,24 +60,26 @@ PDFビューワでは画面上部のナビゲーションバーに現在のペ�
 \begin{itembox}[l]{保存時のPDFのページ数を取得するために用いる正規表現}
   \label{regix-pdf-page-num}
   \begin{verbatim}
-    `(\d+)\/\d+`
+    // `3/10` or `3/ 10` or `3 /10` or `3 / 10`にマッチする
+    `(\d+)( |)\/( |)\d+`
   \end{verbatim}
 \end{itembox}
 % textlint-enable
 
 なお、ページ数の抽出が失敗した場合は、その時点で処理を中止し、アップロードされたファイルを削除する。
 
-第一のLambdaの実行が終わると、2番目のLambdaがトリガーされる。
-このLambdaは、取得したPDFのページ数をWebAPIを通じてデータベースに保存する。そのために、このLambdaはブックマークのpdf\_page\_numカラムのみを変更する権限を持つ。
+ページ数の抽出が完了すると、Lambdaは取得したPDFのページ数をWebAPIを通じてデータベースに保存する。
+そのために、このLambdaはブックマークのpdf\_page\_numカラムのみを変更する権限を持つ。
 保存が完了すると、Lambdaはアップロードされた画面キャプチャを削除する。
 
+API側では、PDFのページ数が更新されると、そのページ数をURLのフラグメントとして付与する。
 上記の一連の実装内容を図\ref{fig:impl-pdf-overall}にまとめる。
 
 \begin{figure}[htbp]
   \caption{PDFページ数抽出機能の実装の全体像}
   \label{fig:impl-pdf-overall}
   \begin{center}
-    \includegraphics[bb=0 0 480 532,width=12cm]{img/050_implementation/server/impl-pdf-overall.pdf}
+    \includegraphics[bb=0 0 734 522,width=15cm]{img/050_implementation/server/impl-pdf-overall.pdf}
   \end{center}
 \end{figure}
 
