@@ -1,0 +1,51 @@
+\subsection{PDFの復元}
+PDFについては、再開時に保存時のページが開くことを検証する。
+
+% 検証内容について(確率、ローカル、ch→ios, ch→ch)
+PDFの保存機能はChrome拡張機能でのみサポートしている。
+そのため、本実験ではChrome拡張機能で保存した後、Chrome拡張機能/iOSアプリケーションで再開し、それぞれ評価する。
+本機能はOCRを用いて実現している。
+PDFの中身やコンディションによってはOCRが失敗する可能性もある。
+そのため、評価では1つのPDFにつき10回づつ実験し、成功率を示す。
+また、本機能はWeb上にホスティングされているPDFとローカルPC上のPDFの両方に対応している。
+ローカルPC上のPDFについては、同一PC内でのみ復元可能であるため、同一PC内での復元のみ検証する。
+本評価でテストするパターンを表\ref{tb:evl-pdf-conditions}に示す。
+
+本評価では、実際のユースケースを想定して様々な種類のPDFを実験に用いる。
+具体的には、論文や書籍、漫画・説明書・契約書・IR資料・会社説明資料・スライドの復元を検証する。
+検証に用いるPDFの一覧を表\ref{tb:evl-pdf-list}に示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-pdf-conditions}
+  \caption{実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    実験条件  \\ \hline
+    Chrome拡張機能で保存→Chromeで復元(ローカルPDF) \\ \hline
+    Chrome拡張機能で保存→Chromeで復元 \\ \hline
+    Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[htbp]
+  \label{tb:evl-pdf-list}
+  \caption{実験に用いるPDF}
+  \begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    種別 & PDFのリンク  \\ \hline
+    論文 & 検証に使うPDFのURLを記入予定  \\ \hline
+    書籍 & 検証に使うPDFのURLを記入予定  \\ \hline
+    漫画 & 検証に使うPDFのURLを記入予定  \\ \hline
+    説明書 & 検証に使うPDFのURLを記入予定  \\ \hline
+    契約書 & 検証に使うPDFのURLを記入予定  \\ \hline
+    IR資料 & 検証に使うPDFのURLを記入予定  \\ \hline
+    会社説明資料 & 検証に使うPDFのURLを記入予定  \\ \hline
+    スライド & 検証に使うPDFのURLを記入予定  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable

@@ -1,0 +1,44 @@
+\subsection{スクロール位置の復元}
+本項では、スクロール位置の復元についての実験結果について評価し、考察する。
+表\ref{tb:evl-result-scroll-position}に実験結果を示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \caption{スクロール位置の復元の実験結果}
+  \label{tb:evl-result-scroll-position}
+  \begin{center}
+    \begin{tabular}{rrr}
+      \hline
+      実験条件 & スクロール位置(縦)の復元 & スクロール位置(横)の復元 \\ \hline \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦に長い & 成功or失敗を書きます & 成功or失敗を書きます \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦に短い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より横に長い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より横に短い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦横に長い & -- & -- \\ \hline
+      再開時のウィンドウサイズが\\
+      保存時より縦横に短い & -- & -- \\ \hline
+      保存時は画面の向きが縦/\\
+      再開時は画面の向きが横 & -- & -- \\ \hline
+      保存時は画面の向きが横/\\
+      再開時は画面の向きが縦 & -- & -- \\ \hline
+      保存時はモバイル端末(iPhone12)/\\
+      再開時はタブレット(iPad) & -- & -- \\ \hline
+      保存時はタブレット(iPad)/\\
+      再開時はモバイル端末(iPhone12) & -- & -- \\ \hline
+      保存時はiOSのSafari/\\
+      再開時はPCのChrome & -- & -- \\ \hline
+      保存時はPCのChrome/\\
+      再開時はiOSのSafari & -- & -- \\ \hline
+      保存時と再開時の条件が\\
+      同じ(Chrome拡張機能) & -- & -- \\ \hline
+      保存時と再開時の条件が\\
+      同じ(iOSアプリケーション) & -- & -- \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable

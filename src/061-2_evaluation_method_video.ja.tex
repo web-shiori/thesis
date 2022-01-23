@@ -1,0 +1,43 @@
+\subsection{動画/音声の復元}
+本項では、本研究で定義した『動画/音声の閲覧状態の復元』機能について実験する。
+具体的には、基本的な復元の定義を満たした上で、保存時の再生位置から動画/音声が再生されることを確認する。
+評価実験では、表\ref{tb:evl-video-audio-conditions}のように、Chrome拡張機能/iOSアプリケーションでの保存・復元を4パターン検証する。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-video-audio-conditions}
+  \caption{実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    実験条件  \\ \hline
+    Chrome拡張機能で保存→Chrome拡張機能で復元 \\ \hline
+    Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
+    iOSアプリケーションで保存→Chrome拡張機能で復元 \\ \hline
+    iOSアプリケーションで保存→iOSアプリケーションで復元 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+\subsubsection{動画の復元}
+動画の閲覧状態を復元できることを確認するために、利用者数の多い動画配信サービスで検証する。
+Webブラウザが対応している主な動画形式についてそれぞれ検証する。
+検証する動画サービスと、実験に用いる動画のURLを表\ref{tb:evl-video-check-list}に示す。
+
+% textlint-disable
+\begin{table}[htbp]
+  \begin{center}
+    \caption{検証する動画サービス}
+    \label{tb:evl-video-check-list}
+    \begin{tabular}{|c|l|l|}
+      \hline
+      動画サービス & URL \\\hline\hline
+      YouTube & 検証に使うWebページのURLを記入予定 \\\hline
+      Amazon Prime Video & 検証に使うWebページのURLを記入予定 \\\hline
+      Netflix & 検証に使うWebページのURLを記入予定 \\\hline
+      ABEMA & 検証に使うWebページのURLを記入予定 \\\hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
