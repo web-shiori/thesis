@@ -1,51 +1,41 @@
-\subsection{PDFの復元}
-PDFについては、再開時に保存時のページが開くことを検証する。
+\subsection{PDFの復元の評価}
+本項では、本研究で定義した『PDFの閲覧状態の復元』の評価方法について説明する。
 
-% 検証内容について(確率、ローカル、ch→ios, ch→ch)
-PDFの保存機能はChrome拡張機能でのみサポートしている。
-そのため、本実験ではChrome拡張機能で保存した後、Chrome拡張機能/iOSアプリケーションで再開し、それぞれ評価する。
-本機能はOCRを用いて実現している。
-PDFの中身やコンディションによってはOCRが失敗する可能性もある。
-そのため、評価では1つのPDFにつき10回づつ実験し、成功率を示す。
-また、本機能はWeb上にホスティングされているPDFとローカルPC上のPDFの両方に対応している。
-ローカルPC上のPDFについては、同一PC内でのみ復元可能であるため、同一PC内での復元のみ検証する。
-本評価でテストするパターンを表\ref{tb:evl-pdf-conditions}に示す。
 
-本評価では、実際のユースケースを想定して様々な種類のPDFを実験に用いる。
-具体的には、論文や書籍、漫画・説明書・契約書・IR資料・会社説明資料・スライドの復元を検証する。
-検証に用いるPDFの一覧を表\ref{tb:evl-pdf-list}に示す。
+\subsubsection{評価に使用するPDF}
+まず、PDFの閲覧状態の復元の評価に使用するPDFについて述べる。
+PDFの評価には、PDFを表\ref{}の8種類に分け、各種類ごとに5つづつPDF(計40個のPDF)を用意する。
+なお、評価に使用したPDFのURLは付録A\ref{chap:appendix-a}にすべて記載する。
 
 % textlint-disable
 \begin{table}[htbp]
-  \label{tb:evl-pdf-conditions}
-  \caption{実験する条件}
+  \label{tb:evl-pdf-list}
+  \caption{実験に用いるPDFの種類}
   \begin{center}
     \begin{tabular}{|l|}
     \hline
-    実験条件  \\ \hline
-    Chrome拡張機能で保存→Chromeで復元(ローカルPDF) \\ \hline
-    Chrome拡張機能で保存→Chromeで復元 \\ \hline
-    Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
-    \end{tabular}
-  \end{center}
-\end{table}
-
-\begin{table}[htbp]
-  \label{tb:evl-pdf-list}
-  \caption{実験に用いるPDF}
-  \begin{center}
-    \begin{tabular}{|l|l|}
-    \hline
-    種別 & PDFのリンク  \\ \hline
-    論文 & 検証に使うPDFのURLを記入予定  \\ \hline
-    書籍 & 検証に使うPDFのURLを記入予定  \\ \hline
-    漫画 & 検証に使うPDFのURLを記入予定  \\ \hline
-    説明書 & 検証に使うPDFのURLを記入予定  \\ \hline
-    契約書 & 検証に使うPDFのURLを記入予定  \\ \hline
-    IR資料 & 検証に使うPDFのURLを記入予定  \\ \hline
-    会社説明資料 & 検証に使うPDFのURLを記入予定  \\ \hline
-    スライド & 検証に使うPDFのURLを記入予定  \\ \hline
+    種類  \\\hline\hline
+    論文 \\ \hline
+    書籍 \\ \hline
+    漫画 \\ \hline
+    説明書 \\ \hline
+    契約書 \\ \hline
+    IR資料 \\ \hline
+    会社説明資料 \\ \hline
+    スライド \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
 % textlint-enable
+
+\subsubsection{評価方法}
+次に、評価方法について説明する。
+
+まず、各PDFについてランダムに10ページを抽出する。
+そして、各ページを本アプリケーションで保存・再開し、閲覧状態の復元の成功率を評価する。
+なお、本実験の前提条件として、広告ブロッカーなどの拡張機能は無効の状態を仮定する。
+
+\subsubsection{実験する条件}
+PDFの閲覧状態の復元の評価において、実験する条件を説明する。
+PDFの保存機能はChrome拡張機能でのみサポートしている。
+そのため、本実験ではChrome拡張機能での保存および復元のみを実験する。
