@@ -25,6 +25,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
       reset\_password\_token & varchar & パスワードリセット時に用いる時限トークン \\\hline
       reset\_password\_sent\_at & timestamp & パスワードリセットメールを送った日時 \\\hline
       remember\_created\_at & timestamp & 最後のログインした日時 \\\hline
+      lambda & boolean & PDFのページ数を更新するLambda用権限を有しているか \\\hline
       created\_at & timestamp & 会員登録日時 \\\hline
       updated\_at & timestamp & ユーザ情報更新日時 \\\hline
       provider & varchar & 認証に利用した外部サービス \\\hline
@@ -42,6 +43,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
       \hline
       カラム名 & データ型 & 値の説明 \\\hline\hline
       id & bigint & ブックマークの識別子 \\\hline
+      user\_id & bigint & ブックマークを保存したユーザの識別子 \\\hline
       title & varchar & タイトル \\\hline
       content\_type & varchar & ブックマークの種類(WEB,動画,PDFなど) \\\hline
       url & varchar & URL \\\hline
@@ -50,15 +52,16 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
       thumbnail\_img\_url & varchar & サムネイル画像のURL \\\hline
       scroll\_position\_x & integer & 保存時のスクロール位置(横) \\\hline
       scroll\_position\_y & integer & 保存時のスクロール位置(縦) \\\hline
-      max\_scroll\_position\_x & integer & 保存時のページ長(横) \\\hline
-      max\_scroll\_position\_y & integer & 保存時のページ長(縦) \\\hline
+      window\_outer\_width & integer & 保存時のブラウザウィンドウの外側の幅 \\\hline
+      window\_outer\_height & integer & 保存時のブラウザウィンドウの外側の高さ \\\hline
       video\_playback\_position & integer & 保存時の動画再生位置 \\\hline
+      audio\_playback\_position & integer & 保存時の音声再生位置 \\\hline
+      liked & boolean & お気に入り \\\hline
+      pdf & string & PDFのスクリーンショットを保存しているストレージのURL \\\hline
       delete\_flag & boolean & 論理削除フラグ \\\hline
       created\_at & timestamp & 作成日時 \\\hline
       updated\_at & timestamp & 更新日時 \\\hline
       deleted\_at & timestamp & 論理削除日時 \\\hline
-      liked & boolean & お気に入り \\\hline
-      user\_id & bigint & ブックマークを保存したユーザの識別子 \\\hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -148,6 +151,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
         "uid": "example@example.com",
         "allow_password_change": true,
         "email": "example2@example.com",
+        "lambda": false,
         "created_at": "2019-05-12T20:48:24.000+09:00",
         "updated_at": "2019-05-12T20:48:24.000+09:00"
       }
@@ -193,8 +197,8 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
       "video_playback_position": 50,
       "scroll_position_x": 0,
       "scroll_position_y": 200,
-      "max_scroll_position_x": 0,
-      "max_scroll_position_y": 10000
+      "window_outer_width": 1440,
+      "window_outer_height": 1080
     }' 'https://web-shiori.herokuapp.com/v1/content'
   \end{verbatim}
 \end{itembox}
@@ -214,9 +218,10 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
         "thumbnail_img_url": "https://web-shiori.com/sample.jpg",
         "scroll_position_x": 0,
         "scroll_position_y": 500,
-        "max_scroll_position_x": 0,
-        "max_scroll_position_y": 1000,
-        "video_playback_position": 50,`
+        "window_outer_width": 1440,
+        "window_outer_height": 1080,
+        "video_playback_position": 50,
+        "audio_playback_position": 0,
         "liked": true,
         "delete_flag": false,
         "deleted_at": null,
@@ -276,11 +281,11 @@ ChromeのPDFビューワは、図\ref{fig:pdf-viewer-nav-bar-page-num}のよう�
   \caption{PDFのページ数を取得する処理の流れ}
   \label{fig:design-pdf-page-num-extract}
   \begin{center}
-    \includegraphics[bb=0 0 511 61,width=15cm]{img/040_design/design-pdf-page-num-extract.pdf}
+    \includegraphics[bb=0 0 511 161,width=15cm]{img/040_design/design-pdf-page-num-extract.pdf}
   \end{center}
 \end{figure}
 
-サーバ側では、取得したページ数をURLのフラグメントに付与する。
+サーバ側では、取得したページ数をURLのフラグメントに付与する。(例: \url{https://example.pdf#page=5})
 クライアントではこのURLでページを開くことで、PDFのページ数を復元できる。
 
 \section{まとめ}
