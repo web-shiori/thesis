@@ -27,12 +27,16 @@
 % textlint-enable
 
 今回の評価実験では、実際にWebページをブックマーク・再開し、本研究における復元の定義を満たしているか目視で確認し、復元成功率を示す。
+スクロール位置の復元・動画の再生位置の復元・音声の再生位置の復元・PDFのページ数の復元のそれぞれについて、評価に使用するWebページおよび評価方法を説明する。
 
-スクロール位置の復元の評価には、はてなブックマーク上でブックマークされたWebページのうち、2022年01月20日時点のホットエントリ\footnote{ブックマークしたユーザが多いWebページ}のうち重複を省いた28個のサイトを使用する。
-上記のサイトを評価に使用する理由は、Web上に存在するページには、一般的にブックマークの対象となるものとならないものがある。
-後者の例として、オンライン地図システムやメールシステムなどがある。
-本アプリケーションはブックマークシステムであるため、評価には一般的にブックマークの対象となるページに絞る必要がある。
-ソーシャルブックマーク上で多数ブックマークされたWebページを使用すれば、その要件を自然と満たせると考え、上記のWebページを評価に使用している。
+\input{src/061-1_evaluation_method_scroll_position.ja.tex}
+\input{src/061-2_evaluation_method_video.ja.tex}
+\input{src/061-3_evaluation_method_audio.ja.tex}
+\input{src/061-4_evaluation_method_pdf.ja.tex}
+
+
+% 後で消す
+
 
 動画の再生位置の復元の評価には、2021年のWebサイト別アクセス数ランキング\cite{The-50-Most-Visited-Websites-in-the-World}などの3つのサイト\cite{mmd-video-research}\cite{popular-video-service}を参考に、特に利用者が多く広く普及していると思われる動画サイト33個をピックアップし、使用した。
 
@@ -41,10 +45,3 @@
 PDFの評価には、PDFを表\ref{}の8種類に分け、各種類ごとに5つづつPDFを用意する。
 その上で、それぞれのPDFについてランダムに10ページを抽出する。
 そして、各ページを本アプリケーションで保存・再開し、保存時のページでPDFが開くことを評価する。
-
-なお、評価に使用したWebページおよびPDFは付録Aにすべて記載する。
-
-\input{src/061-1_evaluation_method_scroll_position.ja.tex}
-\input{src/061-2_evaluation_method_video.ja.tex}
-\input{src/061-3_evaluation_method_audio.ja.tex}
-\input{src/061-4_evaluation_method_pdf.ja.tex}
