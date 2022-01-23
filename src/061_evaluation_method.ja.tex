@@ -1,6 +1,7 @@
 \section{評価手法}
 本研究では、Webページの閲覧状態の復元の定義を表\ref{tb:re-intro-restore-definition}のように定義した。
 
+% textlint-disable
 \begin{table}[htbp]
   \begin{center}
     \caption{【再掲】本研究における閲覧状態の復元の定義}
@@ -8,19 +9,17 @@
     \begin{tabular}{|c|l|l|l|}
       \hline
       復元する項目 & 条件 &  復元の定義 \\\hline\hline
-      スクロール位置(縦) & 全て & 
+      スクロール位置 & 全て & 
         \begin{tabular}{l}
-          保存時の画面上限に位置しているコンテンツが\\画面上限に表示されている。 
+          保存時の画面左上に位置しているコンテンツが\\画面左上に表示されている。 
         \end{tabular}\\\hline
-      スクロール位置(横) & 全て & 
-        \begin{tabular}{l}
-          保存時の画面左端に位置しているコンテンツが\\画面左端に表示されている。 
-        \end{tabular}\\\hline
-      動画再生位置 & 動画・音声 & 保存時の再生位置(秒単位)から動画がはじまる。 \\\hline
+      動画再生位置 & 動画 & 保存時の再生位置(秒単位)から動画がはじまる。 \\\hline
+      音声再生位置 & 音声 & 保存時の再生位置(秒単位)から音声がはじまる。 \\\hline
       ページ数 & PDF & 保存時のページが開く。 \\\hline
     \end{tabular}
   \end{center}
 \end{table}
+% textlint-enable
 
 今回の評価実験では、実際にWebページをブックマーク・再開し、本研究における復元の定義を満たしているか目視で確認する。
 まず、スクロール位置の復元について様々な種類のWebページを用いて実験する。
