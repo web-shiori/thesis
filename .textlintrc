@@ -7,7 +7,8 @@
     "preset-ja-technical-writing": {
       "sentence-length": {
         "max": 100
-      }
+      },
+      "ja-no-redundant-expression": false
     },
     "prh": {
       "rulePaths" :["prh.yml"]
