@@ -1,62 +1,77 @@
-\subsection{動画/音声の復元}
-本項では、動画および音声の復元についての実験結果について評価し、考察する。
-表\ref{tb:evl-result-video}に動画の復元の実験結果を示す。
+\subsection{動画の再生位置の復元}
+本項では、動画の再生位置の復元について、本評価実験で得られた評価結果を示す。
+
+% 実験結果について説明する。
+% 条件別に説明する。どのサイトで復旧ができ、どのサイトではできなかったのか書く。復元成功率を説明する。
+% 動画サイトごとの条件別復旧可否を表にする
+% 復元成功率をグラフで示す。
+
+第一に、Chrome拡張機能で保存し、Chrome拡張機能から再開した場合の評価結果について説明する。
+本条件下では、評価を行った33個の動画サイトのうち、全体の約70\%にあたる23個のページで動画の再生位置を正しく復元できた。
+
+第二に、Chrome拡張機能で保存し、iOSアプリケーションから再開した場合の評価結果について説明する。
+本条件下では、評価を行った33個の動画サイトのうち、全体の約21\%にあたる7個のページで動画の再生位置を正しく復元できた。
+
+第三に、iOSのSafariで保存し、Chrome拡張機能から再開した場合の評価結果について説明する。
+本条件下では、評価を行った26個の動画サイトのうち、全体の約62\%にあたる16個のページで動画の再生位置を正しく復元できた。
+なお、一部の動画サイトではiOSのSafariでの再生に対応していない(アプリでしか再生できない)ため、本実験では除外している。
+これは後述するiOSのSafariで保存し、iOSアプリケーションから再開した場合の実験においても同様である。
+
+最後に、iOSのSafariで保存し、iOSアプリケーションから再開した場合の評価結果について説明する。
+本条件下では、評価を行った26個の動画サイトのうち、全体の約35\%にあたる9個のページで動画の再生位置を正しく復元できた。
+
+上記に示した、条件ごとの復元成功率を図\ref{fig:success-rate-video}に示す。
+また、条件別・動画サイト別の動画再生位置の復元可否を表\ref{tb:evl-result-video}にまとめる。
 
 % textlint-disable
+\begin{figure}[htbp]
+  \caption{条件別の動画再生位置の復元成功率}
+  \label{fig:success-rate-video}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/result/video/success-rate-video.pdf}
+  \end{center}
+\end{figure}
+
 \begin{table}[htbp]
-  \caption{動画}
+  \caption{条件別・動画サイト別の動画再生位置の復元可否}
   \label{tb:evl-result-video}
   \begin{center}
-    \begin{tabular}{rrr}
+    \begin{tabular}{|l|c|c|c|c|}
       \hline
-      条件 & 動画のファイル形式 & 再生位置の復元 \\ \hline \hline
-      Chrome拡張機能で保存・復元 & YouTube & 成功or失敗を書きます  \\ \hline
-      Chrome拡張機能で保存・復元 & Amazon Prime Video & --  \\ \hline
-      Chrome拡張機能で保存・復元 & Netflix & --  \\ \hline
-      Chrome拡張機能で保存・復元 & ABEMA & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & YouTube & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & Amazon Prime Video & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & Netflix & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & ABEMA & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & YouTube & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & Amazon Prime Video & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & Netflix & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & ABEMA & --  \\ \hline
-      iOSアプリケーションで保存・復元 & YouTube & --  \\ \hline
-      iOSアプリケーションで保存・復元 & Amazon Prime Video & --  \\ \hline
-      iOSアプリケーションで保存・復元 & Netflix & --  \\ \hline
-      iOSアプリケーションで保存・復元 & ABEMA & --  \\ \hline
-    \end{tabular}
-  \end{center}
-\end{table}
-% textlint-enable
-
-表\ref{tb:evl-result-audio}に音声の復元の実験結果を示す。
-
-% textlint-disable
-\begin{table}[htbp]
-  \caption{音声}
-  \label{tb:evl-result-audio}
-  \begin{center}
-    \begin{tabular}{rrrrr}
-      \hline
-      条件 & 音声のファイル形式 & 再生位置の復元 \\ \hline \hline
-      Chrome拡張機能で保存・復元 & radiko & 成功or失敗を書きます  \\ \hline
-      Chrome拡張機能で保存・復元 & Apple Podcast & --  \\ \hline
-      Chrome拡張機能で保存・復元 & Spotify & --  \\ \hline
-      Chrome拡張機能で保存・復元 & Audible & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & radiko & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & Apple Podcast & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & Spotify & --  \\ \hline
-      Chrome拡張機能で保存→iOSアプリケーションで復元 & Audible & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & radiko & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & Apple Podcast & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & Spotify & --  \\ \hline
-      iOSアプリケーションで保存→Chrome拡張機能で復元 & Audible & --  \\ \hline
-      iOSアプリケーションで保存・復元 & radiko & --  \\ \hline
-      iOSアプリケーションで保存・復元 & Apple Podcast & --  \\ \hline
-      iOSアプリケーションで保存・復元 & Spotify & --  \\ \hline
-      iOSアプリケーションで保存・復元 & Audible & --  \\ \hline
+      動画サイト & Chrome→Chrome & Chrome→iOS & iOS→Chrome & iOS→iOS \\ \hline \hline
+      Amazon Prime Video & \checkmark & &  &  \\ \hline
+      Netflix & & & & \\ \hline
+      hulu & \checkmark & & & \\ \hline
+      ABEMA & \checkmark & & & \\ \hline
+      Paravi & \checkmark & & & \\ \hline
+      TELASA  & & & & \\ \hline
+      FODプレミアム & \checkmark & & & \\ \hline
+      Youtube  & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+      xvideos  & & & & \checkmark \\ \hline
+      pornhub  & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+      xnxx  & & & \checkmark & \checkmark \\ \hline
+      Zoomレコーディング & \checkmark & & & \\ \hline
+      xhamster & \checkmark & & & \\ \hline
+      Twitch & \checkmark & & \checkmark & \\ \hline
+      bilibili & & & & \checkmark \\ \hline
+      Tiktok  & \checkmark & & & \\ \hline
+      ニコニコ動画 & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+      FC2動画  & \checkmark & & \checkmark & \\ \hline
+      Dailymotion & & & & \\ \hline
+      Gyao! & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+      ツイキャス & \checkmark & & \checkmark & \\ \hline
+      パンドラTV & \checkmark & & \checkmark & \\ \hline
+      PeeVee & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+      DMM  & & & & \\ \hline
+      rakutenTV & & & & \\ \hline
+      TVer  & \checkmark & & & \\ \hline
+      Mirrativ & & & & \\ \hline
+      Mildom  & \checkmark & & \checkmark & \\ \hline
+      OPENREC.tv & \checkmark & \checkmark & \checkmark & \\ \hline
+      YOUKU & \checkmark & & \checkmark & \\ \hline
+      Sina Video & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+      iQIYI  & \checkmark & & \checkmark & \\ \hline
+      Tencent Video & & & & \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
