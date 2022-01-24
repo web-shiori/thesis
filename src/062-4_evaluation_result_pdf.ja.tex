@@ -1,35 +1,34 @@
 \subsection{PDFの復元}
 本項では、PDFの閲覧状態の復元について、本評価実験で得られた評価結果を示す。
+表\ref{tb:evl-pdf-list}に示したPDFの種類別にページ数の復元の評価結果を示す。
 
+論文は5つのPDFで計46ページをテストし、約71\%にあたる33ページで復元に成功した。
 
+書籍は5つのPDFで計50ページをテストし、約54\%にあたる27ページで復元に成功した。
 
+漫画は5つのPDFで計50ページをテストし、約46\%にあたる23ページで復元に成功した。
 
-図\ref{fig:local-success-rate-pdf}にローカルPC上のPDFの復元の評価結果を示す。
-図\ref{fig:chrome-chrome-success-rate-pdf}にChrome拡張機能で保存したPDFをChrome上で復元した場合の実験結果を示す。
-図\ref{fig:chrome-ios-success-rate-pdf}にChrome拡張機能で保存したPDFをiOSアプリケーション上で復元した場合の実験結果を示す。
+説明書(マニュアル)は5つのPDFで計50ページをテストし、約92\%にあたる46ページで復元に成功した。
+
+契約書は5つのPDFで計23ページをテストし、約85\%にあたる20ページで復元に成功した。
+
+IR資料は5つのPDFで計50ページをテストし、約88\%にあたる44ページで復元に成功した。
+
+会社説明資料は5つのPDFで計50ページをテストし、約80\%にあたる40ページで復元に成功した。
+
+スライドは5つのPDFで計50ページをテストし、約54\%にあたる27ページで復元に成功した。
+
+上記を平均すると、約70\%の確率でPDFのページ数を復元することが出来た。
+
+上記に示した、種類別の復元成功率を図\ref{fig:success-rate-pdf}に示す。
+
 
 % textlint-disable
 \begin{figure}[htbp]
-  \caption{ローカルPC上のPDFの復元の成功率}
-  \label{fig:local-success-rate-pdf}
+  \caption{種類別PDFのページ数の復元の成功率}
+  \label{fig:success-rate-pdf}
   \begin{center}
-    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/success-rate-pdf.pdf}
-  \end{center}
-\end{figure}
-
-\begin{figure}[htbp]
-  \caption{Chrome拡張機能で保存→Chromeでの復元(Web上のPDF)の成功率}
-  \label{fig:chrome-chrome-success-rate-pdf}
-  \begin{center}
-    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/success-rate-pdf.pdf}
-  \end{center}
-\end{figure}
-
-\begin{figure}[htbp]
-  \caption{Chrome拡張機能で保存→iOSでの復元(Web上のPDF)の成功率}
-  \label{fig:chrome-ios-local-success-rate-pdf}
-  \begin{center}
-    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/success-rate-pdf.pdf}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/result/pdf/success-rate-pdf.pdf}
   \end{center}
 \end{figure}
 % textlint-enable
