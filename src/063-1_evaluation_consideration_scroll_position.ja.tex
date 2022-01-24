@@ -2,31 +2,84 @@
 
 \subsubsection{復元に失敗した原因の考察}
 スクロール位置の復元は、実験条件によって成功率に大きな差が見られた。
-保存・再開をともにChrome拡張機能で行った場合の成功率は、保存時・復元時のブラウザのウィンドウサイズに関わらず約82\%だった。
+保存・再開をともにChrome拡張機能で行った場合の成功率は、保存時・復元時のブラウザのウィンドウサイズに関わらず約86\%だった。
 一方、保存をiOSのSafariで、再開をiOSアプリケーションで行った場合の成功率は約54\%と比較的低い結果となった。
 端末・ブラウザを跨いだ復元はほとんど成功しなかった。
 
+保存・再開をともにChrome拡張機能で行ったケースでは、復元に失敗したWebページは2種類に分けられる。
 
-保存・再開をともにChrome拡張機能で行ったケースでは、復元に失敗したWebページは3種類に分けられる。
-
-1種類目は、ページ内に表示されている広告のサイズが毎回異なるWebページで、2つのWebページが該当する。
-この種類のWebページの例を図\ref{}と図\ref{}に示す。
-
-2種類目は、広告がページの読み込み完了後に差し込まれる形で表示されるWebページで、2つのWebページが該当する。
+1種類目は、広告がページの読み込み完了後に差し込まれる形で表示されるWebページで、3つのWebページが該当する。
 本アプリケーションでは、ページの読み込みが完了したタイミングでスクロール位置を復元しようとする。
 そのため、このようなWebページではスクロール後にさらにコンテンツが変化してしまうため、
 
-3種類目は、本アプリケーションによるスクロールが機能しないWebページで、1つのWebページが該当する。
+2種類目は、本アプリケーションによるスクロールが機能しないWebページで、1つのWebページが該当する。
 これは、WebページがJavaScriptの実行をブロックしているものと推測される。
-上記の失敗要因と該当するWebページの割合を図\ref{}に示す。
+上記の失敗要因と該当するWebページの割合を図\ref{fig:evl-consideration-scroll-position-cause-ratio-chrome}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当するWebページの割合(保存・再開をともにChrome拡張機能で行ったケース)}
+  \label{fig:evl-consideration-scroll-position-cause-ratio-chrome}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/scroll_position/cause-ratio-chrome.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
 
 保存をiOSのSafariで、再開をiOSアプリケーションで行ったケースでは、復元に失敗したWebページは4種類に分けられる。
 
-1-3種類目は、保存・再開をともにChrome拡張機能で行ったケースで説明したものと同様である。
+1・2種類目は、保存・再開をともにChrome拡張機能で行ったケースで説明したものと同様である。
+なお、iOSアプリケーションでは2種類目の原因である本アプリケーションによるスクロールが機能しないWebページは2つ存在した。
 
-4種類目は、iOSのSafariと本アプリケーション内のブラウザとでWebページのヘッダの表示領域が異なるページであり、6つのWebページが該当する。
-これは図\ref{}および\ref{}に示したように、Safariとアプリケーション内ブラウザ間で画面の表示領域が異なるために、同じ座標までスクロールしても表示がずれてしまう。
-上記の失敗要因と該当するWebページの割合を図\ref{}に示す。
+3種類目は、iOSのSafariと本アプリケーション内のブラウザとでWebページのヘッダの表示領域が異なるページであり、7つのWebページが該当する。
+これは図\ref{}および\ref{}に示すように、Safariとアプリケーション内ブラウザ間で画面の表示領域が異なるために、同じ座標までスクロールしても表示がずれてしまう。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \begin{tabular}{cc}
+    \begin{minipage}[t]{0.45\hsize}
+      \caption{Safariとアプリ内のブラウザで表示が異なるページの例(Safari)}
+      \label{fig:evl-consideration-scroll-position-ios-diff-safari}
+      \begin{center}
+        \includegraphics[bb=0 0 585 1266,width=5cm]{img/060_evaluation/consideration/scroll_position/example/ios-diff-safari.pdf}
+      \end{center}
+    \end{minipage} &
+
+    \begin{minipage}[t]{0.45\hsize}
+      \caption{Safariとアプリ内のブラウザで表示が異なるページの例(アプリ内ブラウザ)}
+      \label{fig:evl-consideration-scroll-position-ios-diff-wkwebview}
+      \begin{center}
+        \includegraphics[bb=0 0 585 1266,width=5cm]{img/060_evaluation/consideration/scroll_position/example/ios-diff-wkwebview.pdf}
+      \end{center}
+    \end{minipage}
+  \end{tabular}
+\end{figure}
+% textlint-enable
+
+4種類目は、広告がコンテンツに重なるようにして表示されてしまうWebページで、1つのWebページが該当する。
+これは図\ref{fig:evl-consideration-scroll-position-example-ios-ad-overrap}に示すような表示で、スマートフォンのブラウザのみで起きる現象だった。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{広告がコンテンツに重なるようにして表示されてしまうWebページ}
+  \label{fig:evl-consideration-scroll-position-example-ios-ad-overrap}
+  \begin{center}
+    \includegraphics[bb=0 0 585 1266,width=5cm]{img/060_evaluation/consideration/scroll_position/example/ios-ad-overrap.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+上記の失敗要因と該当するWebページの割合を図\ref{fig:evl-consideration-scroll-position-cause-ratio-ios}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当するWebページの割合(保存をiOSのSafariで、再開をiOSアプリケーションで行ったケース)}
+  \label{fig:evl-consideration-scroll-position-cause-ratio-ios}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/scroll_position/cause-ratio-ios.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
 
 端末・ブラウザを跨いだ復元では、失敗の原因は3種類に分けられる。
 
@@ -39,7 +92,17 @@
 また、iOSアプリケーションではアプリ内ブラウザのサイズを変更できないため、スクロール位置の復元が困難である。
 
 3種類目は、本アプリケーションによるスクロールが機能しないWebページで、1つのWebページが該当する。
-上記の失敗要因と該当するWebページの割合を図\ref{}に示す。
+上記の失敗要因と該当するWebページの割合を図\ref{fig:evl-consideration-scroll-position-cause-ratio-multi-device}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当するWebページの割合(保存時はMacのChrome・復元時はiOSのsafariで実験したケース)}
+  \label{fig:evl-consideration-scroll-position-cause-ratio-multi-device}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/scroll_position/cause-ratio-multi-device.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
 
 \subsubsection{改善点についての考察}
 これらの結果から、スクロール位置の復元成功率を向上させるためには、3つの方法が考えられる。
