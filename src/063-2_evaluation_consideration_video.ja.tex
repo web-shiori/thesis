@@ -4,7 +4,133 @@
 % 失敗した原因について分析する
 % グラフ貼る
 
+動画再生位置の復元は、条件によって成功率に大きな差が見られた。
+保存・再開をともにChrome拡張機能で行った場合の成功率は、約70\%と比較的高い結果を示した。
+保存をiOSのSafariで行い、Chrome拡張機能で復元した場合の成功率も約62\%とまずまずの結果だった。
+一方、保存をiOSのSafariで、再開をiOSアプリケーションで行った場合の成功率は約35\%と低い数字を示した。
+保存をChrome拡張機能で行い、iOSアプリケーションで復元した場合の成功率はさらに低く、約21\%だった。
+
+\paragraph{保存・再開をともにChrome拡張機能で行ったケース}
+
+保存・再開をともにChrome拡張機能で行ったケースでは、復元に失敗した動画サイトは5種類に分けられる。
+
+1種類目は、個別の動画へのリンクを取得できないもので、3つのサイトが該当する。
+これは、各動画の表示および再生をリンクではなくページ内のJavaScriptで制御しているものと考えられる。
+
+2種類目は、HTMLのvideoタグを使用していないため、本アプリケーションの手法では動画再生位置を取得できないもので、2つのサイトが該当する。
+
+3種類目は、動画本編ではなく動画広告の再生位置を誤って取得してしまうサイトで、2つのサイトが該当する。
+
+4種類目は、ページの読み込みが完了してから動画が初期化されるまでの間にタイムラグがあり、本システムの手法では復元できないもので、2つのサイトが該当する。
+本システムでは、ページの読み込みが完了したタイミングで動画の再生位置を復元する。
+そのため、ページの読み込みが完了した時点で動画が初期化されていない場合、動画再生位置を復元することができない。
+
+5種類目は、JavaScriptの実行をブロックしているサイトで、1つのサイトが該当する。
+
+上記の失敗要因と該当する動画サイトの割合を図\ref{fig:evl-consideration-video-cause-ratio-chrome}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する動画サイトの割合(保存・再開をともにChrome拡張機能で行ったケース)}
+  \label{fig:evl-consideration-video-cause-ratio-chrome}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/video/cause-ratio-chrome.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+\paragraph{保存をiOSのSafariで行い、Chrome拡張機能で復元したケース}
+保存をiOSのSafariで行い、Chrome拡張機能で復元したケースでは、復元に失敗した動画サイトは4種類に分けられる。
+
+1種類目は、個別の動画へのリンクを取得できないもので、3つのサイトが該当する。
+
+2種類目は、HTMLのvideoタグを使用していないため、本アプリケーションの手法では動画再生位置を取得できないもので、2つのサイトが該当する。
+
+3種類目は、サインインに必要な認証情報が必要なため、復元に失敗したもので、1つのサイトが該当する。
+
+4種類目は、原因不明のもので、4つのサイトが該当する。
+
+上記の失敗要因と該当する動画サイトの割合を図\ref{fig:evl-consideration-video-cause-ratio-ios-chrome}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する動画サイトの割合(保存をiOSのSafariで行い、Chrome拡張機能で復元したケース)}
+  \label{fig:evl-consideration-video-cause-ratio-ios-chrome}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/video/cause-ratio-ios-chrome.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+\paragraph{保存をiOSのSafariで、再開をiOSアプリケーションで行ったケース}
+保存をiOSのSafariで、再開をiOSアプリケーションで行ったケースでは、復元に失敗した動画サイトは5種類に分けられる。
+
+1種類目は、個別の動画へのリンクを取得できないもので、3つのサイトが該当する。
+
+2種類目は、HTMLのvideoタグを使用していないため、本アプリケーションの手法では動画再生位置を取得できないもので、2つのサイトが該当する。
+
+3種類目は、iOSアプリケーション内のブラウザで復元が機能しないサービスで、7つのサイトが該当する。
+これは、アプリケーション内ブラウザとして使用しているWKWebViewの不具合によるものと推測される。
+
+4種類目は、サインインに必要な認証情報が必要なため、復元に失敗したもので、1つのサイトが該当する。
+
+5種類目は、原因不明のもので、4つのサイトが該当する。
+
+上記の失敗要因と該当する動画サイトの割合を図\ref{fig:evl-consideration-video-cause-ratio-ios}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する動画サイトの割合(保存をiOSのSafariで、再開をiOSアプリケーションで行ったケース)}
+  \label{fig:evl-consideration-video-cause-ratio-ios}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/video/cause-ratio-ios.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+\paragraph{保存をChrome拡張機能で行い、iOSアプリケーションで復元したケース}
+保存をChrome拡張機能で行い、iOSアプリケーションで復元したケースでは、復元に失敗した動画サイトは7種類に分けられる。
+
+1種類目は、個別の動画へのリンクを取得できないもので、3つのサイトが該当する。
+
+2種類目は、HTMLのvideoタグを使用していないため、本アプリケーションの手法では動画再生位置を取得できないもので、2つのサイトが該当する。
+
+3種類目は、動画本編ではなく動画広告の再生位置を誤って取得してしまうサイトで、2つのサイトが該当する。
+
+4種類目は、iOSアプリケーション内のブラウザで復元が機能しないもので、13つのサイトが該当する。
+これは、アプリケーション内ブラウザとして使用しているWKWebViewの不具合によるものと推測される。
+
+5種類目は、iOSアプリケーションではアプリでの視聴にしか対応していないサイトで、3つのサイトが該当する。
+
+6種類目は、サインインに必要な認証情報が必要なため、復元に失敗したもので、1つのサイトが該当する。
+
+7種類目は、JavaScriptの実行をブロックしているサイトで、1つのサイトが該当する。
+
+上記の失敗要因と該当する動画サイトの割合を図\ref{fig:evl-consideration-video-cause-ratio-chrome-ios}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する動画サイトの割合(保存をChrome拡張機能で行い、iOSアプリケーションで復元したケース)}
+  \label{fig:evl-consideration-video-cause-ratio-chrome-ios}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/video/cause-ratio-chrome-ios.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
 \subsubsection{改善点についての考察}
-% どうすればうまくいくかについて考察する 
-% 1. アドブロッカーを有効にする
-% 2. iOSアプリ内Webブラウザのデバッグ、もしくは独自に開発する
+これらの結果から、動画再生位置の復元成功率を向上させるためには、3つの方法が考えられる。
+
+1つ目は、アドブロッカーなどを有効にすることで広告を非表示にする方法である。
+動画再生位置の復元に失敗したサイトの中には、誤って動画広告の再生位置を復元してしまうケースがいくつか存在した。
+広告が非表示であれば、こうしたケースを防止できる。
+
+2つ目は、cookieなどを保存することで認証状態を復元する方法である。
+一部のサイトでは、端末間で認証状態を引き継ぐことが出来ないために動画再生位置の復元に失敗していた。
+認証状態を引き継ぐことができれば、上記のケースに対応することができる。
+ただし、この方法はセキュリティ上問題があると考えられるので、実際に行う場合は十分な検討が必要である。
+
+3つ目は、iOSアプリケーション内のブラウザで動画再生位置の復元が機能するように改修する方法である。
+今回テストした多くの動画サイトでは、Chrome上では復元できる一方で、iOSアプリ内のブラウザでは復元が機能しなかった。
+これはiOSアプリ内ブラウザとして使用しているWKWebViewの不具合によるものと考えられる。
+よって、WKWebViewのデバッグを行うか、独自にアプリケーション内ブラウザを開発すれば、上記のケースでも再生位置を復元できるようになる。
