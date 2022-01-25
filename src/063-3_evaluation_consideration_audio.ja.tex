@@ -1,0 +1,80 @@
+\subsection{音声再生位置の復元}
+\subsubsection{復元に失敗した原因の考察}
+音声再生位置の復元は、いずれの条件においても低い成功率に終わった。
+保存・再開をともにChrome拡張機能で行った場合の成功率は、約33\%だった。
+一方、保存をiOSのSafariで、再開をiOSアプリケーションで行った場合の成功率はさらに低く約13\%だった。
+保存をChrome拡張機能で行い、iOSアプリケーションで復元した場合の成功率は約26\%だった。
+保存をiOSのSafariで行い、Chrome拡張機能で復元した場合の成功率は最も低い約9\%に留まった。
+
+\paragraph{保存・再開をともにChrome拡張機能で行ったケース}
+
+保存・再開をともにChrome拡張機能で行ったケースでは、復元に失敗した音声配信サービスは2種類に分けられる。
+
+1種類目は、HTMLのaudioタグを使用していないため、本アプリケーションの手法では音声再生位置を取得できないサービスで、14のサービスが該当する。
+
+2種類目は、個別の音声コンテンツへのリンクを取得できないサービスで、2つのサービスが該当する。
+これは、各音声コンテンツの表示および再生をリンクではなくページ内のJavaScriptで制御しているものと考えられる。
+上記の失敗要因と該当する音声配信サービスの割合を図\ref{fig:evl-consideration-audio-cause-ratio-chrome}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する音声配信サービスの割合(保存・再開をともにChrome拡張機能で行ったケース)}
+  \label{fig:evl-consideration-audio-cause-ratio-chrome}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/audio/cause-ratio-chrome.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+\paragraph{保存をiOSのSafariで、再開をiOSアプリケーションで行ったケース}
+保存をiOSのSafariで、再開をiOSアプリケーションで行ったケースでは、復元に失敗した音声配信サービスは4種類に分けられる。
+
+1種類目は、HTMLのaudioタグを使用していないため、本アプリケーションの手法では音声再生位置を取得できないサービスで、14のサービスが該当する。
+
+2種類目は、個別の音声コンテンツへのリンクを取得できないサービスで、2つのサービスが該当する。
+
+3種類目は、iOSアプリケーション内のブラウザで復元が機能しないサービスで、3つのサービスが該当する。
+これは、アプリケーション内ブラウザとして使用しているWKWebViewの不具合によるものと推測される。
+
+4種類目は、サインインに必要な認証情報が必要なため、復元に失敗したもので、1つのサービスが該当する。
+
+上記の失敗要因と該当する音声配信サービスの割合を図\ref{fig:evl-consideration-audio-cause-ratio-ios}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する音声配信サービスの割合(保存をiOSのSafariで、再開をiOSアプリケーションで行ったケース)}
+  \label{fig:evl-consideration-audio-cause-ratio-ios}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/audio/cause-ratio-ios.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+\paragraph{保存をChrome拡張機能で行い、iOSアプリケーションで復元したケース}
+保存をChrome拡張機能で行い、iOSアプリケーションで復元したケースでは、失敗原因と該当サービスの割合は保存をiOSのSafariで、再開をiOSアプリケーションで行ったケースと同様だった。
+
+\paragraph{保存をiOSのSafariで行い、Chrome拡張機能で復元したケース}
+保存をiOSのSafariで行い、Chrome拡張機能で復元したケースでは、復元に失敗した音声配信サービスは3種類に分けられる。
+
+1種類目は、HTMLのaudioタグを使用していないため、本アプリケーションの手法では音声再生位置を取得できないサービスで、14のサービスが該当する。
+
+2種類目は、個別の音声コンテンツへのリンクを取得できないサービスで、2つのサービスが該当する。
+
+3種類目は、サインインに必要な認証情報が必要なため、復元に失敗したもので、1つのサービスが該当する。
+
+上記の失敗要因と該当する音声配信サービスの割合を図\ref{fig:evl-consideration-audio-cause-ratio-ios-chrome}に示す。
+
+% textlint-disable
+\begin{figure}[htbp]
+  \caption{失敗要因と該当する音声配信サービスの割合(保存をiOSのSafariで行い、Chrome拡張機能で復元したケース)}
+  \label{fig:evl-consideration-audio-cause-ratio-ios-chrome}
+  \begin{center}
+    \includegraphics[bb=0 0 600 371,width=15cm]{img/060_evaluation/consideration/audio/cause-ratio-ios-chrome.pdf}
+  \end{center}
+\end{figure}
+% textlint-enable
+
+\subsubsection{改善点についての考察}
+これらの結果から、音声再生位置の復元成功率を向上させるためには、iOSアプリケーション内のブラウザであるWKWebViewにおいて音声の復元を可能にする必要がある。
+そのためには、WKWebViewのデバッグを行うか、独自にアプリケーション内ブラウザを開発する方法が考えられる。
+なお、HTMLのaudioタグを使用していない音声配信サービスへの対応方法は、現状見つかっていない。
