@@ -1,0 +1,76 @@
+\subsection{音声の再生位置の復元の評価}
+本項では、本研究で定義した『音声の閲覧状態の復元』の評価方法について説明する。
+
+\subsubsection{評価に使用するWebページ}
+まず、音声の再生位置の復元の評価に使用するWebページについて述べる。
+
+% textlint-disable
+音声の再生位置の復元の評価には、『いちばんやさしい音声配信ビジネスの教本 人気講師が教える新しいメディアの基礎』\cite{}に掲載されている音声配信サービスのうち、Webブラウザ上で閲覧できる24個のサービスを使用した。
+% textlint-enable
+評価に用いる音声配信サービスの一覧を表\ref{tb:evl-audio-service-list}に示す。
+なお、評価に使用した音声のURLは付録A\ref{chap:appendix-a}にすべて記載する。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-audio-service-list}
+  \caption{評価に用いる音声配信サービス一覧}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    音声配信サービス  \\\hline\hline
+    Audible \\ \hline
+    Amazon Music \\ \hline
+    LINE MUSIC \\ \hline
+    YouTube Music \\ \hline
+    うたパス \\ \hline
+    Audiostart \\ \hline
+    NHKラジオ らじる★らじる \\ \hline
+    popln Wave \\ \hline
+    himalaya \\ \hline
+    Radiotalk \\ \hline
+    REC. \\ \hline
+    Spoon \\ \hline
+    Voicy \\ \hline
+    Writone \\ \hline
+    こえのブログ \\ \hline
+    AuDee \\ \hline
+    radiko \\ \hline
+    SPINEAR \\ \hline
+    SoundCloud \\ \hline
+    Castbox \\ \hline
+    Google Podcasts \\ \hline
+    Podcast Addict \\ \hline
+    Spotify for Podcasters \\ \hline
+    Wondery \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
+
+\subsubsection{評価方法}
+次に、評価方法について説明する。
+音声の再生位置の復元の評価では、実際にWebページ上の音声をブックマーク・再開し、音声の再生位置の復元の成功率を評価する。
+『音声再生位置の復元』の定義は、第3章\ref{chap:web-snapshot-system-restore-definition}で説明した通りである。
+
+なお、本実験の前提条件として、広告ブロッカーなどの拡張機能は無効の状態を仮定する。
+
+\subsubsection{実験する条件}
+動画の再生位置の復元の評価において、実験する条件を説明する。
+本実験では、表\ref{tb:evl-audio-audio-conditions}のように、Chrome拡張機能/iOSアプリケーションでの保存・復元を4パターン検証する。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:evl-audio-audio-conditions}
+  \caption{音声再生位置の復元の評価において実験する条件}
+  \begin{center}
+    \begin{tabular}{|l|}
+    \hline
+    実験条件  \\\hline\hline
+    Chrome拡張機能で保存→Chrome拡張機能で復元 \\ \hline
+    Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
+    iOSアプリケーションで保存→Chrome拡張機能で復元 \\ \hline
+    iOSアプリケーションで保存→iOSアプリケーションで復元 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable

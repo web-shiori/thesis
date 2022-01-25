@@ -6,7 +6,10 @@
 
 \subsection{iOSアプリケーション実装}
 本節では、iOSアプリケーションの実装について述べる。
-iOSアプリケーションでは、基本的な復元及び動画・音声の復元の2種類の復元に対応している。
+iOSアプリケーションでは、スクロール位置の復元及び動画・音声の復元の3種類の復元に対応している。
+iOSアプリケーションでは、以下の2つの理由でPDFの復元には対応していない。
+1つ目の理由は、iOSアプリケーションからブラウザのスクリーンショットを保存できないためである。
+2つ目の理由は、iOSアプリケーション内のブラウザがURLフラグメントによるPDFのページ数の変更に対応していないためである。
 
 \subsubsection{認証モジュール}
 本項では、認証モジュールについて説明する。
@@ -59,6 +62,7 @@ ShareExtentionとは、Appleが提供するAppExtension\cite{app-extension}の1�
 ShareExtensionはブラウザ上でJavaScriptプログラムを実行し、Webページのデータを取得する。
 表\ref{tb:impl-ios-data-js-api}に、JavaScriptで取得するデータと取得するために用いるAPIをまとめる。
 なお、動画の再生位置はWebページのDOM内で最上位に位置する動画のデータのみを取得する。
+音声についても同様とする。
 
 % textlint-disable
 \begin{table}[htbp]
@@ -70,12 +74,12 @@ ShareExtensionはブラウザ上でJavaScriptプログラムを実行し、Web�
     取得するデータ & 型 & API \\ \hline
     URL & String & Document.URL \\ \hline
     ページタイトル & String & Document.title \\ \hline
-    スクロール位置(縦) & Int & Element.scrollTop \\ \hline
-    スクロール位置(横) & Int & Element.scrollLeft \\ \hline
-    ページ長(縦) & Int & Element.scrollHeight \\ \hline
-    ページ長(横) & Int & Element.scrollWidth \\ \hline
-    動画再生位置 & Double & HTMLMediaElement.currentTime \\ \hline
-    ズーム率 & Int &  \\ \hline
+    画面左に表示されているコンテンツのX座標 & Int & Element.scrollLeft \\ \hline
+    画面左に表示されているコンテンツのY座標 & Int & Element.scrollTop \\ \hline
+    ブラウザウィンドウの外側の幅 & Int & Window.outerWidth \\ \hline
+    ブラウザウィンドウの外側の高さ & Int & Window.outerHeight \\ \hline
+    動画再生位置 & Integer & HTMLMediaElement.currentTime \\ \hline
+    音声再生位置 & Integer & HTMLMediaElement.currentTime \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -111,16 +115,8 @@ ShareViewControllerは、取得したデータにブラウザの情報をメタ�
 
 本モジュールの機能はWebViewControllerというコントローラーが提供する。
 WebViewControllerは、WKWebViewというiOSアプリ内専用のブラウザでブックマークしたWebページを表示する。
-ブックマークが選択されると、WebViewControllerは保存時と現在のスクロール位置/ページ長/ブラウザ/ズーム率などの情報から適切なスクロール位置を計算する。
-この計算結果に基づいてWebページをスクロールすると、ブックマーク時点で画面上限に位置していたコンテンツが、WKWebViewの画面の上限にちょうど表示される。
-このスクロール位置を計算するアルゴリズムは以下の通りである。
-
-\begin{equation}
-スクロール位置 = スクロール位置
-\end{equation}
-
 Webページの読み込みが完了すると、WebViewController内のwebView(\_:didFinish:)\cite{did-finish}というハンドラ関数が呼び出される。
-この関数は、まずwindow.scrollToというAPIを利用して計算結果の分だけWebページをスクロールする。
+この関数は、まずwindow.scrollToというAPIを利用して、保存時に取得した座標までWebページをスクロールする。
 その上で、Webページ内に動画が存在する場合は、videoタグのcurrentTimeに保存時の動画再生位置を設定する。
 なお、保存時と同様、再生位置を復元するのはWebページ内のDOMの最上位の動画のみである。
-
+音声についても同様の処理を行う。
