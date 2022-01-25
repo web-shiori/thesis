@@ -27,8 +27,31 @@ WebAPIについては、認証関連API・コンテンツ関連API・フォル�
 
 加えて、ブックマークの保存時にコンテンツの種類を自動的に判定し、メタデータとして保存する。
 この時、コンテンツの種類がPDFであった場合には、URLのフラグメントにページ数を付与する。
-
 その他、サーバ側ではサムネイル画像が存在しない場合にデフォルトの画像URLを設定したり、保存日時の追加などの処理も行う。
+
+また、保存された動画が、クエリパラメータによる再生位置の指定に対応しているサイトのものであった場合、URLのクエリパラメータに再生位置を付与する(例: \url{https://youtu.be/some-video?t=500})。
+クライアント側では、このURLを開くだけで動画再生位置を復元できる。
+クエリパラメータによる再生位置の指定に対応しているサイトの一覧と、クエリパラメータの形式を表\ref{tb:impl-server-video-query-params}にまとめる。
+
+% textlint-disable
+\begin{table}[htbp]
+  \label{tb:impl-server-video-query-params}
+  \caption{クエリパラメータによる再生位置の指定に対応しているサイトの一覧}
+  \begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    動画サイト & クエリパラメータの形式 \\ \hline \hline
+    YouTube & ?t=330 \\ \hline
+    ニコニコ動画 & ?from=330 \\ \hline
+    OPENREC.tv & ?t=50 \\ \hline
+    Dailymotion & ?start=50 \\ \hline
+    Pornhub & \&t=50 \\ \hline
+    xhamster & ?t=50 \\ \hline
+    Twitch & ?t=00h05m30s \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+% textlint-enable
 
 \subsubsection{フォルダ関連API}
 本項では、フォルダの操作に関連するAPIについて説明する。
