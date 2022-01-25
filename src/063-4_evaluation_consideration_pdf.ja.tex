@@ -24,11 +24,19 @@ Amazon Textract の学習済み機械学習モデルは、請求書、領収書�
 ドキュメントのレイアウトとページ上の重要な要素を自動的に検出
 \end{quote}
 するという特徴を持っている。
-そのため、ページ内に絵や図などが大きく表示されている場合、それらを自動的に重要な要素として認識してしまい、ナビゲーションバーに表示されているPDFのページ数を認識しづらいのではないかと考えられる。
+そのため、図\ref{fig:example-figure-pdf}\cite{}のようにページ内に絵や図などが大きく表示されている場合、それらを自動的に重要な要素として認識してしまい、ナビゲーションバーに表示されているPDFのページ数を認識しづらいのではないかと考えられる。
 実際に、今回の評価実験で使用したPDFをページ内に絵や図が大きく表示されているものとそうでないものに分けた場合の復元成功率を\ref{fig:success-rate-figure-or-not-pdf}に示す。
 ページ内に絵や図が大きく表示されているPDFでは復元成功率は約46\%と低いのに対して、そうでないPDFでは約79\%と高い成功率を示している。
 
 % textlint-disable
+\begin{figure}[htbp]
+  \caption{ページ内に絵や図などが大きく表示されているPDFの例}
+  \label{fig:example-figure-pdf}
+  \begin{center}
+    \includegraphics[bb=0 0 1918 998,width=15cm]{img/060_evaluation/consideration/pdf/example/example-pdf.pdf}
+  \end{center}
+\end{figure}
+
 \begin{figure}[htbp]
   \caption{ビジネス向けPDFとそうでないPDFの復元成功率}
   \label{fig:success-rate-business-or-not-pdf}
