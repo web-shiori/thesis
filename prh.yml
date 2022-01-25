@@ -18,3 +18,9 @@ rules:
     pattern: /Go言語/
   - expected: コンテンツ関連API
     pattern: /ブックマーク関連API/
+  - expected: YouTube
+    pattern: /youtube|Youtube/
+  - expected: XVideos
+    pattern: /xvideos/
+  - expected: Pornhub
+    pattern: /pornhub/
