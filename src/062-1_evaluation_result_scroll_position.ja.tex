@@ -4,7 +4,6 @@
 まず、保存時と再開時の条件が同じ場合の評価結果を説明する。
 Chrome拡張機能(条件1とする)では、評価を行った28個のWebページのうち、全体の約86\%にあたる24個のページでスクロール位置を正しく復元できた。
 iOSアプリケーション(条件2とする)では、評価を行った28個のWebページのうち、全体の約54\%にあたる15個のページでのみ、スクロール位置を正しく復元できた。
-Chrome拡張機能でスクロール位置の復元に成功したWebページの例を図\ref{fig:success-example-scroll-position-before}と図\ref{fig:success-example-scroll-position-after}に示す。
 
 次に、保存時と再開時のブラウザウィンドウの幅が異なる場合の評価結果を示す。
 再開時のウィンドウサイズが保存時より横に長い場合(条件3とする)では、評価を行った28個のWebページのうち、全体の約86\%にあたる24個のページでスクロール位置を正しく復元できた。
@@ -17,24 +16,6 @@ iOSのSafariで保存し、Chrome拡張機能から再開した場合(条件5と
 上記に示した、条件ごとの復元成功率を図\ref{fig:success-rate-scroll-position}に示す。
 
 % textlint-disable
-\begin{figure}[htbp]
-  \begin{minipage}[t]{\hsize}
-    \caption{スクロール位置の復元に成功した例(保存時)}
-    \label{fig:success-example-scroll-position-before}
-    \begin{center}
-      \includegraphics[bb=0 0 2880 1800,width=15cm]{img/060_evaluation/result/scroll_position/success-example-scroll-position-before.pdf}
-    \end{center}
-  \end{minipage} \\
-
-  \begin{minipage}[t]{\hsize}
-    \caption{スクロール位置の復元に成功した例(復元時)}
-    \label{fig:success-example-scroll-position-after}
-    \begin{center}
-      \includegraphics[bb=0 0 2880 1800,width=15cm]{img/060_evaluation/result/scroll_position/success-example-scroll-position-after.pdf}
-    \end{center}
-  \end{minipage}
-\end{figure}
-
 \begin{figure}[htbp]
   \caption{条件別のスクロール位置の復元成功率}
   \label{fig:success-rate-scroll-position}
