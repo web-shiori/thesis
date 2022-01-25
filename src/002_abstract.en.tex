@@ -1,27 +1,29 @@
 \begin{eabstract}
 
-  (Google翻訳です。本綴じまでに書き直します。)
+  Nowadays, it is commonplace for a single user to own and use multiple devices.
+  Users may use a bookmarking system to view web content from multiple devices and browsers.
+  However, the current bookmarking system can only save and restore web pages in URL units.
+  Therefore, when a page is saved, the information about how far the user has browsed the contents is lost.
+  As a result, users have to find the text or scene they are looking for every time they visit a web page.  
 
-  Nowadays, it is common for one user to own and use multiple terminals.
-  Users may use the bookmark system to browse Web content from multiple terminals / browsers.
-  However, with the current bookmark system, Web pages can only be saved and restored in URL units.
-  As a result, information about how far the user was browsing the content when the page was saved is lost.
-  As a result, each time a user visits a Web page, he or she must re-find the desired wording or scene in the content.
+  Therefore, in this research, we propose a bookmarking system that can restore the browsing state at the time of saving when a user visits a bookmarked web page again.
+  When a user bookmarks web content, information such as scrolling position, video playback position, and the number of PDF pages is saved along with the URL.
+  When the user revisits the bookmarked web page, the user can restore the browsing state by setting the scroll position, video playback position, and the number of pages in the PDF file at the time of saving.
 
-  Therefore, in this research, I propose a bookmark system that can restore the browsing state at the time of saving when the user visits the bookmarked Web page again.
-  When a user bookmarks Web content, information such as scroll position, video playback position, and number of PDF pages is saved along with the URL.
-  When the user visits the bookmarked Web page again, the browsing state is restored by setting the scroll position, video playback position, number of PDF pages, etc. at the time of saving.
+  In this study, we developed an iOS application and a Chrome extension as clients of the bookmarking system using Swift and TypeScript, respectively.
+  In addition, we implemented a database server and a web API for storing bookmark data in Ruby.
+  In addition, we implemented a module to extract the number of pages from a PDF using Golang.
 
-  In this research, I developed iOS application and Chrome extension with Swift and TypeScript as a client of bookmark system.
-  In addition, I implemented a database server and Web API for storing bookmark data in Ruby.
-  In addition, I implemented a module to extract the number of pages from PDF in Go language.
+  In order to evaluate the ability to restore the browsing state, we bookmarked various types of web pages using the implemented bookmarking system.
+  Then, we reviewed the bookmarked web pages on multiple devices and browsers to evaluate the ability to restore them.
 
-  In order to evaluate the ability to restore the browsing state, I bookmarked various types of Web pages using the implemented bookmark system.
-  Then, I browsed the bookmarked Web page again on multiple terminals and browsers.
+  As a result, the scrolling position was successfully restored with an average probability of about 53%.
+  The video playback position was successfully restored with an average probability of about 47%.
+  The audio playback position was successfully recovered about 21% of the time on average.
+  The number of pages in a PDF file was successfully recovered with an average probability of about 70\%.
 
-  (Write the details after the evaluation.)
-  As a result, it turned out to be 〇〇。
-
-  (Summary of conclusions.)
+  These results show that our system can recover the browsing status of web contents, such as scrolling position, video playback position, and the number of pages in a PDF, under certain conditions.
+  On the other hand, there are many cases where the system fails to restore the scroll position, video, and audio when restoring across devices, which is a problem for our system.
+  In addition, many services fail to restore the playback position of audio, which needs to be improved.
 
 \end{eabstract}
