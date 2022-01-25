@@ -58,6 +58,17 @@ Chrome拡張機能では、保存したブックマークを確認できる画�
 加えて、本イベントはChromeのruntimeAPI\cite{chrome-runtime-api}を利用してバックグラウンドスクリプト\footnote{ブラウザに関するイベントを監視し、処理を行うためのイベントベースのプログラム}にメッセージを送信する。
 このメッセージを受信すると、本アプリケーションはブラウザウィンドウを保存時の大きさに設定する。
 その上で、保存時に取得した座標まで画面をスクロールすることで、復元を実現する。
+上記の一連の流れを図\ref{fig:impl-scroll-position-flow}に示す。
+
+\begin{figure}[htbp]
+  \caption{スクロール位置復元の流れ}
+  \label{fig:impl-scroll-position-flow}
+  \begin{center}
+    \includegraphics[bb=0 0 1421 404,width=15cm]{img/050_implementation/chrome/impl-scroll-position-flow.pdf}
+  \end{center}
+\end{figure}
+
+
 また、動画や音声が存在する場合は再生位置を復元する。
 スクロール位置と動画/音声の再生位置の設定に用いるAPIも、iOSアプリケーションで用いるものと同様である。
 
