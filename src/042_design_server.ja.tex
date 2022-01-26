@@ -99,7 +99,6 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 本システムでは、認証関連API・コンテンツ関連API・フォルダ関連APIの三種類のWebAPIを提供している。
 本APIはREST\footnote{REpresentational State Transfer。Roy Fielding氏が2000年に発表したWebAPIのインターフェイスの設計アーキテクチャ}の思想に基づいて設計しており、HTTPリクエストを通じて呼び出すことができる。
 
-\subsubsection{認証関連API}
 認証関連APIは、ユーザの認証に関連するAPIを提供する。
 認証関連APIが提供する各APIのエンドポイントと概要を表\ref{tb:design-auth-api}に示す。
 
@@ -160,9 +159,9 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 \end{itembox}
 % textlint-enable
 
-\subsubsection{コンテンツ関連API}
 コンテンツ関連APIは、ブックマークを操作するためのAPIを提供する。
 コンテンツ関連APIが提供する各APIのエンドポイントと概要を表\ref{tb:design-content-api}に示す。
+上記のうち、Webページをブックマークするためのリクエストおよびレスポンスの例を以下に示す。
 
 % textlint-disable
 \begin{table}[htbp]
@@ -180,8 +179,6 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \end{center}
 \end{table}
 % textlint-enable
-
-上記のうち、Webページをブックマークするためのリクエストおよびレスポンスの例を以下に示す。
 
 % textlint-disable
 \begin{itembox}[l]{コンテンツをブックマークするリクエストの例}
@@ -233,7 +230,6 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 \end{itembox}
 % textlint-enable
 
-\subsubsection{フォルダ関連API}
 フォルダ関連APIは、フォルダに関連するAPIを提供する。
 フォルダ関連APIが提供する各APIのエンドポイントと概要を表\ref{tb:design-folder-api}に示す。
 
@@ -287,6 +283,3 @@ ChromeのPDFビューワは、図\ref{fig:pdf-viewer-nav-bar-page-num}のよう�
 
 サーバ側では、取得したページ数をURLのフラグメントに付与する。(例: \url{https://www.usenix.org/system/files/conference/hotcloud16/hotcloud16_burns.pdf#page=5})
 クライアントではこのURLでページを開くことで、PDFのページ数を復元できる。
-
-\section{まとめ}
-本章では、Web-Snapshotシステムの設計について述べた。次章では、本システムの実装について述べる。
