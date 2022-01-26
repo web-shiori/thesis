@@ -38,16 +38,15 @@ Webコンテンツをブックマークすると、URLとともにスクロー�
 例外として、PDFについては保存時と同じページ数が開くことを復元と定義する。
 
 本研究における復元の定義を以下の表\ref{tb:intro-restore-definition}にまとめる。
-本研究において、復元しない要素とその理由を表\ref{tb:intro-not-restore-definition}に示す。
 
 % textlint-disable
 \begin{table}[htbp]
   \begin{center}
     \caption{本研究における閲覧状態の復元の定義}
     \label{tb:intro-restore-definition}
-    \begin{tabular}{|c|l|l|l|}
+    \begin{tabular}{|l|l|l|}
       \hline
-      復元する項目 & 条件 &  復元の定義 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{復元する項目}} & \multicolumn{1}{|c|}{\textbf{条件}} & \multicolumn{1}{|c|}{\textbf{復元の定義}} \\\hline
       スクロール位置 & 全て & 
         \begin{tabular}{l}
           保存時の画面左上に位置しているコンテンツが\\本文表示領域の左上に表示されている。 
@@ -55,21 +54,6 @@ Webコンテンツをブックマークすると、URLとともにスクロー�
       動画再生位置 & 動画 & 保存時の再生位置(秒単位)から動画がはじまる。 \\\hline
       音声再生位置 & 音声 & 保存時の再生位置(秒単位)から音声がはじまる。 \\\hline
       ページ数 & PDF & 保存時のページが開く。 \\\hline
-    \end{tabular}
-  \end{center}
-\end{table}
-% textlint-enable
-
-% textlint-disable
-\begin{table}[htbp]
-  \begin{center}
-    \caption{本研究において復元しない画面要素}
-    \label{tb:intro-not-restore-definition}
-    \begin{tabular}{|c|l|l|}
-      \hline
-      復元しない項目 & 理由 \\\hline\hline
-      ピンチズームスケール & read-onlyであるため\cite{pinch-zoom-scale-read-only} \\\hline
-      ピクセル比 & read-onlyであるため\cite{pixel-ratio-read-only} \\\hline
     \end{tabular}
   \end{center}
 \end{table}

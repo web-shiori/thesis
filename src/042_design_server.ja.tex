@@ -18,7 +18,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & ユーザの識別子 \\\hline
       email & varchar & メールアドレス \\\hline
       encrypted\_password & varchar & 暗号化したパスワード \\\hline
@@ -41,7 +41,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & ブックマークの識別子 \\\hline
       user\_id & bigint & ブックマークを保存したユーザの識別子 \\\hline
       title & varchar & タイトル \\\hline
@@ -72,7 +72,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & フォルダの識別子 \\\hline
       name & varchar & フォルダ名 \\\hline
       user\_id & bigint & フォルダを作成したユーザの識別子 \\\hline
@@ -86,7 +86,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & コンテンツとフォルダのペアの識別子 \\\hline
       content\_id & bigint & コンテンツの識別子 \\\hline
       folder\_id & bigint & フォルダの識別子 \\\hline
@@ -110,7 +110,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      HTTPメソッド & パス & 概要 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{HTTPメソッド}} & \multicolumn{1}{|c|}{\textbf{パス}} & \multicolumn{1}{|c|}{\textbf{概要}} \\\hline
       POST & /v1/auth & 会員登録 \\\hline
       POST & /v1/auth/sign\_in & ログイン \\\hline
       GET & /v1/auth/google & Googleアカウントで認証 \\\hline
@@ -171,7 +171,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      HTTPメソッド & パス & 概要 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{HTTPメソッド}} & \multicolumn{1}{|c|}{\textbf{パス}} & \multicolumn{1}{|c|}{\textbf{概要}} \\\hline
       GET & /v1/content & ブックマークしたコンテンツ一覧取得 \\\hline
       POST & /v1/content & Webページをブックマークする \\\hline
       PUT & /v1/content/\{content\_id\} & ブックマークを修正する \\\hline
@@ -244,7 +244,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      HTTPメソッド & パス & 概要 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{HTTPメソッド}} & \multicolumn{1}{|c|}{\textbf{パス}} & \multicolumn{1}{|c|}{\textbf{概要}} \\\hline
       GET & /v1/folder & フォルダ一覧取得 \\\hline
       POST & /v1/folder & フォルダ作成 \\\hline
       PUT & /v1/folder/\{folder\_id\} & フォルダ更新 \\\hline
