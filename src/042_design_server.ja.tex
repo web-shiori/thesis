@@ -270,19 +270,19 @@ ChromeのPDFビューワは、図\ref{fig:pdf-viewer-nav-bar-page-num}のよう�
 本機能の処理の流れを図\ref{fig:design-pdf-page-num-extract}に示す。
 
 \begin{figure}[htbp]
-  \caption{PDFビューワのナビゲーションバーに表示されるページ数}
   \label{fig:pdf-viewer-nav-bar-page-num}
   \begin{center}
     \includegraphics[bb=0 0 1440 900,width=15cm]{img/040_design/pdf-viewer-nav-bar-page-num.pdf}
   \end{center}
+  \caption{PDFビューワのナビゲーションバーに表示されるページ数}
 \end{figure}
 
 \begin{figure}[htbp]
-  \caption{PDFのページ数を取得する処理の流れ}
   \label{fig:design-pdf-page-num-extract}
   \begin{center}
     \includegraphics[bb=0 0 511 161,width=15cm]{img/040_design/design-pdf-page-num-extract.pdf}
   \end{center}
+  \caption{PDFのページ数を取得する処理の流れ}
 \end{figure}
 
 サーバ側では、取得したページ数をURLのフラグメントに付与する。(例: \url{https://example.pdf#page=5})
