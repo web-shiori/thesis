@@ -18,7 +18,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & ユーザの識別子 \\\hline
       email & varchar & メールアドレス \\\hline
       encrypted\_password & varchar & 暗号化したパスワード \\\hline
@@ -41,7 +41,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & ブックマークの識別子 \\\hline
       user\_id & bigint & ブックマークを保存したユーザの識別子 \\\hline
       title & varchar & タイトル \\\hline
@@ -72,7 +72,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & フォルダの識別子 \\\hline
       name & varchar & フォルダ名 \\\hline
       user\_id & bigint & フォルダを作成したユーザの識別子 \\\hline
@@ -86,7 +86,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      カラム名 & データ型 & 値の説明 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{カラム名}} & \multicolumn{1}{|c|}{\textbf{データ型}} & \multicolumn{1}{|c|}{\textbf{値の説明}} \\\hline
       id & bigint & コンテンツとフォルダのペアの識別子 \\\hline
       content\_id & bigint & コンテンツの識別子 \\\hline
       folder\_id & bigint & フォルダの識別子 \\\hline
@@ -99,7 +99,6 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 本システムでは、認証関連API・コンテンツ関連API・フォルダ関連APIの三種類のWebAPIを提供している。
 本APIはREST\footnote{REpresentational State Transfer。Roy Fielding氏が2000年に発表したWebAPIのインターフェイスの設計アーキテクチャ}の思想に基づいて設計しており、HTTPリクエストを通じて呼び出すことができる。
 
-\subsubsection{認証関連API}
 認証関連APIは、ユーザの認証に関連するAPIを提供する。
 認証関連APIが提供する各APIのエンドポイントと概要を表\ref{tb:design-auth-api}に示す。
 
@@ -110,7 +109,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      HTTPメソッド & パス & 概要 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{HTTPメソッド}} & \multicolumn{1}{|c|}{\textbf{パス}} & \multicolumn{1}{|c|}{\textbf{概要}} \\\hline
       POST & /v1/auth & 会員登録 \\\hline
       POST & /v1/auth/sign\_in & ログイン \\\hline
       GET & /v1/auth/google & Googleアカウントで認証 \\\hline
@@ -160,9 +159,9 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 \end{itembox}
 % textlint-enable
 
-\subsubsection{コンテンツ関連API}
 コンテンツ関連APIは、ブックマークを操作するためのAPIを提供する。
 コンテンツ関連APIが提供する各APIのエンドポイントと概要を表\ref{tb:design-content-api}に示す。
+上記のうち、Webページをブックマークするためのリクエストおよびレスポンスの例を以下に示す。
 
 % textlint-disable
 \begin{table}[htbp]
@@ -171,7 +170,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      HTTPメソッド & パス & 概要 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{HTTPメソッド}} & \multicolumn{1}{|c|}{\textbf{パス}} & \multicolumn{1}{|c|}{\textbf{概要}} \\\hline
       GET & /v1/content & ブックマークしたコンテンツ一覧取得 \\\hline
       POST & /v1/content & Webページをブックマークする \\\hline
       PUT & /v1/content/\{content\_id\} & ブックマークを修正する \\\hline
@@ -180,8 +179,6 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \end{center}
 \end{table}
 % textlint-enable
-
-上記のうち、Webページをブックマークするためのリクエストおよびレスポンスの例を以下に示す。
 
 % textlint-disable
 \begin{itembox}[l]{コンテンツをブックマークするリクエストの例}
@@ -233,7 +230,6 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 \end{itembox}
 % textlint-enable
 
-\subsubsection{フォルダ関連API}
 フォルダ関連APIは、フォルダに関連するAPIを提供する。
 フォルダ関連APIが提供する各APIのエンドポイントと概要を表\ref{tb:design-folder-api}に示す。
 
@@ -244,7 +240,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
   \begin{center}
     \begin{tabular}{|l|l|l|}
       \hline
-      HTTPメソッド & パス & 概要 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{HTTPメソッド}} & \multicolumn{1}{|c|}{\textbf{パス}} & \multicolumn{1}{|c|}{\textbf{概要}} \\\hline
       GET & /v1/folder & フォルダ一覧取得 \\\hline
       POST & /v1/folder & フォルダ作成 \\\hline
       PUT & /v1/folder/\{folder\_id\} & フォルダ更新 \\\hline
@@ -270,23 +266,20 @@ ChromeのPDFビューワは、図\ref{fig:pdf-viewer-nav-bar-page-num}のよう�
 本機能の処理の流れを図\ref{fig:design-pdf-page-num-extract}に示す。
 
 \begin{figure}[htbp]
-  \caption{PDFビューワのナビゲーションバーに表示されるページ数}
   \label{fig:pdf-viewer-nav-bar-page-num}
   \begin{center}
     \includegraphics[bb=0 0 1440 900,width=15cm]{img/040_design/pdf-viewer-nav-bar-page-num.pdf}
   \end{center}
+  \caption{PDFビューワのナビゲーションバーに表示されるページ数}
 \end{figure}
 
 \begin{figure}[htbp]
-  \caption{PDFのページ数を取得する処理の流れ}
   \label{fig:design-pdf-page-num-extract}
   \begin{center}
     \includegraphics[bb=0 0 511 161,width=15cm]{img/040_design/design-pdf-page-num-extract.pdf}
   \end{center}
+  \caption{PDFのページ数を取得する処理の流れ}
 \end{figure}
 
-サーバ側では、取得したページ数をURLのフラグメントに付与する。(例: \url{https://example.pdf#page=5})
+サーバ側では、取得したページ数をURLのフラグメントに付与する。(例: \url{https://www.usenix.org/system/files/conference/hotcloud16/hotcloud16_burns.pdf#page=5})
 クライアントではこのURLでページを開くことで、PDFのページ数を復元できる。
-
-\section{まとめ}
-本章では、Web-Snapshotシステムの設計について述べた。次章では、本システムの実装について述べる。

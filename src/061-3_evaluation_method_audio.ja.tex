@@ -1,7 +1,6 @@
 \subsection{音声の再生位置の復元の評価}
 本項では、本研究で定義した『音声の閲覧状態の復元』の評価方法について説明する。
 
-\subsubsection{評価に使用するWebページ}
 まず、音声の再生位置の復元の評価に使用するWebページについて述べる。
 
 % textlint-disable
@@ -17,7 +16,7 @@
   \begin{center}
     \begin{tabular}{|l|}
     \hline
-    音声配信サービス  \\\hline\hline
+    \multicolumn{1}{|c|}{\textbf{音声配信サービス}} \\\hline
     Audible \\ \hline
     Amazon Music \\ \hline
     LINE MUSIC \\ \hline
@@ -47,14 +46,11 @@
 \end{table}
 % textlint-enable
 
-\subsubsection{評価方法}
 次に、評価方法について説明する。
 音声の再生位置の復元の評価では、実際にWebページ上の音声をブックマーク・再開し、音声の再生位置の復元の成功率を評価する。
 『音声再生位置の復元』の定義は、第3章\ref{chap:web-snapshot-system-restore-definition}で説明した通りである。
-
 なお、本実験の前提条件として、広告ブロッカーなどの拡張機能は無効の状態を仮定する。
 
-\subsubsection{実験する条件}
 動画の再生位置の復元の評価において、実験する条件を説明する。
 本実験では、表\ref{tb:evl-audio-audio-conditions}のように、Chrome拡張機能/iOSアプリケーションでの保存・復元を4パターン検証する。
 
@@ -65,7 +61,7 @@
   \begin{center}
     \begin{tabular}{|l|}
     \hline
-    実験条件  \\\hline\hline
+    \multicolumn{1}{|c|}{\textbf{実験条件}} \\\hline
     Chrome拡張機能で保存→Chrome拡張機能で復元 \\ \hline
     Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
     iOSアプリケーションで保存→Chrome拡張機能で復元 \\ \hline

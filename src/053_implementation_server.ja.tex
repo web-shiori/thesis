@@ -40,7 +40,7 @@ WebAPIについては、認証関連API・コンテンツ関連API・フォル�
   \begin{center}
     \begin{tabular}{|l|l|}
     \hline
-    動画サイト & クエリパラメータの形式 \\ \hline \hline
+    \multicolumn{1}{|c|}{\textbf{動画サイト}} & \multicolumn{1}{|c|}{\textbf{クエリパラメータの形式}} \\\hline
     YouTube & ?t=330 \\ \hline
     ニコニコ動画 & ?from=330 \\ \hline
     OPENREC.tv & ?t=50 \\ \hline
@@ -99,13 +99,9 @@ API側では、PDFのページ数が更新されると、そのページ数をUR
 上記の一連の実装内容を図\ref{fig:impl-pdf-overall}にまとめる。
 
 \begin{figure}[htbp]
-  \caption{PDFページ数抽出機能の実装の全体像}
   \label{fig:impl-pdf-overall}
   \begin{center}
     \includegraphics[bb=0 0 734 522,width=15cm]{img/050_implementation/server/impl-pdf-overall.pdf}
   \end{center}
+  \caption{PDFページ数抽出機能の実装の全体像}
 \end{figure}
-
-\section{まとめ}
-本章では、Web-Snapshotシステムの実装について述べた。
-次章では、本システムを利用して実際にWebページをブックマークし、閲覧状態の復元を評価する。

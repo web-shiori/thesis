@@ -19,19 +19,19 @@ iOSアプリケーションでは、以下の2つの理由でPDFの復元には�
 \begin{figure}[htbp]
   \begin{tabular}{cc}
     \begin{minipage}[t]{0.45\hsize}
-      \caption{【iOS】初期画面}
       \label{fig:impl-ios-top-not-auth-view}
       \begin{center}
         \includegraphics[bb=0 0 585 1266,width=5cm]{img/050_implementation/ios/ios-top-not-auth-view.pdf}
       \end{center}
+      \caption{【iOS】初期画面}
     \end{minipage} &
 
     \begin{minipage}[t]{0.45\hsize}
-      \caption{【iOS】認証画面}
       \label{fig:impl-ios-auth-view}
       \begin{center}
         \includegraphics[bb=0 0 585 1266,width=5cm]{img/050_implementation/ios/ios-auth-view.pdf}
       \end{center}
+      \caption{【iOS】認証画面}
     \end{minipage}
   \end{tabular}
 \end{figure}
@@ -71,7 +71,7 @@ ShareExtensionはブラウザ上でJavaScriptプログラムを実行し、Web�
   \begin{center}
     \begin{tabular}{|l|l|l|}
     \hline
-    取得するデータ & 型 & API \\ \hline
+    \multicolumn{1}{|c|}{\textbf{取得するデータ}} & \multicolumn{1}{|c|}{\textbf{型}} & \multicolumn{1}{|c|}{\textbf{API}} \\\hline
     URL & String & Document.URL \\ \hline
     ページタイトル & String & Document.title \\ \hline
     画面左に表示されているコンテンツのX座標 & Int & Element.scrollLeft \\ \hline
@@ -91,11 +91,11 @@ ShareViewControllerは、取得したデータにブラウザの情報をメタ�
 図\ref{fig:impl-ios-bookmark-save-module}にiOSアプリケーションにおけるブックマーク保存モジュールの全体像を示す。
 
 \begin{figure}[htbp]
-  \caption{【iOS】ブックマーク保存モジュール全体像}
   \label{fig:impl-ios-bookmark-save-module}
   \begin{center}
     \includegraphics[bb=0 0 351 271,width=10cm]{img/050_implementation/ios/impl-ios-bookmark-save-module.pdf}
   \end{center}
+  \caption{【iOS】ブックマーク保存モジュール全体像}
 \end{figure}
 
 \subsubsection{一覧モジュール}

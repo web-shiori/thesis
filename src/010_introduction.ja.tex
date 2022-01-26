@@ -18,23 +18,23 @@
 現在では、Webブラウザ(Chrome\cite{chrome}/Safari\cite{safari}/Firefox\cite{firefox})がそれぞれ機能を提供している他、Pocket\cite{pocket}などブックマーク機能を専用で提供するWebサービスも多数存在する。
 
 その他にも、Webコンテンツ内の様々なリソースを指し示すためのインターフェイスを提供することで、ユーザの利便性を向上させるという手法も存在する。
-例えば、URLのフラグメント\footnote{URLの末尾に\#をつけて指定することでページ内のリソースを指し示す機能}にHTML内のリソースのidを指定することで、Webサイト内の特定の項目を指し示すことができる(例: \url{https://example.com#some-id})。
-あるいは、動画共有サイトのYouTube\cite{youtube}では、\url{https://youtu.be/some-video?t=500}といったようにクエリパラメータで再生位置を指定して動画を開く機能を提供している。
-また、WebブラウザのPDFビューワでは、ページ数を指定してPDFを開けるような仕様になっている場合も多い(例: \url{https://example.pdf#page=5})。
+例えば、URLのフラグメント\footnote{URLの末尾に\#をつけて指定することでページ内のリソースを指し示す機能}にHTML内のリソースのidを指定することで、Webサイト内の特定の項目を指し示すことができる(例: \url{https://toramasa.hatenablog.jp/entry/2021/07/30/191648#学んだこと})。
+あるいは、動画共有サイトのYouTube\cite{youtube}では、\url{https://youtu.be/jNQXAC9IVRw?t=10}といったようにクエリパラメータで再生位置を指定して動画を開く機能を提供している。
+また、WebブラウザのPDFビューワでは、ページ数を指定してPDFを開けるような仕様になっている場合も多い(例: \url{https://www.usenix.org/system/files/conference/hotcloud16/hotcloud16_burns.pdf#page=5})。
 
 \section{本研究が着目する課題}
 本研究では、Webコンテンツ内の特定のリソースを指し示す方法が多数存在するにも関わらず、ブックマークシステムでWebページ単位でしか保存・復元を行えない点に着目する。
 現在のブックマークシステムでは、ページを保存した際にユーザがどこまでコンテンツを閲覧していたかという情報が失われてしまう。
 現在のブックマークシステムでブックマークしたページを再度訪れた際に、スクロール位置の情報が消えてしまう様子を図\ref{fig:probrem-scroll-position}に示す。
 これはスクロール位置のみならず、動画再生位置、PDFにおいても同様の問題が発生する。
-そのため、ユーザはWebページを訪れる度に、コンテンツ内の目当ての文言・シーンを見つけ直さなければならない。
+そのため、ユーザはWebページを訪れる度に、コンテンツ内のページや再生位置を見つけ直さなければならない。
 
 \begin{figure}[htbp]
-  \caption{現在のブックマークシステムの問題点}
   \label{fig:probrem-scroll-position}
   \begin{center}
     \includegraphics[bb=0 0 681 641,width=15cm]{img/010_introduction/probrem-scroll-position.pdf}
   \end{center}
+  \caption{現在のブックマークシステムの問題点}
 \end{figure}
 
 また、現在では一人のユーザが複数の端末を所有して使い分けることが当たり前になっている。
@@ -58,11 +58,11 @@
 なお、本研究における閲覧状態の復元の定義の詳細は、\ref{chap:web-snapshot-system-restore-definition}章で説明する。
 
 \begin{figure}[htbp]
-  \caption{今回提案するブックマークシステム}
   \label{fig:ideal-scroll-position}
   \begin{center}
     \includegraphics[bb=0 0 681 641,width=15cm]{img/010_introduction/ideal-scroll-position.pdf}
   \end{center}
+  \caption{今回提案するブックマークシステム}
 \end{figure}
 
 \section{本論文の構成}
@@ -79,6 +79,6 @@
 \ref{chap:implementation}章では、本研究で実装したブックマークシステムについて述べる。
 本研究では、クライアントとしてiOSアプリケーション・Chrome拡張機能、サーバ側にWebAPIおよびPDFのスクリーンショットからページ数を抽出するモジュールを実装した。
 
-\ref{chap:evaluation}章では、本研究で実装したブックマークシステムを用いて実際にWebページを保存し、閲覧状態の復元を評価する。
+\ref{chap:evaluation}章では、本研究で実装したブックマークシステムを用いて実際にWebページを保存し、閲覧状態の復元を評価・考察する。
 
 \ref{chap:conclusion}章では、本研究における結論を示す。

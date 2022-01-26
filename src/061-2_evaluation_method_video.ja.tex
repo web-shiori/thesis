@@ -1,7 +1,6 @@
 \subsection{動画の再生位置の復元の評価}
 本項では、本研究で定義した『動画の閲覧状態の復元』の評価方法について説明する。
 
-\subsubsection{評価に使用するWebページ}
 まず、動画の再生位置の復元の評価に使用するWebページについて述べる。
 動画の再生位置の復元の評価には、2021年のWebサイト別アクセス数ランキング\cite{The-50-Most-Visited-Websites-in-the-World}などの3つのサイト\cite{mmd-video-research}\cite{popular-video-service}を参考に、特に利用者が多く広く普及していると思われる動画サイト33個をピックアップし、使用する。
 評価に用いる動画サービスの一覧を表\ref{tb:evl-video-service-list}に示す。
@@ -14,7 +13,7 @@
   \begin{center}
     \begin{tabular}{|l|}
     \hline
-    動画サービス  \\\hline\hline
+    \multicolumn{1}{|c|}{\textbf{動画サービス}} \\\hline
     Amazon Prime Video \\ \hline
     Netflix \\ \hline
     hulu \\ \hline
@@ -53,14 +52,11 @@
 \end{table}
 % textlint-enable
 
-\subsubsection{評価方法}
 次に、評価方法について説明する。
 動画の再生位置の復元の評価では、実際にWebページ上の動画をブックマーク・再開し、動画の再生位置の復元の成功率を評価する。
 『動画再生位置の復元』の定義は、第3章\ref{chap:web-snapshot-system-restore-definition}で説明した通りである。
-
 なお、本実験の前提条件として、広告ブロッカーなどの拡張機能は無効の状態を仮定する。
 
-\subsubsection{実験する条件}
 動画の再生位置の復元の評価において、実験する条件を説明する。
 本実験では、表\ref{tb:evl-video-audio-conditions}のように、Chrome拡張機能/iOSアプリケーションでの保存・復元を4パターン検証する。
 
@@ -71,7 +67,7 @@
   \begin{center}
     \begin{tabular}{|l|}
     \hline
-    実験条件  \\\hline\hline
+    \multicolumn{1}{|c|}{\textbf{実験条件}} \\\hline
     Chrome拡張機能で保存→Chrome拡張機能で復元 \\ \hline
     Chrome拡張機能で保存→iOSアプリケーションで復元 \\ \hline
     iOSアプリケーションで保存→Chrome拡張機能で復元 \\ \hline

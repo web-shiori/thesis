@@ -20,11 +20,11 @@ Webコンテンツをブックマークすると、URLとともにスクロー�
 
 % textlint-disable
 \begin{figure}[htbp]
-  \caption{本研究における『画面左上』の定義}
   \label{fig:web-snapshot-system-definition-description-scroll-position}
   \begin{center}
     \includegraphics[bb=0 0 1440 900,width=15cm]{img/030_web_snapshot_system/description-scroll-position-definition.pdf}
   \end{center}
+  \caption{本研究における『画面左上』の定義}
 \end{figure}
 % textlint-enable
 
@@ -38,16 +38,15 @@ Webコンテンツをブックマークすると、URLとともにスクロー�
 例外として、PDFについては保存時と同じページ数が開くことを復元と定義する。
 
 本研究における復元の定義を以下の表\ref{tb:intro-restore-definition}にまとめる。
-本研究において、復元しない要素とその理由を表\ref{tb:intro-not-restore-definition}に示す。
 
 % textlint-disable
 \begin{table}[htbp]
   \begin{center}
     \caption{本研究における閲覧状態の復元の定義}
     \label{tb:intro-restore-definition}
-    \begin{tabular}{|c|l|l|l|}
+    \begin{tabular}{|l|l|l|}
       \hline
-      復元する項目 & 条件 &  復元の定義 \\\hline\hline
+      \multicolumn{1}{|c|}{\textbf{復元する項目}} & \multicolumn{1}{|c|}{\textbf{条件}} & \multicolumn{1}{|c|}{\textbf{復元の定義}} \\\hline
       スクロール位置 & 全て & 
         \begin{tabular}{l}
           保存時の画面左上に位置しているコンテンツが\\本文表示領域の左上に表示されている。 
@@ -60,45 +59,28 @@ Webコンテンツをブックマークすると、URLとともにスクロー�
 \end{table}
 % textlint-enable
 
-% textlint-disable
-\begin{table}[htbp]
-  \begin{center}
-    \caption{本研究において復元しない画面要素}
-    \label{tb:intro-not-restore-definition}
-    \begin{tabular}{|c|l|l|}
-      \hline
-      復元しない項目 & 理由 \\\hline\hline
-      ピンチズームスケール & read-onlyであるため\cite{pinch-zoom-scale-read-only} \\\hline
-      ピクセル比 & read-onlyであるため\cite{pixel-ratio-read-only} \\\hline
-    \end{tabular}
-  \end{center}
-\end{table}
-% textlint-enable
-
 \section{システムの特徴}
 本節では、Web-Snapshotの特徴的な機能を3つ挙げる。
 
-\subsection{スクロール位置保存・復元機能}
+1つ目は、スクロール位置保存・復元機能である。
 Web-Snapshotは、ブックマーク時のコンテンツのスクロール位置を保存・復元する。
 本システムでは、ブックマークの復元時に端末の画面サイズ・ズーム率・使用ブラウザなどの情報をもとにスクロール位置を再計算する。
 そのため、異なるブラウザ・端末間でもWebコンテンツの閲覧状態を正しく復元できる。
 
-\subsection{動画/音声の再生位置保存・復元機能}
+2つ目は、動画/音声の再生位置保存・復元機能である。
 Web-Snapshotは、ブックマークしたWebコンテンツ内に含まれる動画および音声の再生位置を保存・復元する。
 ただし、再生位置を復元できるのは、WebページのDOM内で最上位に位置するもののみである。
 
-\subsection{PDFページ数保存・復元機能}
+3つ目は、PDFページ数保存・復元機能である。
 Web-Snapshotは、ブックマークしたPDFのページ数を保存・復元する。
 同一PC内であれば、ローカル上のPDFの保存・復元も可能である。
 ただし、本システムではPDFそのものを保存するのではなく、PDFのパスを保存している。
 そのため、ローカルPC内でPDFのファイルパスを変更した場合、復元できなくなる。
 
-なお、iOSアプリケーションではPDFページ数の保存機能は提供しない。
-その理由は、iOSアプリケーションからブラウザの画面キャプチャを取得する方法が存在しないためである。
-% textlint-disable
-ただし、Chrome拡張機能で保存したPDFのページ数をiOSアプリケーション内で復元することは可能である。
-% textlint-enable
-% ここは復元できる。だと意味的におかしいのでチェック外す
+なお、PDFページ数保存・復元機能はChrome拡張機能のみで提供する。
+その理由は、以下の2つである。
+1つ目は、iOSアプリケーションからブラウザの画面キャプチャを取得する方法が存在しないためである。
+2つ目は、iOSのブラウザではURLのフラグメントによるPDFのページ数の制御ができないためである。
 
 \section{システムの使用方法}
 本節では、Web-Snapshotシステムの使用方法を、iOSアプリケーション版、Chrome拡張機能版のそれぞれについて説明する。
@@ -136,7 +118,6 @@ Webページがロードされると、スクロール位置・動画再生位�
 ブックマークを再度閲覧するには、閲覧したいブックマークをクリックする。すると、ブラウザ上で新しいタブが開き、保存したWebページを閲覧することが可能になる。
 Webページがロードされると、スクロール位置・動画再生位置・PDFのページ数などの情報をもとにブックマーク時の閲覧状態を復元する。
 
-\section{まとめ}
 本章では、コンテンツの閲覧状態を保存できるブックマークシステム、Web-Snapshotを提案した。
 また、Web-Snapshotシステムの特徴および使用方法を述べた。次章では、本システムの設計について述べる。
 
@@ -144,53 +125,53 @@ Webページがロードされると、スクロール位置・動画再生位�
 \begin{figure}[htbp]
   \begin{tabular}{cc}
     \begin{minipage}[t]{0.45\hsize}
-      \caption{【iOS】共有ボタン}
       \label{fig:usage-ios-share}
       \begin{center}
         \includegraphics[bb=0 0 585 1266,width=5cm]{img/ios/usage-ios-share.pdf}
       \end{center}
+      \caption{【iOS】共有ボタン}
     \end{minipage} &
 
     \begin{minipage}[t]{0.45\hsize}
-      \caption{【iOS】アイコン}
       \label{fig:usage-ios-share-icon}
       \begin{center}
         \includegraphics[bb=0 0 585 1266,width=5cm]{img/ios/usage-ios-share-icon.pdf}
       \end{center}
+      \caption{【iOS】アイコン}
     \end{minipage} \\
   
     \begin{minipage}[t]{0.45\hsize}
-      \caption{【iOS】確認用ポップアップ}
       \label{fig:usage-ios-popup}
       \begin{center}
         \includegraphics[bb=0 0 585 1266,width=5cm]{img/ios/usage-ios-popup.pdf}
       \end{center}
+      \caption{【iOS】確認用ポップアップ}
     \end{minipage} &
 
     \begin{minipage}[t]{0.45\hsize}
-      \caption{【iOS】トップ画面}
       \label{fig:usage-ios-top}
       \begin{center}
         \includegraphics[bb=0 0 585 1266,width=5cm]{img/ios/usage-ios-top.pdf}
       \end{center}
+      \caption{【iOS】トップ画面}
     \end{minipage}
   \end{tabular}
 \end{figure}
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{\hsize}
-    \caption{【Chrome拡張機能】ポップアップ画面}
     \label{fig:usage-chrome-popup}
     \begin{center}
       \includegraphics[bb=0 0 1280 800,width=15cm]{img/030_web_snapshot_system/chrome/usage-chrome-popup.pdf}
     \end{center}
+    \caption{【Chrome拡張機能】ポップアップ画面}
   \end{minipage} \\
 
   \begin{minipage}[t]{\hsize}
-    \caption{【Chrome拡張機能】コンテンツ一覧画面}
     \label{fig:usage-chrome-list}
     \begin{center}
       \includegraphics[bb=0 0 640 400,width=15cm]{img/030_web_snapshot_system/chrome/usage-chrome-list.pdf}
     \end{center}
+    \caption{【Chrome拡張機能】コンテンツ一覧画面}
   \end{minipage}
 \end{figure}
