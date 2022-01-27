@@ -24,3 +24,45 @@ rules:
     pattern: /xvideos/
   - expected: Pornhub
     pattern: /pornhub/
+  - expected: 第1
+    pattern: /第一/
+  - expected: 第2
+    pattern: /第二/
+  - expected: 第3
+    pattern: /第三/
+  - expected: Integer
+    pattern: /integer/
+  - expected: Web
+    pattern: /WEB/
+  - expected: アプリケーション内
+    pattern: /アプリ内/
+  - expected: 頂き
+    pattern: /いただき/
+  - expected: および
+    pattern: /及び/
+  - expected: およぼさない
+    pattern: /及ぼさない/
+  - expected: 全て
+    pattern: /すべて/
+  - expected: 度に
+    pattern: /たびに/
+  - expected: でき
+    pattern: /出来/
+  - expected: 直す
+    pattern: /なおす/
+  - expected: はじめ
+    pattern: /初め/
+  - expected: 始まる
+    pattern: /はじまる/
+  - expected: ビューワ
+    pattern: /ビューワー/
+  - expected: 跨いで
+    pattern: /またいで/
+  - expected: 呼び出
+    pattern: /よびだ/
+
+
+
+
+
+

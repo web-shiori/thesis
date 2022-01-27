@@ -96,7 +96,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 % textlint-enable
 
 \subsection{API設計}
-本システムでは、認証関連API・コンテンツ関連API・フォルダ関連APIの三種類のWebAPIを提供している。
+本システムでは、認証関連API・コンテンツ関連API・フォルダ関連APIの3種類のWebAPIを提供している。
 本APIはREST\footnote{REpresentational State Transfer。Roy Fielding氏が2000年に発表したWebAPIのインターフェイスの設計アーキテクチャ}の思想に基づいて設計しており、HTTPリクエストを通じて呼び出すことができる。
 
 認証関連APIは、ユーザの認証に関連するAPIを提供する。
@@ -256,7 +256,7 @@ ContentFolderテーブルを表\ref{tb:design-content-folder-table}に示す。
 \subsection{PDFからページ数を抽出するモジュール}
 本項では、Webブラウザ上で閲覧中のPDFからページ数を抽出・保存するモジュールの設計について説明する。
 
-Chromeが提供するPDFビューワーには、ページ数を取得するためのAPIが存在しない。
+Chromeが提供するPDFビューワには、ページ数を取得するためのAPIが存在しない。
 そのため、スクロール位置などのようにJavaScriptプログラムを通じてデータを取得できない。
 
 そこで、本システムではユーザのブラウザの画面のキャプチャを保存し、OCRを用いてそのキャプチャから閲覧中のPDFのページ数を取得する、という方法を提案する。
