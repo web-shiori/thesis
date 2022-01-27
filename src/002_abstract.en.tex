@@ -17,10 +17,24 @@
   In order to evaluate the ability to restore the browsing state, we bookmarked various types of web pages using the implemented bookmarking system.
   Then, we reviewed the bookmarked web pages on multiple devices and browsers to evaluate the ability to restore them.
 
-  As a result, the scrolling position was successfully restored with an average probability of about 53%.
-  The video playback position was successfully restored with an average probability of about 47%.
-  The audio playback position was successfully recovered about 21% of the time on average.
-  The number of pages in a PDF file was successfully recovered with an average probability of about 70\%.
+  As a result, the scrolling position was restored at about 86% when both saving and resuming were done with the Chrome extension.
+Different browser window sizes were restored in the same way.
+When both saving and resuming were done with the iOS application, the recovery rate was about 54%.
+When saving was done with the iOS application and resuming with the Chrome extension, the recovery rate was about 7\%.
+When saving was done with the Chrome extension and resuming was done with the iOS application, all sites could not be restored.
+
+When both saving and resuming were done with the Chrome extension, the video playback position was restored at a rate of about 70 percent.
+When both saving and resuming were done using the iOS application, the recovery rate was about 35%.
+When saving was done with the iOS application and resuming with the Chrome extension, the recovery rate was about 62%.
+When saving was done with the Chrome extension and resuming was done with the iOS application, the recovery rate was about 21%.
+
+The audio playback position was restored at about 33% when both saving and resuming were done with the Chrome extension.
+When both saving and resuming were done using the iOS application, the recovery rate was about 13%.
+When saving was done with the iOS application and resuming with the Chrome extension, the recovery rate was about 26%.
+When saving was done with the Chrome extension and resuming was done with the iOS application, the recovery rate was about 13%.
+
+On average, the number of pages in a PDF was successfully restored about 70 percent of the time.
+However, restoring the number of pages in a PDF could only be achieved with the Chrome extension.
 
   These results show that our system can recover the browsing status of web contents, such as scrolling position, video playback position, and the number of pages in a PDF, under certain conditions.
   On the other hand, there are many cases where the system fails to restore the scroll position, video, and audio when restoring across devices, which is a problem for our system.
