@@ -51,6 +51,11 @@ lint:
 convert-img-pdf:
 	sh $(SHELL_DIR)/convert-img-pdf.sh
 
+.PHONY: build-with-convert-img
+build-with-convert-img:
+	make convert-img-pdf 
+	make build
+
 .PHONY: word_count
 word_count:
 	detex ./src/thesis.tex | wc -m
