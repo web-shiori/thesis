@@ -60,9 +60,3 @@ rules:
     pattern: /またいで/
   - expected: 呼び出
     pattern: /よびだ/
-
-
-
-
-
-
